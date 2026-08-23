@@ -1,5 +1,6 @@
 import { betterAuth } from "better-auth";
 import { username } from "better-auth/plugins/username";
+import { nextCookies } from "better-auth/next-js";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
@@ -15,7 +16,9 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
-  plugins: [username()],
+  // nextCookies() must stay last — it reads Set-Cookie headers left by
+  // earlier plugins and writes them via next/headers' cookies().
+  plugins: [username(), nextCookies()],
   user: {
     modelName: "auth_user",
   },
