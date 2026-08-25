@@ -28,7 +28,10 @@ The shared header, primary navigation, and footer rendered around every page in 
 
 ```ts
 type SiteShellProps = {
-  language: Language;   // hardcoded literally by each root layout — "en" in app/(en)/layout.tsx, "ar" in app/ar/layout.tsx
+  language: Language;   // hardcoded literally by each (public) route group's own layout —
+                         // "en" in app/(en)/(public)/layout.tsx, "ar" in app/ar/(public)/layout.tsx.
+                         // NOT app/(en)/layout.tsx / app/ar/layout.tsx directly — those remain
+                         // /admin/*'s root layout too and stay unchanged (plan.md, Project Structure)
   children: React.ReactNode;
 };
 

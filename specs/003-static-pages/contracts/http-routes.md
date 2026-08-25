@@ -6,16 +6,16 @@ Full-stack Next.js App Router pages, not an API-first service. Every real page b
 
 ## `GET /`
 
-**Handler**: `app/(en)/page.tsx` (unchanged file, content replaced — was 1A's placeholder)
+**Handler**: `app/(en)/(public)/page.tsx` (moved from `app/(en)/page.tsx`, content replaced — was 1A's placeholder; move is required by the `(public)` route-group correction, see Cross-cutting below)
 **Language**: English (`lang="en"`, `dir="ltr"`)
 **Auth**: none required
 **Response**: real, faithfully-ported English home page content, wrapped in `<SiteShell language="en">` (header, nav, footer, language switcher).
 **Metadata**: unchanged mechanism (1A's `buildPageMetadata`), real title/description — canonical `https://<deployment>/`, hreflang `en → /`, `ar → /ar`, `x-default → /`.
-**Rendering**: static (no Dynamic API in the page, the layout, or `SiteShell`; `LanguageSwitcher`'s `usePathname()` resolves during prerendering — research.md, Decision 2).
+**Rendering**: static (no Dynamic API in the page, either layout level, or `SiteShell`; `LanguageSwitcher`'s `usePathname()` resolves during prerendering — research.md, Decision 2).
 
 ## `GET /ar`
 
-**Handler**: `app/ar/page.tsx` (unchanged file, content replaced)
+**Handler**: `app/ar/(public)/page.tsx` (moved from `app/ar/page.tsx`, content replaced)
 **Language**: Arabic (`lang="ar"`, `dir="rtl"`)
 **Response**: real Arabic home page content, wrapped in `<SiteShell language="ar">`.
 **Metadata**: canonical `https://<deployment>/ar`, hreflang alternates identical to `/`'s pair.
@@ -24,14 +24,14 @@ Full-stack Next.js App Router pages, not an API-first service. Every real page b
 
 ## `GET /about`
 
-**Handler**: `app/(en)/about/page.tsx` (unchanged file, content replaced)
+**Handler**: `app/(en)/(public)/about/page.tsx` (moved from `app/(en)/about/page.tsx`, content replaced)
 **Language**: English
 **Response**: real, faithfully-ported English about-page content.
 **Metadata**: canonical `https://<deployment>/about`, hreflang `en → /about`, `ar → /ar/about`, `x-default → /about`.
 
 ## `GET /ar/about`
 
-**Handler**: `app/ar/about/page.tsx` (unchanged file, content replaced)
+**Handler**: `app/ar/(public)/about/page.tsx` (moved from `app/ar/about/page.tsx`, content replaced)
 **Language**: Arabic
 **Response**: counterpart of `/about`.
 
@@ -39,14 +39,14 @@ Full-stack Next.js App Router pages, not an API-first service. Every real page b
 
 ## `GET /solutions` (new)
 
-**Handler**: `app/(en)/solutions/page.tsx` (new file, mirrors `about/page.tsx`'s structure)
+**Handler**: `app/(en)/(public)/solutions/page.tsx` (new file, mirrors `about/page.tsx`'s structure)
 **Language**: English
 **Response**: real content ported from current production's services page — this is the renamed page (EX-03).
 **Metadata**: canonical `https://<deployment>/solutions`, hreflang `en → /solutions`, `ar → /ar/solutions`, `x-default → /solutions`.
 
 ## `GET /ar/solutions` (new)
 
-**Handler**: `app/ar/solutions/page.tsx` (new file)
+**Handler**: `app/ar/(public)/solutions/page.tsx` (new file)
 **Language**: Arabic
 **Response**: counterpart of `/solutions`. Not a rename-in-place of any prior Arabic URL — production had no distinct Arabic services URL to begin with (spec Clarifications), so this URL is net-new/additive, not a migration of an existing one.
 
@@ -70,11 +70,15 @@ Full-stack Next.js App Router pages, not an API-first service. Every real page b
 
 ## Cross-cutting: `app/(en)/layout.tsx` and `app/ar/layout.tsx`
 
-**Modified** (not new files) — both now import and render `<SiteShell language="en">{children}</SiteShell>` / `<SiteShell language="ar">{children}</SiteShell>` respectively, in place of rendering `{children}` directly. `<html lang dir>` hardcoding (1A) is unchanged. Each layout's own `metadata` export (currently stale Phase-0-era "Foundation" copy) is updated to a generic sitewide fallback appropriate to real content — still overridden per-page by each page's own `generateMetadata()`, exactly as in 1A.
+**UNCHANGED** from 1A — corrected from the original design, which would have imported `SiteShell` here directly. These two files are also the root layout for `app/(en)/admin/**`, which has no chrome of its own (`app/(en)/admin/(protected)/layout.tsx` only calls `requireAuth()` and returns `children`); importing `SiteShell` here would have leaked the public header/nav/footer/language-switcher into `/admin/*`. `<html lang dir>` hardcoding (1A) is unchanged either way.
+
+## Cross-cutting: `app/(en)/(public)/layout.tsx` and `app/ar/(public)/layout.tsx` (new)
+
+**New nested, URL-transparent route groups** — one per language tree, sibling to `app/(en)/admin/*` on the English side. Each imports and renders `<SiteShell language="en">{children}</SiteShell>` / `<SiteShell language="ar">{children}</SiteShell>` respectively, scoping the shared chrome to exactly the three public pages. Each also carries its own `metadata` fallback export (replacing the stale Phase-0-era "Foundation" copy that used to live in the now-unchanged parent layouts) — still overridden per-page by each page's own `generateMetadata()`, exactly as in 1A. Route groups add no URL segment, so `/`, `/about`, and `/solutions` are unaffected by this nesting.
 
 ## Cross-cutting: `components/site-shell.tsx` (new) and `components/language-switcher.tsx` (new)
 
-**`SiteShell`**: Server Component, no Dynamic API calls, receives `language` as a hardcoded literal prop from each layout. Renders header, three fixed nav links (home/about/solutions, computed via 1A's `getLanguagePath`), footer, and `<LanguageSwitcher />`. Both language trees import the same component — they cannot structurally drift (FR-006).
+**`SiteShell`**: Server Component, no Dynamic API calls, receives `language` as a hardcoded literal prop from each `(public)` layout. Renders header, three fixed nav links (home/about/solutions, computed via 1A's `getLanguagePath`), footer, and `<LanguageSwitcher />`. Both language trees' `(public)` layouts import the same component — they cannot structurally drift (FR-006).
 **`LanguageSwitcher`**: `"use client"`, the sole Dynamic-rendering-relevant piece of the chrome. Uses `usePathname()` + the new `getAgnosticPath` + 1A's `getCounterpartPath` to link to the current page's exact counterpart. Does not force `SiteShell`, the layouts, or any page into dynamic rendering (research.md, Decision 2).
 
 ## Cross-cutting: `lib/language.ts`
