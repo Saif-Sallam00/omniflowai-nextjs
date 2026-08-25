@@ -53,9 +53,9 @@ description: "Task list for Static Public Pages — Slice 1B"
 
 **Independent Test**: Request `/` and `/ar`, confirm real home content (not 1A's placeholder) in the initial HTML response, in the correct language.
 
-- [ ] T010 [P] [US1] Replace placeholder content in `app/(en)/(public)/page.tsx` with the real, ported English home page content; update its `generateMetadata()` title/description to real copy (`path: "/"`, `language: "en"`).
-- [ ] T011 [P] [US1] Replace placeholder content in `app/ar/(public)/page.tsx` with the real, ported Arabic home page content; update its `generateMetadata()` title/description (`path: "/"`, `language: "ar"`). Parallel with T010 (different files).
-- [ ] T012 [US1] Verify against spec User Story 1's acceptance scenarios: `curl` `/` and `/ar` show real content (no 1A placeholder text) in the correct language; view-source (not rendered DOM) confirms full content present pre-hydration on both. Depends on T010, T011.
+- [X] T010 [P] [US1] Replace placeholder content in `app/(en)/(public)/page.tsx` with the real, ported English home page content; update its `generateMetadata()` title/description to real copy (`path: "/"`, `language: "en"`).
+- [X] T011 [P] [US1] Replace placeholder content in `app/ar/(public)/page.tsx` with the real, ported Arabic home page content; update its `generateMetadata()` title/description (`path: "/"`, `language: "ar"`). Parallel with T010 (different files).
+- [X] T012 [US1] Verify against spec User Story 1's acceptance scenarios: `curl` `/` and `/ar` show real content (no 1A placeholder text) in the correct language; view-source (not rendered DOM) confirms full content present pre-hydration on both. Depends on T010, T011.
 
 **Checkpoint**: Home page is fully real, in both languages, wrapped in the shared chrome.
 
@@ -67,10 +67,10 @@ description: "Task list for Static Public Pages — Slice 1B"
 
 **Independent Test**: Load `/`, `/ar`, `/about`, `/ar/about` (available at this point — `/solutions` lands in US3), confirm identical chrome structure per language pair and correct switcher targeting.
 
-- [ ] T013 [US2] Verify chrome structural parity: compare header/nav/footer DOM structure between `/` and `/ar`, and between `/about` and `/ar/about` — identical structure, only text and `dir` differ (US2 AC1). Depends on T012 (US1 checkpoint).
-- [ ] T014 [US2] Verify the switcher targets the exact counterpart, not the home page: from `/ar/about`, confirm the switcher's `href` is `/about` (US2 AC2). Note: the equivalent check for `/solutions` ↔ `/ar/solutions` (US2 AC3) is deferred to T021 in Phase 5, since those pages don't exist until then — this is the dependency the spec itself calls out (User Story 2's "Why this priority"). Depends on T013.
-- [ ] T015 [US2] Verify nav labels are entirely in-language on both an English page and an Arabic page — no mixed-language leakage (US2 AC4). Depends on T013.
-- [ ] T016 [US2] Verify the switcher's `href` is already correct in the raw server-rendered HTML with no JavaScript executed, for the `/` ↔ `/ar` and `/about` ↔ `/ar/about` pairs (spec Edge Cases — JS-disabled case). Depends on T013.
+- [X] T013 [US2] Verify chrome structural parity: compare header/nav/footer DOM structure between `/` and `/ar`, and between `/about` and `/ar/about` — identical structure, only text and `dir` differ (US2 AC1). Depends on T012 (US1 checkpoint).
+- [X] T014 [US2] Verify the switcher targets the exact counterpart, not the home page: from `/ar/about`, confirm the switcher's `href` is `/about` (US2 AC2). Note: the equivalent check for `/solutions` ↔ `/ar/solutions` (US2 AC3) is deferred to T021 in Phase 5, since those pages don't exist until then — this is the dependency the spec itself calls out (User Story 2's "Why this priority"). Depends on T013.
+- [X] T015 [US2] Verify nav labels are entirely in-language on both an English page and an Arabic page — no mixed-language leakage (US2 AC4). Depends on T013.
+- [X] T016 [US2] Verify the switcher's `href` is already correct in the raw server-rendered HTML with no JavaScript executed, for the `/` ↔ `/ar` and `/about` ↔ `/ar/about` pairs (spec Edge Cases — JS-disabled case). Depends on T013.
 
 **Checkpoint**: Chrome and switcher mechanism confirmed correct for all pages that exist so far; full three-page coverage completes in Phase 5.
 
@@ -82,11 +82,11 @@ description: "Task list for Static Public Pages — Slice 1B"
 
 **Independent Test**: Request `/about`, `/ar/about`, `/solutions`, `/ar/solutions`, confirm each carries its real, faithfully-ported content in the correct language.
 
-- [ ] T017 [P] [US3] Replace placeholder content in `app/(en)/(public)/about/page.tsx` with the real, ported English about page content; update `generateMetadata()` (`path: "/about"`, `language: "en"`). Depends on Phase 2 checkpoint (T009) — independent of Phase 3/4.
-- [ ] T018 [P] [US3] Replace placeholder content in `app/ar/(public)/about/page.tsx` with the real, ported Arabic about page content; update `generateMetadata()` (`path: "/about"`, `language: "ar"`). Parallel with T017.
-- [ ] T019 [P] [US3] Create new file `app/(en)/(public)/solutions/page.tsx` — real English content ported from current production's services page (EX-03); `generateMetadata()` with `path: "/solutions"`, `language: "en"`. Mirrors the structure of the about page. Parallel with T017/T018.
-- [ ] T020 [P] [US3] Create new file `app/ar/(public)/solutions/page.tsx` — real Arabic content, counterpart of T019; `generateMetadata()` with `path: "/solutions"`, `language: "ar"`. Parallel with T017–T019.
-- [ ] T021 [US3] Verify against spec User Story 3's acceptance scenarios: `curl` all four URLs show real content in the correct language. Also closes out T014's deferred check: from `/solutions`, confirm the switcher's `href` is `/ar/solutions` (not `/ar`), and the reverse from `/ar/solutions` — completing US2 AC3. Depends on T017–T020.
+- [X] T017 [P] [US3] Replace placeholder content in `app/(en)/(public)/about/page.tsx` with the real, ported English about page content; update `generateMetadata()` (`path: "/about"`, `language: "en"`). Depends on Phase 2 checkpoint (T009) — independent of Phase 3/4.
+- [X] T018 [P] [US3] Replace placeholder content in `app/ar/(public)/about/page.tsx` with the real, ported Arabic about page content; update `generateMetadata()` (`path: "/about"`, `language: "ar"`). Parallel with T017.
+- [X] T019 [P] [US3] Create new file `app/(en)/(public)/solutions/page.tsx` — real English content ported from current production's services page (EX-03); `generateMetadata()` with `path: "/solutions"`, `language: "en"`. Mirrors the structure of the about page. Parallel with T017/T018.
+- [X] T020 [P] [US3] Create new file `app/ar/(public)/solutions/page.tsx` — real Arabic content, counterpart of T019; `generateMetadata()` with `path: "/solutions"`, `language: "ar"`. Parallel with T017–T019.
+- [X] T021 [US3] Verify against spec User Story 3's acceptance scenarios: `curl` all four URLs show real content in the correct language. Also closes out T014's deferred check: from `/solutions`, confirm the switcher's `href` is `/ar/solutions` (not `/ar`), and the reverse from `/ar/solutions` — completing US2 AC3. Depends on T017–T020.
 
 **Checkpoint**: All three page types, both languages, fully real content, wrapped in shared chrome, switcher fully verified across all six pages.
 
@@ -98,8 +98,8 @@ description: "Task list for Static Public Pages — Slice 1B"
 
 **Independent Test**: Request the old production services URL, confirm a permanent redirect to `/solutions`. No dependency on US1–US3 — may be done at any point after Setup.
 
-- [ ] T022 [US4] Add a `redirects()` export to `next.config.ts`, alongside the existing `headers()` export: `{ source: "/services", destination: "/solutions", permanent: true }` (→ 308, per research.md Decision 1 and spec FR-005/US4/SC-004 as amended). Do not modify `proxy.ts`.
-- [ ] T023 [US4] Verify: `curl -I http://localhost:3000/services` returns status `308` with a `Location: /solutions` header (spec User Story 4 AC1, as amended). Then `curl -i http://localhost:3000/` (and one other route, e.g. `/about`) and confirm `X-Robots-Tag: noindex, nofollow` is still present — proving the `redirects()` addition did not disturb the existing `headers()` config. Depends on T022.
+- [X] T022 [US4] Add a `redirects()` export to `next.config.ts`, alongside the existing `headers()` export: `{ source: "/services", destination: "/solutions", permanent: true }` (→ 308, per research.md Decision 1 and spec FR-005/US4/SC-004 as amended). Do not modify `proxy.ts`.
+- [X] T023 [US4] Verify: `curl -I http://localhost:3000/services` returns status `308` with a `Location: /solutions` header (spec User Story 4 AC1, as amended). Then `curl -i http://localhost:3000/` (and one other route, e.g. `/about`) and confirm `X-Robots-Tag: noindex, nofollow` is still present — proving the `redirects()` addition did not disturb the existing `headers()` config. Depends on T022.
 
 **Checkpoint**: Legacy URL preserved via redirect; both `next.config.ts` responsibilities (noindex headers, legacy redirect) confirmed independently working.
 
@@ -109,10 +109,10 @@ description: "Task list for Static Public Pages — Slice 1B"
 
 **Purpose**: Whole-slice checks that span all four stories.
 
-- [ ] T024 [P] Static-rendering verification (SC-006): run `npm run build` and inspect the route output table — confirm `/`, `/ar`, `/about`, `/ar/about`, `/solutions`, `/ar/solutions` are all marked static, none marked dynamic. Depends on T012, T021 (all page content in place).
-- [ ] T025 [P] Guardrail audit: confirm `proxy.ts` has no diff from its pre-slice state (`git diff proxy.ts` empty); confirm no file added or modified by this slice contains `headers()` or `cookies()` calls (`grep -rn "headers()\|cookies()" components/ app/\(en\)/\(public\)/ app/ar/\(public\)/`). Depends on T009, T022.
-- [ ] T026 Full `quickstart.md` walkthrough: work through every row in its verification table, confirming spec.md's User Stories 1–4 and Success Criteria SC-001–SC-006 all hold end-to-end, including the admin-does-not-inherit-public-chrome check. Depends on T012, T016, T021, T023, T024.
-- [ ] T027 Phase 0 + slice 1A regression check: re-run 1A's quickstart — admin login/logout still works via `/admin/auth`, `/admin` dashboard unaffected and shows no public chrome (confirms the `(public)` route-group correction), and 1A's routing/`lang`/`dir`/metadata/URL-pairing mechanisms are still correct on all six pages. Depends on T026.
+- [X] T024 [P] Static-rendering verification (SC-006): run `npm run build` and inspect the route output table — confirm `/`, `/ar`, `/about`, `/ar/about`, `/solutions`, `/ar/solutions` are all marked static, none marked dynamic. Depends on T012, T021 (all page content in place).
+- [X] T025 [P] Guardrail audit: confirm `proxy.ts` has no diff from its pre-slice state (`git diff proxy.ts` empty); confirm no file added or modified by this slice contains `headers()` or `cookies()` calls (`grep -rn "headers()\|cookies()" components/ app/\(en\)/\(public\)/ app/ar/\(public\)/`). Depends on T009, T022.
+- [X] T026 Full `quickstart.md` walkthrough: work through every row in its verification table, confirming spec.md's User Stories 1–4 and Success Criteria SC-001–SC-006 all hold end-to-end, including the admin-does-not-inherit-public-chrome check. Depends on T012, T016, T021, T023, T024.
+- [X] T027 Phase 0 + slice 1A regression check: re-run 1A's quickstart — admin login/logout still works via `/admin/auth`, `/admin` dashboard unaffected and shows no public chrome (confirms the `(public)` route-group correction), and 1A's routing/`lang`/`dir`/metadata/URL-pairing mechanisms are still correct on all six pages. Depends on T026.
 
 ---
 
