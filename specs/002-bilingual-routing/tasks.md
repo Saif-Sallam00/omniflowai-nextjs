@@ -64,8 +64,8 @@ description: "Task list for Slice 1A — Bilingual Routing Foundation"
 
 ### Implementation for User Story 1
 
-- [ ] T012 [P] [US1] Create `app/ar/page.tsx` — thin Arabic home placeholder, the counterpart of `app/(en)/page.tsx`, rendered under the `ar` root layout from T006 (contracts/http-routes.md, `GET /ar`; depends on T006)
-- [ ] T013 [US1] Verify US1 acceptance scenarios AC1–AC4 against `quickstart.md`'s table: `/` returns `<html lang="en" dir="ltr">`; `/ar` returns `<html lang="ar" dir="rtl">`; a request to `/` carrying an Arabic-language stored cookie still returns the English page; a request to `/ar` carrying an English-language stored cookie still returns the Arabic page (spec.md US1 AC1–AC4; depends on T009, T012)
+- [X] T012 [P] [US1] Create `app/ar/page.tsx` — thin Arabic home placeholder, the counterpart of `app/(en)/page.tsx`, rendered under the `ar` root layout from T006 (contracts/http-routes.md, `GET /ar`; depends on T006)
+- [X] T013 [US1] Verify US1 acceptance scenarios AC1–AC4 against `quickstart.md`'s table: `/` returns `<html lang="en" dir="ltr">`; `/ar` returns `<html lang="ar" dir="rtl">`; a request to `/` carrying an Arabic-language stored cookie still returns the English page; a request to `/ar` carrying an English-language stored cookie still returns the Arabic page (spec.md US1 AC1–AC4; depends on T009, T012)
 
 **Checkpoint**: User Story 1 (MVP) is independently functional and testable — language is fully determined by the URL alone. Build health was already established at the end of Foundational; this checkpoint confirms the bilingual behavior on top of it.
 
@@ -79,11 +79,11 @@ description: "Task list for Slice 1A — Bilingual Routing Foundation"
 
 ### Implementation for User Story 2
 
-- [ ] T014 [US2] Add a `generateMetadata` export to `app/(en)/page.tsx` calling `buildPageMetadata()` from `lib/metadata.ts` with `path: "/"`, `language: "en"` (contracts/http-routes.md, `GET /` metadata; depends on T004, T009)
-- [ ] T015 [US2] Add a `generateMetadata` export to `app/ar/page.tsx` calling `buildPageMetadata()` with `path: "/"`, `language: "ar"` (contracts/http-routes.md, `GET /ar` metadata; depends on T004, T012)
-- [ ] T016 [P] [US2] Create `app/(en)/about/page.tsx` — thin English nested placeholder (FR-009's second route) with a `generateMetadata` export calling `buildPageMetadata()` with `path: "/about"`, `language: "en"` (contracts/http-routes.md, `GET /about`; depends on T004, T005)
-- [ ] T017 [P] [US2] Create `app/ar/about/page.tsx` — thin Arabic nested placeholder, counterpart of T016, with a `generateMetadata` export calling `buildPageMetadata()` with `path: "/about"`, `language: "ar"` (contracts/http-routes.md, `GET /ar/about`; depends on T004, T006)
-- [ ] T018 [US2] Verify US2 acceptance scenarios AC1–AC3 against `quickstart.md`'s table: `/` and `/ar` each carry complete, cross-referenced metadata (canonical self-referencing, hreflang `en`/`ar`/`x-default` correct); `/about` and `/ar/about` carry their own canonical/hreflang pair, distinct from the home pair (spec.md US2 AC1–AC3; depends on T014, T015, T016, T017)
+- [X] T014 [US2] Add a `generateMetadata` export to `app/(en)/page.tsx` calling `buildPageMetadata()` from `lib/metadata.ts` with `path: "/"`, `language: "en"` (contracts/http-routes.md, `GET /` metadata; depends on T004, T009)
+- [X] T015 [US2] Add a `generateMetadata` export to `app/ar/page.tsx` calling `buildPageMetadata()` with `path: "/"`, `language: "ar"` (contracts/http-routes.md, `GET /ar` metadata; depends on T004, T012)
+- [X] T016 [P] [US2] Create `app/(en)/about/page.tsx` — thin English nested placeholder (FR-009's second route) with a `generateMetadata` export calling `buildPageMetadata()` with `path: "/about"`, `language: "en"` (contracts/http-routes.md, `GET /about`; depends on T004, T005)
+- [X] T017 [P] [US2] Create `app/ar/about/page.tsx` — thin Arabic nested placeholder, counterpart of T016, with a `generateMetadata` export calling `buildPageMetadata()` with `path: "/about"`, `language: "ar"` (contracts/http-routes.md, `GET /ar/about`; depends on T004, T006)
+- [X] T018 [US2] Verify US2 acceptance scenarios AC1–AC3 against `quickstart.md`'s table: `/` and `/ar` each carry complete, cross-referenced metadata (canonical self-referencing, hreflang `en`/`ar`/`x-default` correct); `/about` and `/ar/about` carry their own canonical/hreflang pair, distinct from the home pair (spec.md US2 AC1–AC3; depends on T014, T015, T016, T017)
 
 **Checkpoint**: User Stories 1 and 2 both independently functional.
 
@@ -97,7 +97,7 @@ description: "Task list for Slice 1A — Bilingual Routing Foundation"
 
 ### Implementation for User Story 3
 
-- [ ] T019 [US3] Verify US3 acceptance scenarios AC1–AC2 against `quickstart.md`'s table: `GET /this-does-not-exist` returns `404`; `GET /ar/this-does-not-exist` returns `404` — no new file or code is created for this task, since mirrored literal route trees make unmatched-path 404 Next.js's default behavior (research.md, Decision 1; spec.md US3 AC1–AC2; depends on T009, T012, T016, T017 so the mirrored trees actually exist to be "unmatched" against)
+- [X] T019 [US3] Verify US3 acceptance scenarios AC1–AC2 against `quickstart.md`'s table: `GET /this-does-not-exist` returns `404`; `GET /ar/this-does-not-exist` returns `404` — no new file or code is created for this task, since mirrored literal route trees make unmatched-path 404 Next.js's default behavior (research.md, Decision 1; spec.md US3 AC1–AC2; depends on T009, T012, T016, T017 so the mirrored trees actually exist to be "unmatched" against)
 
 **Checkpoint**: All three user stories independently functional. Core slice behavior complete.
 
@@ -107,10 +107,10 @@ description: "Task list for Slice 1A — Bilingual Routing Foundation"
 
 **Purpose**: Cross-story checks that don't belong to a single user story, plus the final regression and quality gates.
 
-- [ ] T020 [P] Verify SC-004 (reusability) against `quickstart.md`'s table: inspect `app/(en)/about/page.tsx` and `app/ar/about/page.tsx` and confirm each calls only `lib/metadata.ts`'s `buildPageMetadata()` and relies on its root layout for `lang`/`dir` — zero inline canonical/OG/hreflang/`lang`/`dir` logic duplicated per page (depends on T016, T017)
-- [ ] T021 [P] Verify the global `noindex` protection is unaffected: `X-Robots-Tag: noindex, nofollow` is still present on `/` and `/ar` — `next.config.ts` is not touched by this slice (spec.md hard constraint; quickstart.md; depends on T009, T012)
-- [ ] T022 Final Phase 0 regression re-check: re-run the Phase 0 quickstart's admin login/logout checks and the `/api/health` liveness check end-to-end, confirming no task after T011 regressed `/admin/*` or `/api/health` (quickstart.md, "Existing Phase 0 behavior unaffected"; depends on T011 and every task above)
-- [ ] T023 Run the quality gate — `npm run check`, `npm run lint`, `npm run build` — all three MUST exit zero (plan.md, Technical Context "Testing"; depends on every task above)
+- [X] T020 [P] Verify SC-004 (reusability) against `quickstart.md`'s table: inspect `app/(en)/about/page.tsx` and `app/ar/about/page.tsx` and confirm each calls only `lib/metadata.ts`'s `buildPageMetadata()` and relies on its root layout for `lang`/`dir` — zero inline canonical/OG/hreflang/`lang`/`dir` logic duplicated per page (depends on T016, T017)
+- [X] T021 [P] Verify the global `noindex` protection is unaffected: `X-Robots-Tag: noindex, nofollow` is still present on `/` and `/ar` — `next.config.ts` is not touched by this slice (spec.md hard constraint; quickstart.md; depends on T009, T012)
+- [X] T022 Final Phase 0 regression re-check: re-run the Phase 0 quickstart's admin login/logout checks and the `/api/health` liveness check end-to-end, confirming no task after T011 regressed `/admin/*` or `/api/health` (quickstart.md, "Existing Phase 0 behavior unaffected"; depends on T011 and every task above)
+- [X] T023 Run the quality gate — `npm run check`, `npm run lint`, `npm run build` — all three MUST exit zero (plan.md, Technical Context "Testing"; depends on every task above)
 
 **Done when**: every checkbox above is checked, `quickstart.md`'s full verification table passes, and T023's quality gate is green. See `spec.md` for the authoritative acceptance scenarios and success criteria.
 

@@ -1,3 +1,14 @@
+import { buildPageMetadata } from "@/lib/metadata";
+
+export function generateMetadata() {
+  return buildPageMetadata({
+    path: "/",
+    language: "en",
+    title: "OmniflowAI — Foundation",
+    description: "Phase 0 foundation deployment.",
+  });
+}
+
 export default function HomePage() {
   return (
     <main>
