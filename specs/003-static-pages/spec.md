@@ -78,7 +78,7 @@ A visitor or search engine following an existing link to the current production 
 
 **Acceptance Scenarios**:
 
-1. **Given** the old production services URL, **When** it is requested, **Then** the response is an HTTP 301 permanent redirect to `/solutions`.
+1. **Given** the old production services URL, **When** it is requested, **Then** the response is an HTTP 308 permanent redirect to `/solutions`.
 
 ---
 
@@ -87,7 +87,7 @@ A visitor or search engine following an existing link to the current production 
 - The language switcher must resolve to the exact counterpart page (via slice 1A's existing counterpart-URL logic) for all three page types — it must never fall back to that language's home page when a same-page counterpart exists.
 - The shared site chrome (header, nav, footer) must render as static, server-produced HTML in both language trees; only the switcher's own small interactive element may be a client-side island, and it must not force the surrounding page or chrome into dynamic or client rendering.
 - If a visitor's browser has JavaScript disabled, the language switcher must still be a real, working link to the counterpart page — its href must not depend on client-side script to be correct, since the surrounding shell is static.
-- The old-services-URL redirect must be a permanent (301) redirect, not a temporary one, and must not vary based on request language, query string presence, or trailing slash.
+- The old-services-URL redirect must be a permanent (308) redirect, not a temporary one, and must not vary based on request language, query string presence, or trailing slash.
 - Nav and footer labels must never mix languages within a single rendered page — the entire chrome must present in the same language as the page's own content.
 
 ## Requirements *(mandatory)*
@@ -98,7 +98,7 @@ A visitor or search engine following an existing link to the current production 
 - **FR-002**: The home page MUST be served at English root path `/` (confirmed as the current production home URL against the reverse-engineering route inventory) and at `/ar` in Arabic.
 - **FR-003**: The about page MUST be served at English path `/about` (confirmed as the current production about-page URL against the reverse-engineering route inventory) and at `/ar/about` in Arabic.
 - **FR-004**: The current production "services" page MUST be served under the new English path `/solutions` and `/ar/solutions` in Arabic — this is exception EX-03 to standing rule 002 (URL preservation), documented in Assumptions below, and is a deliberate URL change, not an oversight.
-- **FR-005**: System MUST serve a permanent (HTTP 301) redirect from the current production services page's exact URL, `/services` (confirmed against the reverse-engineering route inventory), to `/solutions`, so existing inbound links and search equity survive cutover.
+- **FR-005**: System MUST serve a permanent (HTTP 308, not 301 — Next.js's `redirects({ permanent: true })` emits 308 by design; for a GET-only page, 308 is permanent and passes full link equity identically to 301, and avoids a custom dynamic Route Handler) redirect from the current production services page's exact URL, `/services` (confirmed against the reverse-engineering route inventory), to `/solutions`, so existing inbound links and search equity survive cutover.
 - **FR-006**: System MUST provide one shared site-chrome component (header, primary navigation, footer) that both the English and Arabic root layouts import, so the two language trees cannot structurally drift from each other.
 - **FR-007**: The shared site chrome MUST render its navigation labels and footer content in the language of the page tree it is rendered within.
 - **FR-008**: System MUST provide a visible language-switcher control, present in the shared site chrome on all three page types, that links the current page to its exact counterpart page in the other language.
@@ -122,14 +122,14 @@ A visitor or search engine following an existing link to the current production 
 - **SC-001**: A visitor loading any of the three pages, in either language, sees that page's complete, real content in the initial HTTP response — with zero pages still showing slice 1A's placeholder content.
 - **SC-002**: A visitor on any of the three pages can reach that exact page's counterpart in the other language in a single interaction, landing on the equivalent page (not the other language's home page) 100% of the time.
 - **SC-003**: All six page/language combinations (3 pages × 2 languages) expose accurate, page-specific canonical, hreflang, and social-preview metadata, verifiable by inspecting the raw HTML alone.
-- **SC-004**: 100% of requests to the old production services URL receive a permanent redirect to `/solutions`, with zero broken links reported for that URL after cutover.
+- **SC-004**: 100% of requests to the old production services URL receive a permanent (308) redirect to `/solutions`, with zero broken links reported for that URL after cutover.
 - **SC-005**: The header, navigation, and footer render with identical structure across both language trees on every page in this slice, differing only in language-specific text and direction — zero structural drift between the two trees.
 - **SC-006**: All three pages continue to render as static output (verifiable via the production build's route output), with zero pages in this slice becoming server-rendered per-request.
 
 ## Assumptions
 
 - **URL mapping (confirmed)**: home = `/`, about = `/about`, and services (renamed) = `/solutions`, with the old services page's current production path being `/services`. All three are confirmed against the reverse-engineering route inventory (see Clarifications above); no open marker remains.
-- **Exception EX-03 (standing rule 002)**: The services page's URL intentionally changes from its current production path (`/services`) to `/solutions`. This is a deliberate, documented exception to URL preservation, mitigated by the mandatory 301 redirect in FR-005. It is recorded here as exception EX-03, alongside EX-01 and EX-02 already on file in the constitution.
+- **Exception EX-03 (standing rule 002)**: The services page's URL intentionally changes from its current production path (`/services`) to `/solutions`. This is a deliberate, documented exception to URL preservation, mitigated by the mandatory 308 permanent redirect in FR-005. It is recorded here as exception EX-03, alongside EX-01 and EX-02 already on file in the constitution.
 - **Source of Arabic content (confirmed)**: The current production site is already bilingual. The Arabic copy for home, about, and solutions is ported directly from the existing Arabic production content, exactly as the English copy is ported — it is not a net-new content-authoring dependency for this slice.
 - This slice is a faithful port of the current production site's structure and content for these three pages — clean, responsive styling is expected, but no visual redesign or new brand system is introduced.
 - No database schema change, migration, or query is introduced by this slice; all three pages and the shared chrome are static content with no data dependency.
