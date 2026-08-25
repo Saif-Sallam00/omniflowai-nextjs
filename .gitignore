@@ -25,3 +25,5 @@ yarn-error.log*
 # editor/OS
 .DS_Store
 *.pem
+AGENTS.md
+CLAUDE.md

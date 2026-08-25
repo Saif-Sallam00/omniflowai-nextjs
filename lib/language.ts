@@ -25,3 +25,9 @@ export function getCounterpartPath(path: string, language: Language): string {
   const otherLanguage: Language = language === "en" ? "ar" : "en";
   return getLanguagePath(path, otherLanguage);
 }
+
+export function getAgnosticPath(pathname: string): string {
+  if (pathname === "/ar") return "/";
+  if (pathname.startsWith("/ar/")) return pathname.slice(3);
+  return pathname;
+}
