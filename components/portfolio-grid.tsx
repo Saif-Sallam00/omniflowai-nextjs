@@ -15,7 +15,7 @@ function onImageError(e: SyntheticEvent<HTMLImageElement>) {
   img.src = IMAGE_FALLBACK;
 }
 
-function formatCategoryLabel(category: string): string {
+export function formatCategoryLabel(category: string): string {
   return category.replace(/-/g, " ");
 }
 

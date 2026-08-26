@@ -74,6 +74,37 @@ export const getPortfolioSlugs = cache(async (): Promise<string[]> => {
   return rows.map((row) => row.slug);
 });
 
+export type RelatedProjectCard = {
+  slug: string;
+  category: string;
+  title: string;
+  categoryLabel: string | null;
+};
+
+export const getRelatedProjectCard = cache(
+  async (projectId: number, language: Language): Promise<RelatedProjectCard | null> => {
+    const rows = await db
+      .select({
+        slug: projects.slug,
+        category: projects.category,
+        title: projectTranslations.title,
+        categoryLabel: projectTranslations.categoryLabel,
+      })
+      .from(projects)
+      .innerJoin(
+        projectTranslations,
+        and(
+          eq(projectTranslations.projectId, projects.id),
+          eq(projectTranslations.language, language),
+        ),
+      )
+      .where(eq(projects.id, projectId))
+      .limit(1);
+
+    return rows[0] ?? null;
+  },
+);
+
 export const getPortfolioDetailBySlug = cache(
   async (slug: string, language: Language): Promise<PortfolioDetail | null> => {
     const rows = await db
