@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand tokens ("Ember on gunmetal") */
+  --gunmetal: 222 47% 11%;
+  --midnight: 222 47% 7%;
+  --brand-400: 27 96% 61%;
+  --brand-500: 25 95% 53%;
+  --brand-600: 21 90% 48%;
+  --brand-700: 17 88% 40%;
+  --brand-light: 38 92% 50%;
+  --surface-light: 210 14% 97%;
+
+  /* Core theme (light) */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --card-border: 214 32% 91%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --popover-border: 214 32% 91%;
+  --primary: 20 100% 56%;
+  --primary-foreground: 0 0% 100%;
+  --primary-border: 20 100% 47%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222 47% 11%;
+  --secondary-border: 214 32% 91%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted-border: 214 32% 91%;
+  --accent: 222 47% 11%;
+  --accent-foreground: 210 40% 98%;
+  --accent-border: 222 47% 15%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --destructive-border: 0 84.2% 60.2%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 25 95% 53%;
+  --radius: 0.5rem;
+  --chart-1: 38 92% 50%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 222 47% 11%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.35);
+  --shadow-md: 0 4px 16px -6px rgb(0 0 0 / 0.45);
+
+  /* Motion tokens */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    monospace;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* RTL font swap — Latin runs (brand name, ERP/CRM/AI, solution names) still
+   fall through to Inter/Space Grotesk via the stack. */
+[dir="rtl"] body {
+  font-family: var(--font-cairo), var(--font-inter), sans-serif;
+}
+[dir="rtl"] .font-display {
+  font-family: var(--font-cairo), var(--font-space-grotesk), sans-serif;
+}
+
+/* Client-logo marquee (Home §2) — doubled array in the DOM + this CSS-only loop. */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Extremely subtle card hover-lift, paired with shadow-card/shadow-elevated. */
+.card-lift {
+  transition:
+    transform var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
