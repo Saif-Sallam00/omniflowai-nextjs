@@ -90,6 +90,65 @@
   animation: marquee 30s linear infinite;
 }
 
+/* InteractiveSystemMap: the emphasised edge's travelling pulse
+   (`animation: "flow-travel 3500ms linear infinite"`). */
+@keyframes flow-travel {
+  to {
+    stroke-dashoffset: -246;
+  }
+}
+
+/* BusinessDiagnostic: the seven signal nodes drift, slowly and out of phase.
+   Ungoverned, which is the point — they settle the instant the map is being
+   read (the component drops the animation whenever a cluster is active, on
+   resolve, off-screen, and under reduced motion). Amplitude is ±5px on a
+   ~350–450px field: alive at the edge of perception, never busy. Transform
+   only, so it stays on the compositor. */
+@keyframes node-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(3px, -5px, 0);
+  }
+  50% {
+    transform: translate3d(-2px, 3px, 0);
+  }
+  75% {
+    transform: translate3d(-4px, -2px, 0);
+  }
+}
+
+/* BusinessDiagnostic: a dormant root constraint — present, unnamed, faintly
+   alive under the surface. Stops the moment anything is selected (a constraint
+   being read is no longer dormant) and under reduced motion, where the block
+   above also neutralises it. */
+@keyframes constraint-breathe {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* BusinessDiagnostic: the mode switch — seven signals fold into three
+   systems. Runs once per switch (the block remounts, so this is an animation
+   rather than a transition), staggered by the component. Neutralised by the
+   reduced-motion block above, and the component omits it there entirely. */
+@keyframes diag-resolve {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Extremely subtle card hover-lift, paired with shadow-card/shadow-elevated. */
 .card-lift {
   transition:

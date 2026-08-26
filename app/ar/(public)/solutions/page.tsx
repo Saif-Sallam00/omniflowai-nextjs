@@ -8,6 +8,7 @@ import {
   type SolutionsCopy,
 } from "@/components/solutions-interactive";
 import { ltrNames } from "@/lib/ltr-names";
+import { BusinessDiagnostic } from "@/components/business-diagnostic";
 
 const LANGUAGE = "ar" as const;
 
@@ -21,9 +22,15 @@ export function generateMetadata() {
   });
 }
 
-const DIAGNOSTIC_PLACEHOLDER = {
+const DIAG_COPY = {
   title: "تشخيص الأعمال",
+  systemTitle: "نظام تشغيل النمو",
+  summary: "{s} إشارات · {c} قيود جذرية",
   hint: "اختر أي إشارة لتكشف ما ترتبط به فعلاً.",
+  trace: "{n} من {s} إشارات تعود إلى هذا القيد",
+  buildLabel: "نبني",
+  showSystem: "اعرض النظام",
+  showSignals: "العودة إلى الإشارات",
   rootLabel: "قيد جذري",
   strategyLabel: "الاستراتيجية",
   strategyBody: "تشخيص الأعمال هو ما يحدّد أيّاً من الثلاثة تحتاج، وبأي ترتيب.",
@@ -320,6 +327,38 @@ const HOW_WE_WORK = {
   ],
 };
 
+// Flat dict for BusinessDiagnostic's t(key) lookups (solutions.diag.* plus the
+// three solutions.work.*.title build targets its CONSTRAINTS reference).
+const DIAG_DICT: Record<string, string> = {
+  "solutions.diag.title": DIAG_COPY.title,
+  "solutions.diag.systemTitle": DIAG_COPY.systemTitle,
+  "solutions.diag.summary": DIAG_COPY.summary,
+  "solutions.diag.hint": DIAG_COPY.hint,
+  "solutions.diag.trace": DIAG_COPY.trace,
+  "solutions.diag.buildLabel": DIAG_COPY.buildLabel,
+  "solutions.diag.showSystem": DIAG_COPY.showSystem,
+  "solutions.diag.showSignals": DIAG_COPY.showSignals,
+  "solutions.diag.rootLabel": DIAG_COPY.rootLabel,
+  "solutions.diag.strategyLabel": DIAG_COPY.strategyLabel,
+  "solutions.diag.strategyBody": DIAG_COPY.strategyBody,
+  "solutions.diag.thesis": DIAG_COPY.thesis,
+  ...Object.fromEntries(
+    DIAG_COPY.signals.flatMap((s, i) => [
+      [`solutions.diag.s${i + 1}.label`, s.label],
+      [`solutions.diag.s${i + 1}.text`, s.text],
+    ]),
+  ),
+  ...Object.fromEntries(
+    DIAG_COPY.constraints.flatMap((c, i) => [
+      [`solutions.diag.c${i + 1}.name`, c.name],
+      [`solutions.diag.c${i + 1}.impact`, c.impact],
+    ]),
+  ),
+  "solutions.work.marketing.title": HOW_WE_WORK.capabilities[0].title,
+  "solutions.work.tech.title": HOW_WE_WORK.capabilities[1].title,
+  "solutions.work.ai.title": HOW_WE_WORK.capabilities[2].title,
+};
+
 const FAQ_ITEMS = [
   {
     q: "كيف نعرف أي حل نحتاج؟",
@@ -393,52 +432,7 @@ export default function SolutionsPage() {
             </div>
           </div>
 
-          {/* Minimal placeholder for the BusinessDiagnostic showpiece — ships in 1B-interactive. */}
-          <div className="rounded-xl border border-dashed border-slate-800 bg-slate-900/40 p-5 sm:p-6">
-            <p className="border-b border-slate-800/60 pb-3.5 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
-              {DIAGNOSTIC_PLACEHOLDER.title}
-            </p>
-            <p className="mt-3.5 text-[13px] leading-relaxed text-slate-400">
-              {DIAGNOSTIC_PLACEHOLDER.hint}
-            </p>
-
-            <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {DIAGNOSTIC_PLACEHOLDER.signals.map((signal) => (
-                <li
-                  key={signal.label}
-                  className="rounded-md border border-slate-800 bg-slate-950/80 px-2.5 py-2 text-[11px] leading-snug text-slate-300"
-                >
-                  {signal.label}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-4 space-y-2 border-t border-slate-800/60 pt-3.5">
-              {DIAGNOSTIC_PLACEHOLDER.constraints.map((constraint) => (
-                <div key={constraint.name}>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-slate-400">
-                    {DIAGNOSTIC_PLACEHOLDER.rootLabel}
-                  </p>
-                  <p className="text-[13px] font-medium text-white">{constraint.name}</p>
-                  <p className="mt-0.5 text-[12px] leading-relaxed text-slate-400">
-                    {constraint.impact}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-4 border-t border-slate-800/60 pt-3.5">
-              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
-                {DIAGNOSTIC_PLACEHOLDER.strategyLabel}
-              </p>
-              <p className="mt-1 text-[13px] leading-relaxed text-slate-400">
-                {DIAGNOSTIC_PLACEHOLDER.strategyBody}
-              </p>
-              <p className="mt-2 font-display text-sm font-medium leading-snug tracking-tight text-white">
-                {DIAGNOSTIC_PLACEHOLDER.thesis}
-              </p>
-            </div>
-          </div>
+          <BusinessDiagnostic copy={DIAG_DICT} />
         </div>
       </section>
 

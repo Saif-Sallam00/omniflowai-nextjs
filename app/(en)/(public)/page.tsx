@@ -6,6 +6,8 @@ import { Reveal } from "@/components/reveal";
 import { ValuePropReveal } from "@/components/value-prop-reveal";
 import { HowWeWorkTimeline } from "@/components/how-we-work-timeline";
 import { LogoMarquee } from "@/components/logo-marquee";
+import { InteractiveSystemMap, type InteractiveNode } from "@/components/interactive-system-map";
+import { HexGridSubstrate } from "@/components/systems/hex-grid-substrate";
 
 const LANGUAGE = "en" as const;
 
@@ -19,13 +21,19 @@ export function generateMetadata() {
   });
 }
 
-const HERO_NODES = [
-  "AI Enablement",
-  "Marketing Systems",
-  "Business Technology",
-  "Automation",
-  "CRM",
-  "Strategy",
+const SYSTEM_MAP_CENTER = "Business System";
+const SYSTEM_MAP_ARIA =
+  "A connected business system: AI enablement, marketing systems, business technology, automation, CRM and strategy all connecting into one central system.";
+
+// Icons resolved inside InteractiveSystemMap (id → icon fallback map) — a
+// server component can't pass icon components as client-component props.
+const heroSystemNodes: InteractiveNode[] = [
+  { id: "ai-training", label: "AI Enablement" },
+  { id: "marketing", label: "Marketing Systems" },
+  { id: "software", label: "Business Technology" },
+  { id: "automation", label: "Automation" },
+  { id: "crm", label: "CRM" },
+  { id: "strategy", label: "Strategy" },
 ];
 
 const CLIENT_LOGOS = [
@@ -122,6 +130,7 @@ export default function HomePage() {
       {/* 1. Hero */}
       <section className="relative mt-16 flex min-h-[80vh] items-center overflow-hidden py-20 md:mt-20 md:py-28">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-orange-950/10 via-transparent to-transparent" />
+        <HexGridSubstrate className="absolute inset-0" opacity={0.035} fade="radial" />
 
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-10">
@@ -149,23 +158,15 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Minimal placeholder for the InteractiveSystemMap showpiece — ships in 1B-interactive. */}
             <div className="mx-auto w-full max-w-sm lg:max-w-none">
-              <div className="rounded-xl border border-dashed border-slate-700 bg-slate-900/40 p-6 md:p-8">
-                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand-400">
-                  Business System
-                </p>
-                <ul className="mt-6 grid grid-cols-2 gap-3">
-                  {HERO_NODES.map((node) => (
-                    <li
-                      key={node}
-                      className="rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-2 text-sm text-slate-300"
-                    >
-                      {node}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <InteractiveSystemMap
+                centerLabel={SYSTEM_MAP_CENTER}
+                nodes={heroSystemNodes}
+                ariaLabel={SYSTEM_MAP_ARIA}
+                isRTL={false}
+                width={480}
+                height={460}
+              />
             </div>
           </div>
         </div>
