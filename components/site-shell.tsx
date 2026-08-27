@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { ArrowRight, Mail, MapPin, Send } from "lucide-react";
+import { ArrowRight, Mail, MapPin } from "lucide-react";
 import { getLanguagePath, type Language } from "@/lib/language";
+import { CONTACT_EMAIL } from "@/lib/contact";
 import { SiteHeader } from "@/components/site-header";
+import { NewsletterForm } from "@/components/newsletter-form";
 
 type NavLink = {
   path: string;
@@ -63,6 +65,9 @@ const FOOTER_COMPANY_LINKS: Record<Language, NavLink[]> = {
 const FOOTER_TEXT = {
   en: {
     tagline: "We build the systems behind business growth.",
+    // Confirmed against the live site's rendered footer (omniflowai.net).
+    servicesHeading: "Services",
+    companyHeading: "Company",
     stayConnected: "Stay Connected",
     connectShort: "Connect",
     newsletterText:
@@ -73,6 +78,11 @@ const FOOTER_TEXT = {
   },
   ar: {
     tagline: "نبني الأنظمة التي تقف خلف نمو الأعمال.",
+    // TODO(ar-footer-headings): the live site has no reachable Arabic
+    // version to confirm these against — left unset rather than inventing
+    // copy. Fill in once a native/approved AR string is available.
+    servicesHeading: null,
+    companyHeading: null,
     stayConnected: "ابقَ على تواصل",
     connectShort: "تواصل",
     newsletterText:
@@ -81,9 +91,20 @@ const FOOTER_TEXT = {
     location: "وايومنغ، الولايات المتحدة الأمريكية",
     copyright: "شركة OmniflowAI LLC. جميع الحقوق محفوظة.",
   },
-} satisfies Record<Language, Record<string, string>>;
-
-const CONTACT_EMAIL = "contact@omniflowai.net";
+} satisfies Record<
+  Language,
+  {
+    tagline: string;
+    servicesHeading: string | null;
+    companyHeading: string | null;
+    stayConnected: string;
+    connectShort: string;
+    newsletterText: string;
+    newsletterPlaceholder: string;
+    location: string;
+    copyright: string;
+  }
+>;
 
 function FooterLink({
   href,
@@ -140,6 +161,11 @@ export function SiteShell({
             </div>
 
             <div className="col-span-1">
+              {footerText.servicesHeading && (
+                <h3 className="mb-4 text-xs font-bold uppercase text-white md:mb-6 md:text-base md:normal-case">
+                  {footerText.servicesHeading}
+                </h3>
+              )}
               <ul className="space-y-3 text-xs md:space-y-4 md:text-sm">
                 {FOOTER_SERVICE_LINKS[language].map((link) => (
                   <FooterLink key={link.path} href={getLanguagePath(link.path, language)}>
@@ -150,6 +176,11 @@ export function SiteShell({
             </div>
 
             <div className="col-span-1">
+              {footerText.companyHeading && (
+                <h3 className="mb-4 text-xs font-bold uppercase text-white md:mb-6 md:text-base md:normal-case">
+                  {footerText.companyHeading}
+                </h3>
+              )}
               <ul className="space-y-3 text-xs md:space-y-4 md:text-sm">
                 {FOOTER_COMPANY_LINKS[language].map((link) => (
                   <FooterLink key={link.path} href={getLanguagePath(link.path, language)}>
@@ -166,21 +197,7 @@ export function SiteShell({
               </h3>
               <div className="space-y-4 rounded-xl border border-slate-800 bg-slate-900/50 p-6">
                 <p className="text-xs text-slate-400">{footerText.newsletterText}</p>
-                <form className="flex gap-2">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder={footerText.newsletterPlaceholder}
-                    className="h-10 w-full rounded-md border border-slate-800 bg-slate-950 px-3 text-xs text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-                  />
-                  <button
-                    type="submit"
-                    aria-label={footerText.newsletterPlaceholder}
-                    className="flex h-10 w-10 flex-none items-center justify-center rounded-md bg-primary text-primary-foreground"
-                  >
-                    <Send className="h-4 w-4" />
-                  </button>
-                </form>
+                <NewsletterForm language={language} placeholder={footerText.newsletterPlaceholder} />
               </div>
               <div className="space-y-3 pt-0 md:pt-2">
                 <div className="flex items-center gap-3 text-xs text-slate-400 md:text-sm">
