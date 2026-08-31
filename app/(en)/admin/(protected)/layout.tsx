@@ -1,4 +1,5 @@
 import { requireAuth } from "@/lib/auth-server";
+import { AdminNav } from "./admin-nav";
 
 export default async function ProtectedLayout({
   children,
@@ -6,5 +7,5 @@ export default async function ProtectedLayout({
   children: React.ReactNode;
 }>) {
   await requireAuth();
-  return children;
+  return <AdminNav>{children}</AdminNav>;
 }

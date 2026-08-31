@@ -1,3 +1,4 @@
+import { desc, eq } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { leads } from "@/lib/db/schema";
 import type { ContactFormData } from "@/lib/contact";
@@ -29,4 +30,22 @@ export async function createNewsletterLead(email: string): Promise<Lead> {
     })
     .returning();
   return lead;
+}
+
+export async function listLeads(status?: Lead["status"]): Promise<Lead[]> {
+  return db
+    .select()
+    .from(leads)
+    .where(status ? eq(leads.status, status) : undefined)
+    .orderBy(desc(leads.createdAt));
+}
+
+export async function updateLeadStatus(id: number, status: Lead["status"]): Promise<Lead | null> {
+  const [lead] = await db.update(leads).set({ status }).where(eq(leads.id, id)).returning();
+  return lead ?? null;
+}
+
+export async function deleteLead(id: number): Promise<Lead | null> {
+  const [lead] = await db.delete(leads).where(eq(leads.id, id)).returning();
+  return lead ?? null;
 }
