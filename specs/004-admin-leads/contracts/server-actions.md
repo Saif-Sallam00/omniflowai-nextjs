@@ -39,7 +39,7 @@ Each row is server-rendered and contains:
 ## Server Action: `deleteLeadAction`
 
 **Location**: `app/(en)/admin/(protected)/leads/actions.ts`
-**Signature**: `(id: number, _formData: FormData) => Promise<void>` — `id` pre-bound via `.bind(null, lead.id)`. The `FormData` parameter is unused (nothing to validate beyond the id itself, which is handled by "not found → no-op") but is required for the bound function's type to satisfy React's `<form action>` prop, which always supplies a `FormData` as the final call-time argument.
+**Signature**: `(id: number) => Promise<void>` — `id` pre-bound via `.bind(null, lead.id)`; no `FormData` parameter (nothing to validate beyond the id itself, which is handled by "not found → no-op"). Verified directly against this project's exact Next 16.3.1 / React 19.2.8 typings (a throwaway `tsc --noEmit` probe, not committed) that the bound zero-arg action — `() => Promise<void>` — satisfies React's `<form action>` prop type without needing an unused `FormData` parameter.
 **Auth**: calls `requireAuth()` as its first statement (FR-022), on the same terms as `updateLeadStatusAction`.
 **Effect on success**: `deleteLead(id)` (data-model.md); a `null` return (no matching row, FR-024) is not an error — the action still returns normally. `revalidatePath("/admin/leads")` runs either way.
 **Confirmation**: enforced client-side by `DeleteLeadForm`'s `onSubmit` guard (`window.confirm`) before the form ever submits — the action itself has no "are you sure" step of its own; it trusts that a submission reaching it already passed confirmation (FR-021).

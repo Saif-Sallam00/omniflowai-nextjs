@@ -88,11 +88,14 @@ export async function updateLeadStatusAction(id: number, formData: FormData): Pr
   revalidatePath("/admin/leads");                     // FR-019
 }
 
-export async function deleteLeadAction(id: number, _formData: FormData): Promise<void> {
+export async function deleteLeadAction(id: number): Promise<void> {
   await requireAuth();                              // FR-022 — independent of the (protected) layout
   await deleteLead(id);                               // FR-024 — no row matched → no-op, no throw
   revalidatePath("/admin/leads");                     // FR-023
 }
+// Verified directly (throwaway tsc probe, removed after use): `deleteLeadAction.bind(null, id)`
+// produces `() => Promise<void>`, which DOES satisfy React's `<form action>` prop type against
+// this project's exact Next 16.3.1 / React 19.2.8 typings — no unused FormData parameter needed.
 ```
 
 - Both actions call `requireAuth()` as their first statement — the same function the `(protected)` layout already calls, imported from `lib/auth-server.ts` unchanged. `requireAuth()` redirects to `/admin/auth` when no session exists (existing behavior, unchanged); it never returns without a valid session, so nothing below it in either action runs unauthenticated (FR-018/FR-022, spec AC-8/SC-005).
