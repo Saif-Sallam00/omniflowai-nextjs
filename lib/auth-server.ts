@@ -11,3 +11,10 @@ export async function requireAuth(): Promise<Session> {
   if (!session) redirect("/admin/auth");
   return session;
 }
+
+// For Route Handlers, where a 401 JSON response is required instead of a
+// redirect. Uses the request's own Headers rather than next/headers()'s
+// async-context accessor, since a Route Handler already has the Request.
+export async function getSessionOrNull(request: Request): Promise<Session | null> {
+  return auth.api.getSession({ headers: request.headers });
+}

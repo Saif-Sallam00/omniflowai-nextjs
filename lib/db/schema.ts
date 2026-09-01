@@ -146,6 +146,14 @@ export const leads = pgTable(
   (table) => [index("leads_created_at_idx").on(table.createdAt.desc())],
 );
 
+export const images = pgTable("images", {
+  id: uuid("id")
+    .primaryKey()
+    .default(sql`gen_random_uuid()`),
+  data: text("data").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 // --- Below this line: generated verbatim by `npx auth generate` (Better Auth
 // 1.6.30 CLI) against lib/auth.ts's config. Do not hand-edit — regenerate
 // instead if the auth config changes. Only the import statement above was
