@@ -5,7 +5,7 @@ import { buildPageMetadata } from "@/lib/metadata";
 import { getLanguagePath } from "@/lib/language";
 import { getArticleBySlug, getPublishedArticleSlugs } from "@/lib/db/articles";
 import { getRelatedProjectCard } from "@/lib/db/portfolio";
-import { formatCategoryLabel } from "@/components/portfolio-grid";
+import { formatCategoryLabel } from "@/lib/category-label";
 import { formatArticleDate } from "@/lib/article-date";
 import { FallbackImage } from "@/components/fallback-image";
 import { ArticleMarkdown } from "@/components/article-markdown";

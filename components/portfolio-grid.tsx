@@ -4,6 +4,7 @@ import { useMemo, useState, type SyntheticEvent } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { getLanguagePath, type Language } from "@/lib/language";
+import { formatCategoryLabel } from "@/lib/category-label";
 import type { PortfolioListItem } from "@/lib/db/portfolio";
 
 const IMAGE_FALLBACK =
@@ -13,10 +14,6 @@ function onImageError(e: SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
   img.onerror = null;
   img.src = IMAGE_FALLBACK;
-}
-
-export function formatCategoryLabel(category: string): string {
-  return category.replace(/-/g, " ");
 }
 
 export function PortfolioGrid({
