@@ -12,6 +12,7 @@ import { getRelatedProjectCard } from "@/lib/db/portfolio";
 import { formatCategoryLabel } from "@/lib/category-label";
 import { formatArticleDate } from "@/lib/article-date";
 import { normalizeSlugParam } from "@/lib/slug-param";
+import { buildArticleJsonLd } from "@/lib/structured-data";
 import { FallbackImage } from "@/components/fallback-image";
 import { ArticleMarkdown } from "@/components/article-markdown";
 import { ArticleLanguageAlternate } from "@/components/article-language-alternate";
@@ -92,8 +93,16 @@ export default async function ArticleDetailPage({
     ? await getPublishedCounterpartSlug(article.translationGroupId, "en")
     : null;
 
+  const articleJsonLd = article.published ? buildArticleJsonLd(article, LANGUAGE) : null;
+
   return (
     <div className="min-h-screen bg-slate-950 pt-20 text-slate-300">
+      {articleJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
+      )}
       <ArticleLanguageAlternate
         href={counterpartSlug ? getLanguagePath(`/articles/${counterpartSlug}`, "en") : null}
       />

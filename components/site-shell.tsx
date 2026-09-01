@@ -5,6 +5,12 @@ import { CONTACT_EMAIL } from "@/lib/contact";
 import { SiteHeader } from "@/components/site-header";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { LanguageAlternateProvider } from "@/lib/language-alternate-context";
+import { buildAbsoluteUrl } from "@/lib/metadata";
+
+const ORGANIZATION_DESCRIPTION: Record<Language, string> = {
+  en: "OmniflowAI — AI-powered solutions.",
+  ar: "OmniflowAI — حلول مدعومة بالذكاء الاصطناعي.",
+};
 
 type NavLink = {
   path: string;
@@ -135,8 +141,21 @@ export function SiteShell({
 }>) {
   const footerText = FOOTER_TEXT[language];
 
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "OmniflowAI",
+    url: buildAbsoluteUrl(getLanguagePath("/", language)),
+    description: ORGANIZATION_DESCRIPTION[language],
+    inLanguage: language,
+  };
+
   return (
     <LanguageAlternateProvider>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
       <SiteHeader
         language={language}
         navLinks={NAV_LINKS[language]}

@@ -11,7 +11,7 @@ export type PageMetadataInput = {
   imageUrl?: string;
 };
 
-function buildAbsoluteUrl(path: string): string {
+export function buildAbsoluteUrl(path: string): string {
   return `${siteUrl.replace(/\/$/, "")}${path}`;
 }
 

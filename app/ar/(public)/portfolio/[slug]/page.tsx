@@ -5,6 +5,7 @@ import { buildPageMetadata } from "@/lib/metadata";
 import { getLanguagePath } from "@/lib/language";
 import { getPortfolioDetailBySlug, getPortfolioSlugs } from "@/lib/db/portfolio";
 import { normalizeSlugParam } from "@/lib/slug-param";
+import { buildCaseStudyJsonLd } from "@/lib/structured-data";
 import { SystemCardIcon } from "@/components/system-card-icon";
 import { ltrNames } from "@/lib/ltr-names";
 
@@ -62,6 +63,8 @@ export default async function PortfolioDetailPage({
   const project = await getPortfolioDetailBySlug(slug, LANGUAGE);
   if (!project) notFound();
 
+  const caseStudyJsonLd = buildCaseStudyJsonLd(project, slug, LANGUAGE);
+
   const clientFields = [
     project.clientName,
     project.clientSector,
@@ -74,6 +77,10 @@ export default async function PortfolioDetailPage({
 
   return (
     <main className="min-h-screen bg-slate-950 pt-20 text-slate-300">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }}
+      />
       {/* رابط العودة + القسم الرئيسي */}
       <section className="py-10 md:py-14">
         <div className="mx-auto max-w-6xl px-6 md:px-8">
