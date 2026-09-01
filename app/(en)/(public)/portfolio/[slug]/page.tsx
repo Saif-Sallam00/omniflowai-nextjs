@@ -4,6 +4,7 @@ import { ArrowLeft, Image as ImageIcon } from "lucide-react";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getLanguagePath } from "@/lib/language";
 import { getPortfolioDetailBySlug, getPortfolioSlugs } from "@/lib/db/portfolio";
+import { normalizeSlugParam } from "@/lib/slug-param";
 import { SystemCardIcon } from "@/components/system-card-icon";
 import { ltrNames } from "@/lib/ltr-names";
 
@@ -27,7 +28,8 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = normalizeSlugParam(rawSlug);
   const project = await getPortfolioDetailBySlug(slug, LANGUAGE);
 
   if (!project) {
@@ -56,7 +58,8 @@ export default async function PortfolioDetailPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = normalizeSlugParam(rawSlug);
   const project = await getPortfolioDetailBySlug(slug, LANGUAGE);
   if (!project) notFound();
 

@@ -11,6 +11,7 @@ import {
 import { getRelatedProjectCard } from "@/lib/db/portfolio";
 import { formatCategoryLabel } from "@/lib/category-label";
 import { formatArticleDate } from "@/lib/article-date";
+import { normalizeSlugParam } from "@/lib/slug-param";
 import { FallbackImage } from "@/components/fallback-image";
 import { ArticleMarkdown } from "@/components/article-markdown";
 import { ArticleLanguageAlternate } from "@/components/article-language-alternate";
@@ -37,7 +38,8 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = normalizeSlugParam(rawSlug);
   const article = await getArticleBySlug(slug, LANGUAGE);
 
   if (!article || !article.published) {
@@ -72,7 +74,8 @@ export default async function ArticleDetailPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = normalizeSlugParam(rawSlug);
   const article = await getArticleBySlug(slug, LANGUAGE);
   if (!article) notFound();
 
