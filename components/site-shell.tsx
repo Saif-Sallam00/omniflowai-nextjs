@@ -4,6 +4,7 @@ import { getLanguagePath, type Language } from "@/lib/language";
 import { CONTACT_EMAIL } from "@/lib/contact";
 import { SiteHeader } from "@/components/site-header";
 import { NewsletterForm } from "@/components/newsletter-form";
+import { LanguageAlternateProvider } from "@/lib/language-alternate-context";
 
 type NavLink = {
   path: string;
@@ -135,7 +136,7 @@ export function SiteShell({
   const footerText = FOOTER_TEXT[language];
 
   return (
-    <>
+    <LanguageAlternateProvider>
       <SiteHeader
         language={language}
         navLinks={NAV_LINKS[language]}
@@ -234,6 +235,6 @@ export function SiteShell({
           </div>
         </div>
       </footer>
-    </>
+    </LanguageAlternateProvider>
   );
 }

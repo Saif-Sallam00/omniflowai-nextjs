@@ -5,8 +5,10 @@ import { usePathname } from "next/navigation";
 import {
   getAgnosticPath,
   getCounterpartPath,
+  getLanguagePath,
   resolveLanguageFromPathname,
 } from "@/lib/language";
+import { useLanguageAlternate } from "@/lib/language-alternate-context";
 
 const SWITCHER_LABEL: Record<"en" | "ar", string> = {
   en: "English",
@@ -27,7 +29,16 @@ export function LanguageSwitcher({
   const pathname = usePathname();
   const language = resolveLanguageFromPathname(pathname);
   const otherLanguage = language === "en" ? "ar" : "en";
-  const href = getCounterpartPath(getAgnosticPath(pathname), language);
+  const { override } = useLanguageAlternate();
+
+  let href: string;
+  if (override === undefined) {
+    href = getCounterpartPath(getAgnosticPath(pathname), language);
+  } else if (override === null) {
+    href = getLanguagePath("/articles", otherLanguage);
+  } else {
+    href = override;
+  }
 
   if (variant === "icon") {
     return (

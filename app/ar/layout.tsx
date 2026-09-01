@@ -4,8 +4,8 @@ import { fontVariables } from "@/lib/fonts";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-  title: "OmniflowAI — Foundation",
-  description: "Phase 0 foundation deployment.",
+  title: "OmniflowAI",
+  description: "OmniflowAI — حلول مدعومة بالذكاء الاصطناعي.",
 };
 
 export default function ArabicRootLayout({

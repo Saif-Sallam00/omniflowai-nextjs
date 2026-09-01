@@ -3,12 +3,17 @@ import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getLanguagePath } from "@/lib/language";
-import { getArticleBySlug, getPublishedArticleSlugs } from "@/lib/db/articles";
+import {
+  getArticleBySlug,
+  getPublishedArticleSlugs,
+  getPublishedCounterpartSlug,
+} from "@/lib/db/articles";
 import { getRelatedProjectCard } from "@/lib/db/portfolio";
 import { formatCategoryLabel } from "@/lib/category-label";
 import { formatArticleDate } from "@/lib/article-date";
 import { FallbackImage } from "@/components/fallback-image";
 import { ArticleMarkdown } from "@/components/article-markdown";
+import { ArticleLanguageAlternate } from "@/components/article-language-alternate";
 import { auth } from "@/lib/auth";
 
 const LANGUAGE = "ar" as const;
@@ -36,19 +41,29 @@ export async function generateMetadata({
   const article = await getArticleBySlug(slug, LANGUAGE);
 
   if (!article || !article.published) {
-    return buildPageMetadata({
-      path: `/articles/${slug}`,
-      language: LANGUAGE,
-      title: "المقالات",
-      description: "مقالات OmniflowAI.",
-    });
+    return {
+      ...buildPageMetadata({
+        path: `/articles/${slug}`,
+        language: LANGUAGE,
+        title: "المقالات",
+        description: "مقالات OmniflowAI.",
+      }),
+      robots: { index: false, follow: false },
+    };
   }
+
+  const counterpartSlug = await getPublishedCounterpartSlug(article.translationGroupId, "en");
 
   return buildPageMetadata({
     path: `/articles/${slug}`,
     language: LANGUAGE,
     title: article.title,
     description: article.excerpt,
+    languageAlternates: {
+      en: counterpartSlug ? `/articles/${counterpartSlug}` : null,
+      ar: `/articles/${slug}`,
+    },
+    imageUrl: article.coverImage,
   });
 }
 
@@ -70,8 +85,15 @@ export default async function ArticleDetailPage({
     ? await getRelatedProjectCard(article.relatedProjectId, LANGUAGE)
     : null;
 
+  const counterpartSlug = article.published
+    ? await getPublishedCounterpartSlug(article.translationGroupId, "en")
+    : null;
+
   return (
     <div className="min-h-screen bg-slate-950 pt-20 text-slate-300">
+      <ArticleLanguageAlternate
+        href={counterpartSlug ? getLanguagePath(`/articles/${counterpartSlug}`, "en") : null}
+      />
       <article>
         {/* === الترويسة === */}
         <header className="relative overflow-hidden py-12 md:py-16">

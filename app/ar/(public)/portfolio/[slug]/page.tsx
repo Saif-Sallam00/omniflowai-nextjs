@@ -30,12 +30,15 @@ export async function generateMetadata({
   const project = await getPortfolioDetailBySlug(slug, LANGUAGE);
 
   if (!project) {
-    return buildPageMetadata({
-      path: `/portfolio/${slug}`,
-      language: LANGUAGE,
-      title: "أعمالنا",
-      description: "دراسة حالة من OmniflowAI.",
-    });
+    return {
+      ...buildPageMetadata({
+        path: `/portfolio/${slug}`,
+        language: LANGUAGE,
+        title: "أعمالنا",
+        description: "دراسة حالة من OmniflowAI.",
+      }),
+      robots: { index: false, follow: false },
+    };
   }
 
   return buildPageMetadata({
@@ -43,6 +46,7 @@ export async function generateMetadata({
     language: LANGUAGE,
     title: project.title,
     description: project.description,
+    imageUrl: project.coverImage,
   });
 }
 

@@ -22,6 +22,7 @@ export type Article = {
   publishedAt: Date | null;
   relatedProjectId: number | null;
   relatedSolution: string | null;
+  translationGroupId: string;
 };
 
 export const getPublishedArticles = cache(
@@ -63,12 +64,31 @@ export const getArticleBySlug = cache(
         publishedAt: articles.publishedAt,
         relatedProjectId: articles.relatedProjectId,
         relatedSolution: articles.relatedSolution,
+        translationGroupId: articles.translationGroupId,
       })
       .from(articles)
       .where(and(eq(articles.slug, slug), eq(articles.language, language)))
       .limit(1);
 
     return rows[0] ?? null;
+  },
+);
+
+export const getPublishedCounterpartSlug = cache(
+  async (translationGroupId: string, targetLanguage: Language): Promise<string | null> => {
+    const rows = await db
+      .select({ slug: articles.slug })
+      .from(articles)
+      .where(
+        and(
+          eq(articles.translationGroupId, translationGroupId),
+          eq(articles.language, targetLanguage),
+          eq(articles.published, true),
+        ),
+      )
+      .limit(1);
+
+    return rows[0]?.slug ?? null;
   },
 );
 
