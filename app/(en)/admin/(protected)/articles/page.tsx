@@ -28,9 +28,13 @@ function LanguageColumn({
       <span>{row.title}</span>{" "}
       <span>{row.published ? "Published" : "Draft"}</span>{" "}
       <Link href={`/admin/articles/${row.id}/edit`}>Edit</Link>{" "}
-      <a href={getLanguagePath(`/articles/${row.slug}`, language)} target="_blank" rel="noopener noreferrer">
-        Preview
-      </a>{" "}
+      {row.published && (
+        <>
+          <a href={getLanguagePath(`/articles/${row.slug}`, language)} target="_blank" rel="noopener noreferrer">
+            Preview
+          </a>{" "}
+        </>
+      )}
       <DeleteArticleForm action={deleteArticleAction.bind(null, row.id)} />
     </div>
   );

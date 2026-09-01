@@ -22,13 +22,15 @@ export default async function EditArticlePage({
   return (
     <main>
       <h1>Edit article</h1>
-      <a
-        href={getLanguagePath(`/articles/${article.slug}`, article.language)}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Preview
-      </a>
+      {article.published && (
+        <a
+          href={getLanguagePath(`/articles/${article.slug}`, article.language)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Preview
+        </a>
+      )}
       <ArticleForm
         mode="edit"
         action={updateArticleAction.bind(null, id)}

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getLanguagePath } from "@/lib/language";
@@ -16,7 +15,6 @@ import { buildArticleJsonLd } from "@/lib/structured-data";
 import { FallbackImage } from "@/components/fallback-image";
 import { ArticleMarkdown } from "@/components/article-markdown";
 import { ArticleLanguageAlternate } from "@/components/article-language-alternate";
-import { auth } from "@/lib/auth";
 
 const LANGUAGE = "ar" as const;
 
@@ -78,12 +76,7 @@ export default async function ArticleDetailPage({
   const { slug: rawSlug } = await params;
   const slug = normalizeSlugParam(rawSlug);
   const article = await getArticleBySlug(slug, LANGUAGE);
-  if (!article) notFound();
-
-  if (!article.published) {
-    const session = await auth.api.getSession({ headers: await headers() });
-    if (!session) notFound();
-  }
+  if (!article || !article.published) notFound();
 
   const relatedProject = article.relatedProjectId
     ? await getRelatedProjectCard(article.relatedProjectId, LANGUAGE)
