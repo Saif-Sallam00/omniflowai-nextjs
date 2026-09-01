@@ -13,6 +13,7 @@ type AdminNavLink = {
 const ADMIN_NAV_LINKS: AdminNavLink[] = [
   { path: "/admin", label: "Dashboard" },
   { path: "/admin/leads", label: "Leads" },
+  { path: "/admin/articles", label: "Articles" },
 ];
 
 export function AdminNav({ children }: { children: React.ReactNode }) {

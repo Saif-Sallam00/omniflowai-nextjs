@@ -155,3 +155,20 @@ export const getPortfolioDetailBySlug = cache(
     };
   },
 );
+
+// --- Consumed by the admin articles form's related-project dropdown
+// (app/(en)/admin/(protected)/articles/**). Admin is English-only, so the
+// title language is hardcoded rather than parameterized. ---
+
+export type ProjectOption = { id: number; title: string };
+
+export const listProjectsForSelect = cache(async (): Promise<ProjectOption[]> => {
+  return db
+    .select({ id: projects.id, title: projectTranslations.title })
+    .from(projects)
+    .innerJoin(
+      projectTranslations,
+      and(eq(projectTranslations.projectId, projects.id), eq(projectTranslations.language, "en")),
+    )
+    .orderBy(projectTranslations.title);
+});
