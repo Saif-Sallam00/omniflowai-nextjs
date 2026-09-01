@@ -25,7 +25,16 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     if (process.env.INDEXING_ENABLED === "true") {
-      return [];
+      return [
+        {
+          source: "/admin/:path*",
+          headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+        },
+        {
+          source: "/api/:path*",
+          headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+        },
+      ];
     }
 
     return [
