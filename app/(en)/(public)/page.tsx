@@ -8,6 +8,7 @@ import { HowWeWorkTimeline } from "@/components/how-we-work-timeline";
 import { LogoMarquee } from "@/components/logo-marquee";
 import { InteractiveSystemMap, type InteractiveNode } from "@/components/interactive-system-map";
 import { HexGridSubstrate } from "@/components/systems/hex-grid-substrate";
+import { CLIENTS } from "@/lib/clients";
 
 const LANGUAGE = "en" as const;
 
@@ -34,35 +35,6 @@ const heroSystemNodes: InteractiveNode[] = [
   { id: "automation", label: "Automation" },
   { id: "crm", label: "CRM" },
   { id: "strategy", label: "Strategy" },
-];
-
-const CLIENT_LOGOS = [
-  "Petra",
-  "Reliance Hub",
-  "Madrid",
-  "Ipec",
-  "Electromeca",
-  "N2oosh",
-  "Dar El Maaly",
-  "El Khateer",
-  "Beit El 3tara",
-  "El Modhsh",
-  "Decork",
-  "Princess",
-  "Naas",
-  "Ta2deer",
-  "Gzour",
-  "Mashareeb",
-  "Cutz",
-  "Kayan",
-  "Darat",
-  "Rafeek",
-  "Arcade",
-  "Cleaning",
-  "Majarrah",
-  "OEM",
-  "Pioneer",
-  "Thaki",
 ];
 
 const PILLARS = [
@@ -230,7 +202,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <LogoMarquee clients={CLIENT_LOGOS} />
+        <LogoMarquee clients={CLIENTS} />
       </section>
 
       {/* 3. Value proposition */}
