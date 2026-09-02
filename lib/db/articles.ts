@@ -4,6 +4,8 @@ import { db } from "@/lib/db";
 import { articles } from "@/lib/db/schema";
 import type { Language } from "@/lib/language";
 
+export { RELATED_SOLUTIONS, type RelatedSolution } from "@/lib/article-solutions";
+
 export type ArticleListItem = {
   slug: string;
   title: string;
@@ -115,17 +117,6 @@ export async function getArticleByTranslationGroupAndLanguage(
     .limit(1);
   return row ?? null;
 }
-
-// Fixed, known set of related-solution ids (application-level convention, no
-// DB enum) — matches the ids already hardcoded in the public article detail
-// pages' own SOLUTION_NAMES display map.
-export const RELATED_SOLUTIONS = [
-  "foundation",
-  "growth-engine",
-  "scale-infrastructure",
-  "custom",
-] as const;
-export type RelatedSolution = (typeof RELATED_SOLUTIONS)[number];
 
 export type CreateArticleInput = {
   translationGroupId?: string; // present only when creating a counterpart

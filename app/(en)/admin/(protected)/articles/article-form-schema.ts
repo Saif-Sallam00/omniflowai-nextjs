@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { languageEnum } from "@/lib/db/schema";
 import { slugPatternForLanguage } from "@/lib/article-slug";
-import { RELATED_SOLUTIONS } from "@/lib/db/articles";
+import { RELATED_SOLUTIONS } from "@/lib/article-solutions";
 import type { Language } from "@/lib/language";
 
 // Not a "use server" file — actions.ts (which is) may only export async

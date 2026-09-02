@@ -3,7 +3,7 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { slugifyForLanguage } from "@/lib/article-slug";
-import { RELATED_SOLUTIONS } from "@/lib/db/articles";
+import { RELATED_SOLUTIONS } from "@/lib/article-solutions";
 import type { ProjectOption } from "@/lib/db/portfolio";
 import type { Language } from "@/lib/language";
 import {
