@@ -38,10 +38,15 @@ export function BodyEditor({ initialValue }: { initialValue?: string }) {
   }
 
   return (
-    <div>
-      <label htmlFor="body-textarea">Body (Markdown)</label>
-      <div>
-        <label htmlFor="body-insert-image-input">
+    <div className="space-y-2">
+      <label htmlFor="body-textarea" className="text-sm font-medium text-gray-900">
+        Body (Markdown)
+      </label>
+      <div className="flex items-center gap-2">
+        <label
+          htmlFor="body-insert-image-input"
+          className="cursor-pointer rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        >
           {uploading ? "Uploading…" : "Insert image"}
         </label>
         <input
@@ -50,9 +55,14 @@ export function BodyEditor({ initialValue }: { initialValue?: string }) {
           accept="image/*"
           onChange={handleInsertImage}
           disabled={uploading}
+          className="sr-only"
         />
       </div>
-      {error && <p role="alert">{error}</p>}
+      {error && (
+        <p role="alert" className="text-sm text-red-600">
+          {error}
+        </p>
+      )}
       <textarea
         id="body-textarea"
         name="body"
@@ -60,6 +70,7 @@ export function BodyEditor({ initialValue }: { initialValue?: string }) {
         ref={textareaRef}
         value={value}
         onChange={(event) => setValue(event.target.value)}
+        className="w-full rounded-md border border-gray-300 px-3 py-2 font-mono text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
       />
     </div>
   );

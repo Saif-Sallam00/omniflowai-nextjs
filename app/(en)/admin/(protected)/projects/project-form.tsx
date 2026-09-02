@@ -13,6 +13,9 @@ import { MediaImageField } from "./media-image-field";
 import { SystemCardsEditor, type SystemCardSlot } from "./system-cards-editor";
 import { ResultsEditor, type ResultSlot } from "./results-editor";
 import { ChipInput } from "./chip-input";
+import { Card } from "@/components/admin/card";
+import { Button } from "@/components/admin/button";
+import { FormField } from "@/components/admin/form-field";
 
 type ProjectFormAction = (
   prevState: ProjectFormState,
@@ -28,6 +31,9 @@ const AR_CTA_DEFAULT = {
   headline: "تقاريرك قد تكون تكذب عليك أيضاً.",
   subtext: "نُشخّص قبل أن نبني. ابدأ بتشخيص Foundation واكتشف ما تُخفيه أرقامك.",
 };
+
+const INPUT_CLASSNAME =
+  "w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500";
 
 export type ProjectTranslationInitialValues = {
   title: string;
@@ -66,9 +72,9 @@ export type ProjectFormInitialValues = {
 function SubmitButton({ mode }: { mode: "create" | "edit" }) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending}>
+    <Button type="submit" disabled={pending} variant="primary">
       {pending ? "Saving…" : mode === "create" ? "Create project" : "Save changes"}
-    </button>
+    </Button>
   );
 }
 
@@ -92,65 +98,168 @@ function TranslationSection({
   const descriptionError = fieldErrors[`${prefix}.description` as keyof typeof fieldErrors];
 
   return (
-    <fieldset>
-      <legend>{label}</legend>
+    <fieldset className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 sm:p-6">
+      <legend className="text-base font-semibold text-gray-900">{label}</legend>
 
-      <label htmlFor={`${prefix}-title`}>Title</label>
-      <input
-        id={`${prefix}-title`}
-        name={field("title")}
-        type="text"
-        defaultValue={initialValues?.title}
-        ref={titleInputRef}
-      />
-      {titleError && <p role="alert">{titleError[0]}</p>}
+      <FormField label="Title" htmlFor={`${prefix}-title`} error={titleError?.[0]}>
+        <input
+          id={`${prefix}-title`}
+          name={field("title")}
+          type="text"
+          defaultValue={initialValues?.title}
+          ref={titleInputRef}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-description`}>Description</label>
-      <textarea id={`${prefix}-description`} name={field("description")} rows={2} defaultValue={initialValues?.description} />
-      {descriptionError && <p role="alert">{descriptionError[0]}</p>}
+      <FormField label="Description" htmlFor={`${prefix}-description`} error={descriptionError?.[0]}>
+        <textarea
+          id={`${prefix}-description`}
+          name={field("description")}
+          rows={2}
+          defaultValue={initialValues?.description}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-categoryLabel`}>Category label (optional)</label>
-      <input id={`${prefix}-categoryLabel`} name={field("categoryLabel")} type="text" defaultValue={initialValues?.categoryLabel ?? ""} />
+      <FormField label="Category label (optional)" htmlFor={`${prefix}-categoryLabel`}>
+        <input
+          id={`${prefix}-categoryLabel`}
+          name={field("categoryLabel")}
+          type="text"
+          defaultValue={initialValues?.categoryLabel ?? ""}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-clientName`}>Client name (optional)</label>
-      <input id={`${prefix}-clientName`} name={field("clientName")} type="text" defaultValue={initialValues?.clientName ?? ""} />
+      <FormField label="Client name (optional)" htmlFor={`${prefix}-clientName`}>
+        <input
+          id={`${prefix}-clientName`}
+          name={field("clientName")}
+          type="text"
+          defaultValue={initialValues?.clientName ?? ""}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-clientSector`}>Client sector (optional)</label>
-      <input id={`${prefix}-clientSector`} name={field("clientSector")} type="text" defaultValue={initialValues?.clientSector ?? ""} />
+      <FormField label="Client sector (optional)" htmlFor={`${prefix}-clientSector`}>
+        <input
+          id={`${prefix}-clientSector`}
+          name={field("clientSector")}
+          type="text"
+          defaultValue={initialValues?.clientSector ?? ""}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-clientCountry`}>Client country (optional)</label>
-      <input id={`${prefix}-clientCountry`} name={field("clientCountry")} type="text" defaultValue={initialValues?.clientCountry ?? ""} />
+      <FormField label="Client country (optional)" htmlFor={`${prefix}-clientCountry`}>
+        <input
+          id={`${prefix}-clientCountry`}
+          name={field("clientCountry")}
+          type="text"
+          defaultValue={initialValues?.clientCountry ?? ""}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-clientModel`}>Client model (optional)</label>
-      <input id={`${prefix}-clientModel`} name={field("clientModel")} type="text" defaultValue={initialValues?.clientModel ?? ""} />
+      <FormField label="Client model (optional)" htmlFor={`${prefix}-clientModel`}>
+        <input
+          id={`${prefix}-clientModel`}
+          name={field("clientModel")}
+          type="text"
+          defaultValue={initialValues?.clientModel ?? ""}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-problemHeadline`}>Problem headline (optional)</label>
-      <input id={`${prefix}-problemHeadline`} name={field("problemHeadline")} type="text" defaultValue={initialValues?.problemHeadline ?? ""} />
+      <FormField label="Problem headline (optional)" htmlFor={`${prefix}-problemHeadline`}>
+        <input
+          id={`${prefix}-problemHeadline`}
+          name={field("problemHeadline")}
+          type="text"
+          defaultValue={initialValues?.problemHeadline ?? ""}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-problemBody`}>Problem body (optional)</label>
-      <textarea id={`${prefix}-problemBody`} name={field("problemBody")} defaultValue={initialValues?.problemBody ?? ""} />
+      <FormField label="Problem body (optional)" htmlFor={`${prefix}-problemBody`}>
+        <textarea
+          id={`${prefix}-problemBody`}
+          name={field("problemBody")}
+          defaultValue={initialValues?.problemBody ?? ""}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-diagnosisHeadline`}>Diagnosis headline (optional)</label>
-      <input id={`${prefix}-diagnosisHeadline`} name={field("diagnosisHeadline")} type="text" defaultValue={initialValues?.diagnosisHeadline ?? ""} />
+      <FormField label="Diagnosis headline (optional)" htmlFor={`${prefix}-diagnosisHeadline`}>
+        <input
+          id={`${prefix}-diagnosisHeadline`}
+          name={field("diagnosisHeadline")}
+          type="text"
+          defaultValue={initialValues?.diagnosisHeadline ?? ""}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-diagnosisBody`}>Diagnosis body (optional)</label>
-      <textarea id={`${prefix}-diagnosisBody`} name={field("diagnosisBody")} defaultValue={initialValues?.diagnosisBody ?? ""} />
+      <FormField label="Diagnosis body (optional)" htmlFor={`${prefix}-diagnosisBody`}>
+        <textarea
+          id={`${prefix}-diagnosisBody`}
+          name={field("diagnosisBody")}
+          defaultValue={initialValues?.diagnosisBody ?? ""}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-systemHeadline`}>System headline (optional)</label>
-      <input id={`${prefix}-systemHeadline`} name={field("systemHeadline")} type="text" defaultValue={initialValues?.systemHeadline ?? ""} />
+      <FormField label="System headline (optional)" htmlFor={`${prefix}-systemHeadline`}>
+        <input
+          id={`${prefix}-systemHeadline`}
+          name={field("systemHeadline")}
+          type="text"
+          defaultValue={initialValues?.systemHeadline ?? ""}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-mediaCaption`}>Media caption (optional)</label>
-      <input id={`${prefix}-mediaCaption`} name={field("mediaCaption")} type="text" defaultValue={initialValues?.mediaCaption ?? ""} />
+      <FormField label="Media caption (optional)" htmlFor={`${prefix}-mediaCaption`}>
+        <input
+          id={`${prefix}-mediaCaption`}
+          name={field("mediaCaption")}
+          type="text"
+          defaultValue={initialValues?.mediaCaption ?? ""}
+          className={INPUT_CLASSNAME}
+        />
+      </FormField>
 
-      <label htmlFor={`${prefix}-ctaHeadline`}>
-        CTA headline override (optional — default: &quot;{ctaDefault.headline}&quot;)
-      </label>
-      <input id={`${prefix}-ctaHeadline`} name={field("ctaHeadline")} type="text" defaultValue={initialValues?.ctaHeadline ?? ""} />
+      <div>
+        <label htmlFor={`${prefix}-ctaHeadline`} className="text-sm font-medium text-gray-900">
+          CTA headline override{" "}
+          <span className="font-normal text-gray-500">
+            (optional — default: &quot;{ctaDefault.headline}&quot;)
+          </span>
+        </label>
+        <input
+          id={`${prefix}-ctaHeadline`}
+          name={field("ctaHeadline")}
+          type="text"
+          defaultValue={initialValues?.ctaHeadline ?? ""}
+          className={`mt-1 ${INPUT_CLASSNAME}`}
+        />
+      </div>
 
-      <label htmlFor={`${prefix}-ctaSubtext`}>
-        CTA subtext override (optional — default: &quot;{ctaDefault.subtext}&quot;)
-      </label>
-      <textarea id={`${prefix}-ctaSubtext`} name={field("ctaSubtext")} defaultValue={initialValues?.ctaSubtext ?? ""} />
+      <div>
+        <label htmlFor={`${prefix}-ctaSubtext`} className="text-sm font-medium text-gray-900">
+          CTA subtext override{" "}
+          <span className="font-normal text-gray-500">
+            (optional — default: &quot;{ctaDefault.subtext}&quot;)
+          </span>
+        </label>
+        <textarea
+          id={`${prefix}-ctaSubtext`}
+          name={field("ctaSubtext")}
+          defaultValue={initialValues?.ctaSubtext ?? ""}
+          className={`mt-1 ${INPUT_CLASSNAME}`}
+        />
+      </div>
 
       <ChipInput name={`${prefix}Tags`} label="Tags" initialValue={initialValues?.tags} />
       <ChipInput name={`${prefix}Technologies`} label="Technologies" initialValue={initialValues?.technologies} />
@@ -179,8 +288,12 @@ export function ProjectForm({
   }
 
   return (
-    <form action={formAction}>
-      {state.formError && <p role="alert">{state.formError}</p>}
+    <form action={formAction} className="space-y-6">
+      {state.formError && (
+        <p role="alert" className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">
+          {state.formError}
+        </p>
+      )}
 
       {Object.keys(state.fieldErrors).length > 0 && (
         // Safety net: several fieldErrors keys (e.g. per-row errors inside
@@ -188,70 +301,105 @@ export function ProjectForm({
         // dedicated inline rendering slot below. Without this summary those
         // errors would be silently invisible even though the save was
         // rejected — every rejection must be visible to the admin (FR-12.1).
-        <ul role="alert">
+        <ul role="alert" className="space-y-1 rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">
           {Object.entries(state.fieldErrors).map(([field, messages]) =>
             (messages ?? []).map((message, i) => <li key={`${field}-${i}`}>{message}</li>),
           )}
         </ul>
       )}
 
-      <fieldset>
-        <legend>Shared details</legend>
+      <fieldset className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 sm:p-6">
+        <legend className="text-base font-semibold text-gray-900">Shared details</legend>
 
-        <label htmlFor="slug-input">Slug</label>
-        <input
-          id="slug-input"
-          name="slug"
-          type="text"
-          value={slug}
-          onChange={(e) => setSlug(e.target.value)}
-        />
-        <button type="button" onClick={handleGenerateSlug}>
-          Generate from English title
-        </button>
-        {state.fieldErrors.slug && <p role="alert">{state.fieldErrors.slug[0]}</p>}
+        <FormField label="Slug" htmlFor="slug-input" error={state.fieldErrors.slug?.[0]}>
+          <div className="flex flex-wrap items-center gap-2">
+            <input
+              id="slug-input"
+              name="slug"
+              type="text"
+              value={slug}
+              onChange={(e) => setSlug(e.target.value)}
+              className={INPUT_CLASSNAME}
+            />
+            <Button type="button" variant="secondary" onClick={handleGenerateSlug}>
+              Generate from English title
+            </Button>
+          </div>
+        </FormField>
 
-        <label htmlFor="category-input">Category</label>
-        <input id="category-input" name="category" type="text" list="category-options" defaultValue={initialValues?.category} />
-        <datalist id="category-options">
-          {categories.map((category) => (
-            <option key={category} value={category} />
-          ))}
-        </datalist>
-        {state.fieldErrors.category && <p role="alert">{state.fieldErrors.category[0]}</p>}
-
-        <label htmlFor="is-featured-checkbox">
+        <FormField label="Category" htmlFor="category-input" error={state.fieldErrors.category?.[0]}>
           <input
-            id="is-featured-checkbox"
-            name="isFeatured"
-            type="checkbox"
-            defaultChecked={initialValues?.isFeatured ?? false}
+            id="category-input"
+            name="category"
+            type="text"
+            list="category-options"
+            defaultValue={initialValues?.category}
+            className={INPUT_CLASSNAME}
           />
-          Featured
-        </label>
+          <datalist id="category-options">
+            {categories.map((category) => (
+              <option key={category} value={category} />
+            ))}
+          </datalist>
+        </FormField>
 
-        <label htmlFor="is-service-showcase-checkbox">
-          <input
-            id="is-service-showcase-checkbox"
-            name="isServiceShowcase"
-            type="checkbox"
-            defaultChecked={initialValues?.isServiceShowcase ?? false}
-          />
-          Service showcase
-        </label>
+        <div className="space-y-2">
+          <label htmlFor="is-featured-checkbox" className="flex items-center gap-2 text-sm font-medium text-gray-900">
+            <input
+              id="is-featured-checkbox"
+              name="isFeatured"
+              type="checkbox"
+              defaultChecked={initialValues?.isFeatured ?? false}
+              className="h-4 w-4 rounded border-gray-300"
+            />
+            Featured
+          </label>
 
-        <CoverImageField initialValue={initialValues?.coverImage} />
-        {state.fieldErrors.coverImage && <p role="alert">{state.fieldErrors.coverImage[0]}</p>}
+          <label
+            htmlFor="is-service-showcase-checkbox"
+            className="flex items-center gap-2 text-sm font-medium text-gray-900"
+          >
+            <input
+              id="is-service-showcase-checkbox"
+              name="isServiceShowcase"
+              type="checkbox"
+              defaultChecked={initialValues?.isServiceShowcase ?? false}
+              className="h-4 w-4 rounded border-gray-300"
+            />
+            Service showcase
+          </label>
+        </div>
+
+        <div>
+          <CoverImageField initialValue={initialValues?.coverImage} />
+          {state.fieldErrors.coverImage && (
+            <p role="alert" className="mt-1 text-sm text-red-600">
+              {state.fieldErrors.coverImage[0]}
+            </p>
+          )}
+        </div>
 
         <LogoImageField initialValue={initialValues?.logo} />
         <MediaImageField initialValue={initialValues?.mediaImage} />
       </fieldset>
 
-      <SystemCardsEditor initialValue={initialValues?.systemCards} />
-      {state.fieldErrors.systemCards && <p role="alert">{state.fieldErrors.systemCards[0]}</p>}
+      <Card className="space-y-2">
+        <SystemCardsEditor initialValue={initialValues?.systemCards} />
+        {state.fieldErrors.systemCards && (
+          <p role="alert" className="text-sm text-red-600">
+            {state.fieldErrors.systemCards[0]}
+          </p>
+        )}
+      </Card>
 
-      <ResultsEditor initialValue={initialValues?.results} />
-      {state.fieldErrors.results && <p role="alert">{state.fieldErrors.results[0]}</p>}
+      <Card className="space-y-2">
+        <ResultsEditor initialValue={initialValues?.results} />
+        {state.fieldErrors.results && (
+          <p role="alert" className="text-sm text-red-600">
+            {state.fieldErrors.results[0]}
+          </p>
+        )}
+      </Card>
 
       <TranslationSection
         prefix="en"

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { SYSTEM_CARD_ICONS } from "@/lib/db/schema";
+import { Button } from "@/components/admin/button";
 
 export type SystemCardSlot = {
   icon: string;
@@ -49,68 +50,108 @@ export function SystemCardsEditor({ initialValue }: { initialValue?: SystemCardS
     });
   }
 
+  const inputClassName =
+    "w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500";
+
   return (
-    <div>
-      <h3>System cards</h3>
+    <div className="space-y-4">
+      <h3 className="text-base font-semibold text-gray-900">System cards</h3>
       {slots.map((slot, index) => (
-        <div key={index}>
-          <label htmlFor={`system-card-icon-${index}`}>Icon</label>
-          <select
-            id={`system-card-icon-${index}`}
-            value={slot.icon}
-            onChange={(e) => update(index, { icon: e.target.value })}
-          >
-            {SYSTEM_CARD_ICONS.map((icon) => (
-              <option key={icon} value={icon}>
-                {icon}
-              </option>
-            ))}
-          </select>
+        <div key={index} className="space-y-3 rounded-md border border-gray-200 p-3">
+          <div>
+            <label htmlFor={`system-card-icon-${index}`} className="text-sm font-medium text-gray-900">
+              Icon
+            </label>
+            <select
+              id={`system-card-icon-${index}`}
+              value={slot.icon}
+              onChange={(e) => update(index, { icon: e.target.value })}
+              className={`mt-1 ${inputClassName}`}
+            >
+              {SYSTEM_CARD_ICONS.map((icon) => (
+                <option key={icon} value={icon}>
+                  {icon}
+                </option>
+              ))}
+            </select>
+          </div>
 
-          <label htmlFor={`system-card-title-en-${index}`}>Title (English)</label>
-          <input
-            id={`system-card-title-en-${index}`}
-            type="text"
-            value={slot.titleEn}
-            onChange={(e) => update(index, { titleEn: e.target.value })}
-          />
+          <div>
+            <label htmlFor={`system-card-title-en-${index}`} className="text-sm font-medium text-gray-900">
+              Title (English)
+            </label>
+            <input
+              id={`system-card-title-en-${index}`}
+              type="text"
+              value={slot.titleEn}
+              onChange={(e) => update(index, { titleEn: e.target.value })}
+              className={`mt-1 ${inputClassName}`}
+            />
+          </div>
 
-          <label htmlFor={`system-card-description-en-${index}`}>Description (English)</label>
-          <textarea
-            id={`system-card-description-en-${index}`}
-            value={slot.descriptionEn}
-            onChange={(e) => update(index, { descriptionEn: e.target.value })}
-          />
+          <div>
+            <label htmlFor={`system-card-description-en-${index}`} className="text-sm font-medium text-gray-900">
+              Description (English)
+            </label>
+            <textarea
+              id={`system-card-description-en-${index}`}
+              value={slot.descriptionEn}
+              onChange={(e) => update(index, { descriptionEn: e.target.value })}
+              className={`mt-1 ${inputClassName}`}
+            />
+          </div>
 
-          <label htmlFor={`system-card-title-ar-${index}`}>Title (Arabic)</label>
-          <input
-            id={`system-card-title-ar-${index}`}
-            type="text"
-            value={slot.titleAr}
-            onChange={(e) => update(index, { titleAr: e.target.value })}
-          />
+          <div>
+            <label htmlFor={`system-card-title-ar-${index}`} className="text-sm font-medium text-gray-900">
+              Title (Arabic)
+            </label>
+            <input
+              id={`system-card-title-ar-${index}`}
+              type="text"
+              value={slot.titleAr}
+              onChange={(e) => update(index, { titleAr: e.target.value })}
+              className={`mt-1 ${inputClassName}`}
+            />
+          </div>
 
-          <label htmlFor={`system-card-description-ar-${index}`}>Description (Arabic)</label>
-          <textarea
-            id={`system-card-description-ar-${index}`}
-            value={slot.descriptionAr}
-            onChange={(e) => update(index, { descriptionAr: e.target.value })}
-          />
+          <div>
+            <label htmlFor={`system-card-description-ar-${index}`} className="text-sm font-medium text-gray-900">
+              Description (Arabic)
+            </label>
+            <textarea
+              id={`system-card-description-ar-${index}`}
+              value={slot.descriptionAr}
+              onChange={(e) => update(index, { descriptionAr: e.target.value })}
+              className={`mt-1 ${inputClassName}`}
+            />
+          </div>
 
-          <button type="button" onClick={() => moveSlot(index, -1)} disabled={index === 0}>
-            Move up
-          </button>
-          <button type="button" onClick={() => moveSlot(index, 1)} disabled={index === slots.length - 1}>
-            Move down
-          </button>
-          <button type="button" onClick={() => removeSlot(index)} disabled={slots.length <= 1}>
-            Remove
-          </button>
+          <div className="flex flex-wrap gap-2">
+            <Button type="button" variant="secondary" onClick={() => moveSlot(index, -1)} disabled={index === 0}>
+              Move up
+            </Button>
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() => moveSlot(index, 1)}
+              disabled={index === slots.length - 1}
+            >
+              Move down
+            </Button>
+            <Button
+              type="button"
+              variant="destructive"
+              onClick={() => removeSlot(index)}
+              disabled={slots.length <= 1}
+            >
+              Remove
+            </Button>
+          </div>
         </div>
       ))}
-      <button type="button" onClick={addSlot} disabled={slots.length >= 6}>
+      <Button type="button" variant="secondary" onClick={addSlot} disabled={slots.length >= 6}>
         Add system card
-      </button>
+      </Button>
       <input type="hidden" name="systemCardsJson" value={JSON.stringify(slots)} />
     </div>
   );

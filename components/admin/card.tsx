@@ -1,0 +1,15 @@
+import { surface, border } from "./palette";
+
+export function Card({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`rounded-lg border ${border} ${surface} p-4 sm:p-6 ${className}`}>
+      {children}
+    </div>
+  );
+}

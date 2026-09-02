@@ -34,18 +34,25 @@ export function LogoImageField({ initialValue }: { initialValue?: string | null 
   }
 
   return (
-    <div>
-      <label htmlFor="logo-image-input">Client logo (optional — the hero identity card image)</label>
+    <div className="space-y-2">
+      <label htmlFor="logo-image-input" className="text-sm font-medium text-gray-900">
+        Client logo (optional — the hero identity card image)
+      </label>
       <input
         id="logo-image-input"
         type="file"
         accept="image/*"
         onChange={handleChange}
         disabled={state === "uploading"}
+        className="block text-sm text-gray-700"
       />
-      {state === "uploading" && <p>Uploading…</p>}
-      {error && <p role="alert">{error}</p>}
-      {url && <img src={url} alt="" style={{ maxWidth: 200 }} />}
+      {state === "uploading" && <p className="text-sm text-gray-500">Uploading…</p>}
+      {error && (
+        <p role="alert" className="text-sm text-red-600">
+          {error}
+        </p>
+      )}
+      {url && <img src={url} alt="" style={{ maxWidth: 200 }} className="rounded-md border border-gray-200" />}
       <input type="hidden" name="logo" value={url} />
     </div>
   );

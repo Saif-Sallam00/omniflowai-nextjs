@@ -34,20 +34,25 @@ export function CoverImageField({ initialValue }: { initialValue?: string }) {
   }
 
   return (
-    <div>
-      <label htmlFor="cover-image-input">Cover image</label>
+    <div className="space-y-2">
+      <label htmlFor="cover-image-input" className="text-sm font-medium text-gray-900">
+        Cover image
+      </label>
       <input
         id="cover-image-input"
         type="file"
         accept="image/*"
         onChange={handleChange}
         disabled={state === "uploading"}
+        className="block text-sm text-gray-700"
       />
-      {state === "uploading" && <p>Uploading…</p>}
+      {state === "uploading" && <p className="text-sm text-gray-500">Uploading…</p>}
       {error && (
-        <p role="alert">{error}</p>
+        <p role="alert" className="text-sm text-red-600">
+          {error}
+        </p>
       )}
-      {url && <img src={url} alt="" style={{ maxWidth: 200 }} />}
+      {url && <img src={url} alt="" style={{ maxWidth: 200 }} className="rounded-md border border-gray-200" />}
       <input type="hidden" name="coverImage" value={url} />
     </div>
   );

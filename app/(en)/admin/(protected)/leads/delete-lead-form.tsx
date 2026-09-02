@@ -1,17 +1,14 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
+import { Button } from "@/components/admin/button";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <button
-      type="submit"
-      disabled={pending}
-      className="rounded border border-red-300 px-2 py-0.5 text-xs text-red-700"
-    >
+    <Button variant="destructive" type="submit" disabled={pending} className="text-xs">
       {pending ? "Deleting…" : "Delete"}
-    </button>
+    </Button>
   );
 }
 
