@@ -306,19 +306,19 @@ const HOW_WE_WORK = {
   capabilities: [
     {
       glyph: "marketing",
-      href: "/services/digital-marketing",
+      href: "/solutions",
       title: "Marketing Systems",
       body: "Build measurable acquisition systems — search, paid, conversion, and tracking wired together instead of run separately.",
     },
     {
       glyph: "tech",
-      href: "/services/software",
+      href: "/solutions",
       title: "Business Technology",
       body: "Build and connect the systems the business runs on — ERP, CRM, web and mobile platforms, and the automation between them.",
     },
     {
       glyph: "ai",
-      href: "/services/ai-training",
+      href: "/solutions",
       title: "AI Enablement",
       body: "Embed AI into real workflows so teams actually use it, inside the work they already do.",
     },

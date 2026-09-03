@@ -39,19 +39,19 @@ const heroSystemNodes: InteractiveNode[] = [
 
 const PILLARS = [
   {
-    href: "/services/ai-training",
+    href: "/solutions",
     icon: Bot,
     title: "AI Enablement",
     body: "We run structured AI adoption programs for teams and leadership — from executive strategy sessions to hands-on workflow integration. The goal isn't awareness, it's operational capability: your people using AI on real work, not watching a demo.",
   },
   {
-    href: "/services/digital-marketing",
+    href: "/solutions",
     icon: Target,
     title: "Marketing Systems",
     body: "SEO, paid campaigns, and conversion strategy wired into one engine that targets qualified buyers — not vanity traffic. Every stage is tracked, so you know what a lead actually costs and where revenue comes from.",
   },
   {
-    href: "/services/software",
+    href: "/solutions",
     icon: Layers,
     title: "Business Technology",
     body: "The systems your business runs on — ERP and CRM platforms, customer-facing web, mobile apps, and the automation that connects them. Built to own, integrate, and scale, not to rent.",
@@ -222,8 +222,8 @@ export default function HomePage() {
           </h2>
 
           <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-            {PILLARS.map((pillar) => (
-              <Link key={pillar.href} href={getLanguagePath(pillar.href, LANGUAGE)}>
+            {PILLARS.map((pillar, index) => (
+              <Link key={index} href={getLanguagePath(pillar.href, LANGUAGE)}>
                 <div className="card-lift group flex h-full cursor-pointer flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-card hover:border-slate-300 md:p-8">
                   <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10">
                     <pillar.icon className="h-6 w-6 text-brand-600" />
