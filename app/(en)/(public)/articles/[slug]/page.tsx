@@ -65,6 +65,7 @@ export async function generateMetadata({
       ar: counterpartSlug ? `/articles/${counterpartSlug}` : null,
     },
     imageUrl: article.coverImage,
+    ogType: "article",
   });
 }
 

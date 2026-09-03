@@ -65,6 +65,7 @@ export async function generateMetadata({
       ar: `/articles/${slug}`,
     },
     imageUrl: article.coverImage,
+    ogType: "article",
   });
 }
 

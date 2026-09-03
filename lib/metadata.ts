@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { getLanguagePath, type Language } from "@/lib/language";
-import { siteUrl } from "@/lib/site";
+import { LANGUAGES, getLanguagePath, type Language } from "@/lib/language";
+import { siteUrl, DEFAULT_OG_IMAGE_PATH } from "@/lib/site";
 
 export type PageMetadataInput = {
   path: string;
@@ -9,6 +9,7 @@ export type PageMetadataInput = {
   description: string;
   languageAlternates?: { en: string | null; ar: string | null };
   imageUrl?: string;
+  ogType?: "website" | "article";
 };
 
 export function buildAbsoluteUrl(path: string): string {
@@ -16,8 +17,9 @@ export function buildAbsoluteUrl(path: string): string {
 }
 
 export function buildPageMetadata(input: PageMetadataInput): Metadata {
-  const { path, language, title, description, languageAlternates, imageUrl } = input;
+  const { path, language, title, description, languageAlternates, imageUrl, ogType } = input;
   const canonicalUrl = buildAbsoluteUrl(getLanguagePath(path, language));
+  const otherLanguage: Language = language === "en" ? "ar" : "en";
 
   let languages: Record<string, string>;
   if (languageAlternates) {
@@ -44,6 +46,13 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
     };
   }
 
+  const ogImages = imageUrl
+    ? [{ url: buildAbsoluteUrl(imageUrl) }]
+    : [{ url: buildAbsoluteUrl(DEFAULT_OG_IMAGE_PATH), width: 1200, height: 630 }];
+  const twitterImages = imageUrl
+    ? [buildAbsoluteUrl(imageUrl)]
+    : [buildAbsoluteUrl(DEFAULT_OG_IMAGE_PATH)];
+
   return {
     title,
     description,
@@ -55,13 +64,17 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
       title,
       description,
       url: canonicalUrl,
-      ...(imageUrl ? { images: [{ url: buildAbsoluteUrl(imageUrl) }] } : {}),
+      images: ogImages,
+      siteName: "OmniflowAI",
+      type: ogType ?? "website",
+      locale: LANGUAGES[language].ogLocale,
+      alternateLocale: LANGUAGES[otherLanguage].ogLocale,
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      ...(imageUrl ? { images: [buildAbsoluteUrl(imageUrl)] } : {}),
+      images: twitterImages,
     },
   };
 }

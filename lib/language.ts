@@ -4,11 +4,12 @@ export type LanguageConfig = {
   prefix: "" | "/ar";
   dir: "ltr" | "rtl";
   htmlLang: "en" | "ar";
+  ogLocale: "en_US" | "ar_AR";
 };
 
 export const LANGUAGES: Record<Language, LanguageConfig> = {
-  en: { prefix: "", dir: "ltr", htmlLang: "en" },
-  ar: { prefix: "/ar", dir: "rtl", htmlLang: "ar" },
+  en: { prefix: "", dir: "ltr", htmlLang: "en", ogLocale: "en_US" },
+  ar: { prefix: "/ar", dir: "rtl", htmlLang: "ar", ogLocale: "ar_AR" },
 };
 
 export function resolveLanguageFromPathname(pathname: string): Language {

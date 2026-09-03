@@ -1,11 +1,38 @@
 import { buildAbsoluteUrl } from "@/lib/metadata";
 import { getLanguagePath, type Language } from "@/lib/language";
+import { siteUrl, LOGO_PATH } from "@/lib/site";
+
+const ORGANIZATION_ID = `${siteUrl}/#organization`;
+
+const ORGANIZATION_DESCRIPTION: Record<Language, string> = {
+  en: "OmniflowAI — AI-powered solutions.",
+  ar: "OmniflowAI — حلول مدعومة بالذكاء الاصطناعي.",
+};
 
 const ORGANIZATION_REF = (language: Language) => ({
   "@type": "Organization",
+  "@id": ORGANIZATION_ID,
   name: "OmniflowAI",
   url: buildAbsoluteUrl(getLanguagePath("/", language)),
 });
+
+export function buildOrganizationJsonLd(language: Language) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": ORGANIZATION_ID,
+    name: "OmniflowAI",
+    url: buildAbsoluteUrl(getLanguagePath("/", language)),
+    description: ORGANIZATION_DESCRIPTION[language],
+    inLanguage: language,
+    logo: {
+      "@type": "ImageObject",
+      url: buildAbsoluteUrl(LOGO_PATH),
+      width: 512,
+      height: 512,
+    },
+  };
+}
 
 export function buildArticleJsonLd(
   article: {
