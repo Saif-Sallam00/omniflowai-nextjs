@@ -18,6 +18,11 @@ const envSchema = z.object({
     .string()
     .min(1, "BETTER_AUTH_URL is required")
     .url("BETTER_AUTH_URL must be a valid URL"),
+  SITE_URL: z
+    .string()
+    .min(1, "SITE_URL is required")
+    .url("SITE_URL must be a valid URL")
+    .refine((value) => !value.endsWith("/"), "SITE_URL must not end with a trailing slash"),
 });
 
 function parseEnv(): z.infer<typeof envSchema> {

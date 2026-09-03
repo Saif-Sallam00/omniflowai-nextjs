@@ -25,6 +25,8 @@ These were required by the input spec to run before any specification content wa
 | `og:url` | `https://omniflowai.net/` |
 | Organization JSON-LD | `{"@context":"https://schema.org","@type":"Organization","name":"OmniflowAI","url":"https://omniflowai.net/","description":"OmniflowAI — AI-powered solutions.","inLanguage":"en"}` — **no `@id` field present** |
 
+**Note (added at Gate 2, carried here at Gate 3):** PV-2 was captured before the operator deployed Slice 5.5 to production and is now stale (it lacks the JSON-LD `@id`/`logo` and `og:image` fields Slice 5.5 added). It is retained above only as a historical record of the Gate 1 finding. **PV-2b — recaptured post-deploy in `plan.md` — is the authoritative baseline for all post-deploy verification.** No requirement or task in this feature cites PV-2 as a verification target.
+
 **PV-3 — Domain check**: All fetched values point at `https://omniflowai.net` with the correct scheme and no `*.replit.app` leakage. No production SEO defect found; this slice's scope and priority are unaffected. Proceeding as a pure refactor.
 
 **Side finding (not in scope, flagged for the operator only):** The live Organization JSON-LD has no `@id` field, but the current repository (`lib/structured-data.ts:14,23`, from commit `a020336`) always emits one (`` `${siteUrl}/#organization` ``). This means the deployed production build predates commit `a020336` — production is running older code than the current `master`. This is a deployment-staleness observation, not a defect this slice introduces or must fix. It does not block this slice: FR-4.1's "before" baseline is captured from a **local** production build of unmodified code (per FR-4.3), not from the live site, so the comparison this slice depends on is unaffected. It is surfaced here only so the operator isn't surprised that a future deploy will change the live JSON-LD shape for reasons unrelated to this slice.
@@ -114,7 +116,7 @@ As anyone setting up a new environment for this project, I want `SITE_URL` docum
 - **FR-006**: No part of the system other than the single existing site-identity accessor (`lib/site.ts`) may read `SITE_URL` directly; every other consumer continues to go through the existing `siteUrl` export.
 - **FR-007**: The example environment file MUST document `SITE_URL` as a required variable, with a comment explaining that it must have no trailing slash and that it is the public site origin used for canonicals, hreflang, Open Graph, and JSON-LD — distinct from `BETTER_AUTH_URL`, which remains documented as-is.
 - **FR-008**: When `SITE_URL` is set to the value `BETTER_AUTH_URL` currently holds, the rendered output of every page MUST be byte-identical to the output before this change. This is the safety property that makes the change a pure refactor rather than a behavior change.
-- **FR-009**: The rollout MUST set and confirm `SITE_URL` in the production secret store before the code change is deployed, and MUST verify the live site's canonical/hreflang/OG/JSON-LD URLs against the PV-2 baseline after deployment. A missing `SITE_URL` at deploy time fails the production build, not merely a runtime request, so this ordering is a hard requirement, not a best practice.
+- **FR-009**: The rollout MUST set and confirm `SITE_URL` in the production secret store before the code change is deployed, and MUST verify the live site's canonical/hreflang/OG/JSON-LD URLs — plus the full `/sitemap.xml` and `/robots.txt` bodies — against the **PV-2b** baseline (`plan.md`) after deployment. PV-2 is stale and MUST NOT be used for this comparison. A missing `SITE_URL` at deploy time fails the production build, not merely a runtime request, so this ordering is a hard requirement, not a best practice.
 
 ### Key Entities
 
@@ -129,7 +131,7 @@ As anyone setting up a new environment for this project, I want `SITE_URL` docum
 - **SC-002**: A local production build with `SITE_URL` unset fails 100% of the time, with zero successful builds producing broken (`undefined`-containing) URLs.
 - **SC-003**: A local production build with a trailing-slash `SITE_URL` fails 100% of the time, with an error identifying the trailing-slash rule.
 - **SC-004**: Authentication (login and logout) continues to work end-to-end against a local production build after the change, with zero regressions attributable to this feature.
-- **SC-005**: Post-deployment, the live site's canonical/hreflang/OG/JSON-LD values match the PV-2 baseline exactly, confirming the production rollout introduced no observable change.
+- **SC-005**: Post-deployment, the live site's canonical/hreflang/OG/JSON-LD values, plus the full `/sitemap.xml` and `/robots.txt` bodies, match the **PV-2b** baseline (`plan.md`) exactly, confirming the production rollout introduced no observable change.
 
 ## Assumptions
 
