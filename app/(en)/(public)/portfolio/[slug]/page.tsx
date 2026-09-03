@@ -136,7 +136,7 @@ export default async function PortfolioDetailPage({
           <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
             {project.problemHeadline}
           </h2>
-          <p className="mt-3 max-w-[70ch] leading-relaxed text-slate-400">{project.problemBody}</p>
+          <p className="mt-3 max-w-[150ch] leading-relaxed text-slate-400">{project.problemBody}</p>
         </div>
       </section>
 
@@ -149,7 +149,7 @@ export default async function PortfolioDetailPage({
           <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
             {project.diagnosisHeadline}
           </h2>
-          <p className="mt-3 max-w-[70ch] leading-relaxed text-slate-400">
+          <p className="mt-3 max-w-[150ch] leading-relaxed text-slate-400">
             {project.diagnosisBody}
           </p>
         </div>

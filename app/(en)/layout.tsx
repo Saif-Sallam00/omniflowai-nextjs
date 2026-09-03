@@ -14,7 +14,12 @@ export default function EnglishRootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang={LANGUAGES.en.htmlLang} dir={LANGUAGES.en.dir} className={fontVariables}>
+    <html
+      lang={LANGUAGES.en.htmlLang}
+      dir={LANGUAGES.en.dir}
+      className={fontVariables}
+      data-scroll-behavior="smooth"
+    >
       <body className="font-sans">{children}</body>
     </html>
   );

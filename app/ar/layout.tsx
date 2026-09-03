@@ -14,7 +14,12 @@ export default function ArabicRootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang={LANGUAGES.ar.htmlLang} dir={LANGUAGES.ar.dir} className={fontVariables}>
+    <html
+      lang={LANGUAGES.ar.htmlLang}
+      dir={LANGUAGES.ar.dir}
+      className={fontVariables}
+      data-scroll-behavior="smooth"
+    >
       <body className="font-sans">{children}</body>
     </html>
   );
