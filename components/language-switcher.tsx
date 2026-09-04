@@ -17,8 +17,8 @@ const SWITCHER_LABEL: Record<"en" | "ar", string> = {
 
 // Hardcoded literals in the source design, not i18n keys.
 const A11Y_TOGGLE_LABEL: Record<"en" | "ar", string> = {
-  en: "التبديل إلى العربية",
-  ar: "Switch to English",
+  en: "Switch to Arabic",
+  ar: "التبديل إلى الإنجليزية",
 };
 
 export function LanguageSwitcher({

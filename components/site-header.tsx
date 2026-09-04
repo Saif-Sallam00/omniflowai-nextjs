@@ -1,13 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, Hexagon, Menu, X } from "lucide-react";
 import { getLanguagePath, type Language } from "@/lib/language";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { useFocusTrap } from "@/lib/hooks/use-focus-trap";
 
 type NavLink = { path: string; label: string };
+
+// Hardcoded literals in the source design, not i18n keys (matches the
+// existing pattern in language-switcher.tsx's A11Y_TOGGLE_LABEL).
+const MOBILE_NAV_LABEL: Record<Language, string> = {
+  en: "Site navigation",
+  ar: "التنقل في الموقع",
+};
 
 export function SiteHeader({
   language,
@@ -22,12 +30,32 @@ export function SiteHeader({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const isRTL = language === "ar";
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleEscape = () => {
+    setIsMobileMenuOpen(false);
+    toggleButtonRef.current?.focus();
+  };
+
+  useFocusTrap(toggleButtonRef, overlayRef, isMobileMenuOpen, handleEscape);
+
+  const handleToggleClick = () => {
+    const willOpen = !isMobileMenuOpen;
+    setIsMobileMenuOpen(willOpen);
+    if (!willOpen) {
+      // Closing via the toggle itself: explicitly restore focus rather than
+      // assuming the click already left it focused (Safari doesn't always
+      // focus a button on click).
+      toggleButtonRef.current?.focus();
+    }
+  };
 
   return (
     <nav
@@ -85,9 +113,10 @@ export function SiteHeader({
           </div>
 
           <button
+            ref={toggleButtonRef}
             type="button"
-            className="rounded-md p-2 text-slate-300 hover:bg-white/10 hover:text-white md:hidden"
-            onClick={() => setIsMobileMenuOpen((v) => !v)}
+            className="rounded-md p-2.5 text-slate-300 hover:bg-white/10 hover:text-white md:hidden"
+            onClick={handleToggleClick}
             aria-expanded={isMobileMenuOpen}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -97,7 +126,13 @@ export function SiteHeader({
       </div>
 
       {isMobileMenuOpen && (
-        <div className="absolute left-0 right-0 top-full h-screen border-t border-slate-800 bg-slate-950 md:hidden">
+        <div
+          ref={overlayRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label={MOBILE_NAV_LABEL[language]}
+          className="absolute left-0 right-0 top-full h-screen border-t border-slate-800 bg-slate-950 md:hidden"
+        >
           <div className="space-y-4 px-6 py-6">
             {navLinks.map((link) => {
               const href = getLanguagePath(link.path, language);

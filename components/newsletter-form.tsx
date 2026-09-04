@@ -28,7 +28,10 @@ function SubmitButton({ ariaLabel }: { ariaLabel: string }) {
       type="submit"
       disabled={pending}
       aria-label={ariaLabel}
-      className="flex h-10 w-10 flex-none items-center justify-center rounded-md bg-primary text-primary-foreground disabled:cursor-not-allowed disabled:opacity-60"
+      // The ::after pseudo-element extends the tappable area 2px past each
+      // edge (to 44x44) without changing the visible 40px box — a hit-area
+      // expansion, not a visual resize.
+      className="relative flex h-10 w-10 flex-none items-center justify-center rounded-md bg-primary text-primary-foreground after:absolute after:inset-[-2px] after:content-[''] disabled:cursor-not-allowed disabled:opacity-60"
     >
       <Send className="h-4 w-4" />
     </button>
