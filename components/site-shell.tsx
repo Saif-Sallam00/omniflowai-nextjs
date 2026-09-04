@@ -4,6 +4,7 @@ import { getLanguagePath, type Language } from "@/lib/language";
 import { CONTACT_EMAIL } from "@/lib/contact";
 import { SiteHeader } from "@/components/site-header";
 import { NewsletterForm } from "@/components/newsletter-form";
+import { WhatsappCta } from "@/components/whatsapp-cta";
 import { LanguageAlternateProvider } from "@/lib/language-alternate-context";
 import { buildOrganizationJsonLd } from "@/lib/structured-data";
 
@@ -150,6 +151,7 @@ export function SiteShell({
         bookCallLabel={BOOK_CALL_LABEL[language]}
       />
       {children}
+      <WhatsappCta language={language} />
       <footer className="relative overflow-hidden border-t border-slate-800 bg-slate-950 text-slate-300">
         <div className="pointer-events-none absolute left-1/4 top-0 h-96 w-96 rounded-full bg-brand-500/5 blur-[60px]" />
         <div className="pointer-events-none absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-brand-700/5 blur-[60px]" />
