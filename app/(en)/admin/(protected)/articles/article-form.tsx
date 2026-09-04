@@ -4,7 +4,7 @@ import { useActionState, useState } from "react";
 import Link from "next/link";
 import { useFormStatus } from "react-dom";
 import { slugifyForLanguage } from "@/lib/article-slug";
-import { RELATED_SOLUTIONS } from "@/lib/article-solutions";
+import { RELATED_SOLUTIONS, getSolutionCopy } from "@/lib/article-solutions";
 import { getLanguagePath } from "@/lib/language";
 import type { ProjectOption } from "@/lib/db/portfolio";
 import type { Language } from "@/lib/language";
@@ -272,7 +272,7 @@ export function ArticleForm({
         </Card>
 
         <Card className="space-y-2">
-          <BodyEditor initialValue={initialValues?.body} />
+          <BodyEditor initialValue={initialValues?.body} language={language} />
           {state.fieldErrors.body && (
             <p role="alert" className="text-sm text-admin-danger">
               {state.fieldErrors.body[0]}
@@ -308,7 +308,7 @@ export function ArticleForm({
                 <option value="">None</option>
                 {RELATED_SOLUTIONS.map((solution) => (
                   <option key={solution} value={solution}>
-                    {solution}
+                    {getSolutionCopy(solution, "en")?.name ?? solution}
                   </option>
                 ))}
               </select>

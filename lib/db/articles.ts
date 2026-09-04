@@ -22,6 +22,7 @@ export type Article = {
   body: string;
   published: boolean;
   publishedAt: Date | null;
+  updatedAt: Date;
   relatedProjectId: number | null;
   relatedSolution: string | null;
   translationGroupId: string;
@@ -64,6 +65,7 @@ export const getArticleBySlug = cache(
         body: articles.body,
         published: articles.published,
         publishedAt: articles.publishedAt,
+        updatedAt: articles.updatedAt,
         relatedProjectId: articles.relatedProjectId,
         relatedSolution: articles.relatedSolution,
         translationGroupId: articles.translationGroupId,
@@ -73,6 +75,54 @@ export const getArticleBySlug = cache(
       .limit(1);
 
     return rows[0] ?? null;
+  },
+);
+
+export type RelatedArticleCard = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  publishedAt: Date | null;
+};
+
+// Up to 3 related articles: same language, excludes the current article,
+// prefers the same relatedSolution, fills remaining slots with the latest
+// published — all in one query (no N+1), ordered deterministically.
+export const getRelatedArticles = cache(
+  async (
+    language: Language,
+    currentSlug: string,
+    relatedSolution: string | null,
+  ): Promise<RelatedArticleCard[]> => {
+    const rows = await db
+      .select({
+        slug: articles.slug,
+        title: articles.title,
+        excerpt: articles.excerpt,
+        publishedAt: articles.publishedAt,
+        relatedSolution: articles.relatedSolution,
+      })
+      .from(articles)
+      .where(
+        and(
+          eq(articles.language, language),
+          eq(articles.published, true),
+          sql`${articles.slug} != ${currentSlug}`,
+        ),
+      )
+      .orderBy(
+        sql`(${articles.relatedSolution} = ${relatedSolution}) desc`,
+        desc(articles.publishedAt),
+        desc(articles.id),
+      )
+      .limit(3);
+
+    return rows.map(({ slug, title, excerpt, publishedAt }) => ({
+      slug,
+      title,
+      excerpt,
+      publishedAt,
+    }));
   },
 );
 

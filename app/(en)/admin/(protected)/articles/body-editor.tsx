@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Bold, Italic, Heading2, Heading3, Link2, ImageIcon } from "lucide-react";
 import { ArticleMarkdown } from "@/components/article-markdown";
 import { labelClass, helpTextClass, errorTextClass, border, textMuted, hoverBg } from "@/components/admin/palette";
+import type { Language } from "@/lib/language";
 
 type Mode = "write" | "preview";
 
@@ -15,7 +16,13 @@ const TOOLBAR_ITEMS: { icon: typeof Bold; label: string; wrap?: [string, string]
   { icon: Link2, label: "Link", wrap: ["[", "](https://)"] },
 ];
 
-export function BodyEditor({ initialValue }: { initialValue?: string }) {
+export function BodyEditor({
+  initialValue,
+  language = "en",
+}: {
+  initialValue?: string;
+  language?: Language;
+}) {
   const [value, setValue] = useState(initialValue ?? "");
   const [mode, setMode] = useState<Mode>("write");
   const [uploading, setUploading] = useState(false);
@@ -80,9 +87,15 @@ export function BodyEditor({ initialValue }: { initialValue?: string }) {
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <label htmlFor="body-textarea" className={labelClass}>
-          Body (Markdown)
-        </label>
+        <div>
+          <label htmlFor="body-textarea" className={labelClass}>
+            Body (Markdown)
+          </label>
+          <p className={`mt-0.5 text-xs ${textMuted}`}>
+            Use H2 headings to structure the article. The public page automatically builds
+            navigation from headings.
+          </p>
+        </div>
         <div className={`inline-flex rounded-md border ${border} p-0.5 text-sm`}>
           <button
             type="button"
@@ -157,7 +170,7 @@ export function BodyEditor({ initialValue }: { initialValue?: string }) {
       ) : (
         <div className={`rounded-md border ${border} bg-admin-input px-4 py-3`}>
           {value.trim() ? (
-            <ArticleMarkdown body={value} />
+            <ArticleMarkdown body={value} language={language} />
           ) : (
             <p className={helpTextClass}>Nothing to preview yet.</p>
           )}

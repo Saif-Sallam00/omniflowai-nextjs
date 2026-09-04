@@ -40,6 +40,7 @@ export function buildArticleJsonLd(
     excerpt: string;
     coverImage: string;
     publishedAt: Date | null;
+    updatedAt?: Date;
     slug: string;
   },
   language: Language,
@@ -53,6 +54,7 @@ export function buildArticleJsonLd(
     description: article.excerpt,
     image: buildAbsoluteUrl(article.coverImage),
     ...(article.publishedAt ? { datePublished: article.publishedAt.toISOString() } : {}),
+    ...(article.updatedAt ? { dateModified: article.updatedAt.toISOString() } : {}),
     inLanguage: language,
     url,
     mainEntityOfPage: url,

@@ -1,31 +1,31 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildPageMetadata, buildAbsoluteUrl } from "@/lib/metadata";
 import { getLanguagePath } from "@/lib/language";
 import {
   getArticleBySlug,
   getPublishedArticleSlugs,
   getPublishedCounterpartSlug,
+  getRelatedArticles,
 } from "@/lib/db/articles";
 import { getRelatedProjectCard } from "@/lib/db/portfolio";
-import { formatCategoryLabel } from "@/lib/category-label";
-import { formatArticleDate } from "@/lib/article-date";
+import { formatArticleDate, isUpdateMeaningful } from "@/lib/article-date";
+import { getArticleReadingMinutes, formatReadingTime } from "@/lib/article-reading-time";
+import { extractArticleHeadings } from "@/lib/article-headings";
 import { normalizeSlugParam } from "@/lib/slug-param";
 import { buildArticleJsonLd } from "@/lib/structured-data";
 import { FallbackImage } from "@/components/fallback-image";
 import { ArticleMarkdown } from "@/components/article-markdown";
 import { ArticleLanguageAlternate } from "@/components/article-language-alternate";
+import { ArticleHero } from "@/components/article/article-hero";
+import { ArticleToc } from "@/components/article/article-toc";
+import { ArticleShare } from "@/components/article/article-share";
+import { ArticleNextStep } from "@/components/article/article-next-step";
+import { RelatedArticles } from "@/components/article/related-articles";
 
 const LANGUAGE = "en" as const;
 
 export const revalidate = 3600;
-
-const SOLUTION_NAMES: Record<string, string> = {
-  foundation: "Foundation",
-  "growth-engine": "Growth Engine",
-  "scale-infrastructure": "Scale Infrastructure",
-  custom: "Custom Transformation",
-};
 
 export async function generateStaticParams() {
   const slugs = await getPublishedArticleSlugs(LANGUAGE);
@@ -79,124 +79,96 @@ export default async function ArticleDetailPage({
   const article = await getArticleBySlug(slug, LANGUAGE);
   if (!article || !article.published) notFound();
 
-  const relatedProject = article.relatedProjectId
-    ? await getRelatedProjectCard(article.relatedProjectId, LANGUAGE)
-    : null;
+  const [relatedProject, counterpartSlug, relatedArticles] = await Promise.all([
+    article.relatedProjectId
+      ? getRelatedProjectCard(article.relatedProjectId, LANGUAGE)
+      : Promise.resolve(null),
+    getPublishedCounterpartSlug(article.translationGroupId, "ar"),
+    getRelatedArticles(LANGUAGE, article.slug, article.relatedSolution),
+  ]);
 
-  const counterpartSlug = article.published
-    ? await getPublishedCounterpartSlug(article.translationGroupId, "ar")
-    : null;
-
-  const articleJsonLd = article.published ? buildArticleJsonLd(article, LANGUAGE) : null;
+  const articleJsonLd = buildArticleJsonLd(article, LANGUAGE);
+  const headings = extractArticleHeadings(article.body);
+  const readingMinutes = getArticleReadingMinutes(article.body, LANGUAGE);
+  const showUpdated = isUpdateMeaningful(article.publishedAt, article.updatedAt);
+  const canonicalUrl = buildAbsoluteUrl(getLanguagePath(`/articles/${article.slug}`, LANGUAGE));
 
   return (
     <div className="min-h-screen bg-slate-950 pt-20 text-slate-300">
-      {articleJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-        />
-      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <ArticleLanguageAlternate
         href={counterpartSlug ? getLanguagePath(`/articles/${counterpartSlug}`, "ar") : null}
       />
       <article>
-        {/* === HEADER === */}
-        <header className="relative overflow-hidden py-12 md:py-16">
-          <div className="pointer-events-none absolute -top-40 end-[-120px] h-[420px] w-[420px] rounded-full bg-primary/[0.10] blur-3xl" />
-          <div className="relative mx-auto max-w-3xl px-6 md:px-8">
-            <Link href={getLanguagePath("/articles", LANGUAGE)}>
-              <span className="mb-8 inline-block cursor-pointer font-mono text-[11px] uppercase tracking-[0.14em] text-slate-400 transition-colors hover:text-white">
-                All articles
-              </span>
-            </Link>
+        <ArticleHero
+          backHref={getLanguagePath("/articles", LANGUAGE)}
+          backLabel="All articles"
+          readingTimeLabel={formatReadingTime(readingMinutes, LANGUAGE)}
+          title={article.title}
+          excerpt={article.excerpt}
+          publishedLabel={
+            article.publishedAt ? `Published ${formatArticleDate(article.publishedAt, LANGUAGE)}` : null
+          }
+          updatedLabel={
+            showUpdated ? `Updated ${formatArticleDate(article.updatedAt, LANGUAGE)}` : null
+          }
+        />
 
-            {!article.published && (
-              <p className="mb-4 inline-block rounded-full border border-primary px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
-                Draft
-              </p>
-            )}
-
-            <h1 className="font-display text-3xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl">
-              {article.title}
-            </h1>
-            {article.publishedAt && (
-              <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-slate-400">
-                {formatArticleDate(article.publishedAt, LANGUAGE)}
-              </p>
-            )}
-          </div>
-        </header>
-
-        <div className="mx-auto max-w-3xl px-6 md:px-8">
+        <div className="mx-auto max-w-5xl px-6 md:px-8">
           <FallbackImage
             src={article.coverImage}
-            alt=""
+            alt={article.title}
             decoding="async"
             className="aspect-[16/9] w-full rounded-xl border border-slate-800 object-cover"
           />
         </div>
 
-        {/* === BODY === */}
-        <div className="mx-auto max-w-3xl px-6 py-12 md:px-8 md:py-16">
-          <ArticleMarkdown body={article.body} />
-        </div>
+        <div className="mx-auto max-w-5xl px-6 py-12 md:px-8 md:py-16">
+          <div
+            className={
+              headings.length >= 2
+                ? "lg:grid lg:grid-cols-[200px_minmax(0,760px)] lg:justify-center lg:gap-12"
+                : ""
+            }
+          >
+            {headings.length >= 2 && (
+              <ArticleToc headings={headings} label="On this page" mobileLabel="On this page" />
+            )}
+            <div className="mx-auto max-w-3xl lg:mx-0">
+              <ArticleMarkdown body={article.body} language={LANGUAGE} />
 
-        {/* === NEXT STEP === */}
-        {(relatedProject || article.relatedSolution) && (
-          <section className="border-y border-slate-800 bg-slate-900/30 py-12 md:py-16">
-            <div className="mx-auto max-w-3xl px-6 md:px-8">
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
-                Next step
-              </p>
-
-              <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {relatedProject && (
-                  <Link href={getLanguagePath(`/portfolio/${relatedProject.slug}`, LANGUAGE)}>
-                    <div className="card-lift group h-full cursor-pointer rounded-xl border border-slate-800 bg-slate-950/60 p-5 hover:border-slate-700">
-                      <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-slate-400">
-                        Related project
-                      </p>
-                      <p className="mt-2 font-display text-base font-semibold text-white transition-colors group-hover:text-primary">
-                        {relatedProject.title}
-                      </p>
-                      <p className="mt-1 text-sm text-slate-400">
-                        {relatedProject.categoryLabel || formatCategoryLabel(relatedProject.category)}
-                      </p>
-                    </div>
-                  </Link>
-                )}
-
-                {article.relatedSolution && (
-                  <Link href={`${getLanguagePath("/solutions", LANGUAGE)}#${article.relatedSolution}`}>
-                    <div className="card-lift group h-full cursor-pointer rounded-xl border border-slate-800 bg-slate-950/60 p-5 hover:border-slate-700">
-                      <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-slate-400">
-                        Related solution
-                      </p>
-                      <p
-                        dir="ltr"
-                        className="mt-2 font-display text-base font-semibold text-white transition-colors group-hover:text-primary rtl:text-end"
-                      >
-                        {SOLUTION_NAMES[article.relatedSolution] || article.relatedSolution}
-                      </p>
-                    </div>
-                  </Link>
-                )}
+              <div className="mt-10 flex items-center justify-between border-t border-slate-800 pt-6">
+                <p className="text-xs uppercase tracking-[0.12em] text-slate-500 ltr:font-mono">
+                  Share
+                </p>
+                <ArticleShare url={canonicalUrl} language={LANGUAGE} />
               </div>
             </div>
-          </section>
-        )}
+          </div>
+        </div>
+
+        <ArticleNextStep
+          relatedProject={relatedProject}
+          relatedSolution={article.relatedSolution}
+          language={LANGUAGE}
+        />
+
+        <RelatedArticles articles={relatedArticles} language={LANGUAGE} />
 
         {/* === CTA === */}
         <section className="relative overflow-hidden py-16 text-center md:py-20">
           <div className="pointer-events-none absolute -bottom-52 left-1/2 h-[420px] w-[640px] -translate-x-1/2 rounded-full bg-primary/[0.10] blur-3xl" />
           <div className="relative mx-auto max-w-2xl px-6 md:px-8">
             <h2 className="font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
-              Want to talk about this?
+              The tool is rarely the hardest part
             </h2>
             <p className="mx-auto mt-4 max-w-[52ch] leading-relaxed text-slate-400">
-              Book a strategy call — we&apos;ll tell you honestly whether this applies to your
-              business.
+              The harder part is deciding where AI belongs inside the way your business actually
+              works. Book a strategy call — we&apos;ll tell you honestly whether this applies to
+              your business.
             </p>
             <Link href={getLanguagePath("/contact", LANGUAGE)}>
               <span className="mt-7 inline-block cursor-pointer rounded-lg border border-primary bg-primary px-7 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-brand-400">
