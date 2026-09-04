@@ -2,7 +2,7 @@ import { Resend } from "resend";
 import { CONTACT_EMAIL } from "@/lib/contact";
 import type { Lead } from "@/lib/db/leads";
 
-const DEFAULT_FROM = "OmniflowAI Leads <onboarding@resend.dev>";
+const DEFAULT_FROM = "OmniflowAI Leads <leads@omniflowai.net>";
 
 /**
  * Fire-and-forget lead notification. Never blocks or fails the caller.
@@ -11,8 +11,11 @@ const DEFAULT_FROM = "OmniflowAI Leads <onboarding@resend.dev>";
  */
 export async function notifyNewLead(lead: Lead): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
+
   if (!apiKey) {
-    console.log("[leads] RESEND_API_KEY not set — skipping email notification (lead saved to DB).");
+    console.log(
+      "[leads] RESEND_API_KEY not set — skipping email notification (lead saved to DB)."
+    );
     return;
   }
 
@@ -20,12 +23,14 @@ export async function notifyNewLead(lead: Lead): Promise<void> {
     const resend = new Resend(apiKey);
     const to = process.env.NOTIFY_EMAIL || CONTACT_EMAIL;
     const from = process.env.RESEND_FROM || DEFAULT_FROM;
-    // The SDK resolves with { data, error } for API-level failures (e.g. an
-    // invalid key) instead of throwing — both paths must be handled, or a
-    // failed send silently logs as "sent".
+
     const { error } = await resend.emails.send({
       from,
       to,
+
+      // When you click Reply, the response goes directly to the lead.
+      replyTo: lead.email,
+
       subject: `New ${lead.source} lead: ${lead.name || lead.email}`,
       text: [
         `Source: ${lead.source}`,
@@ -39,12 +44,20 @@ export async function notifyNewLead(lead: Lead): Promise<void> {
         lead.message || "-",
       ].join("\n"),
     });
+
     if (error) {
-      console.error("[leads] Email notification failed (lead already saved):", error);
+      console.error(
+        "[leads] Email notification failed (lead already saved):",
+        error
+      );
       return;
     }
+
     console.log(`[leads] Notification email sent to ${to}.`);
   } catch (err) {
-    console.error("[leads] Email notification failed (lead already saved):", err);
+    console.error(
+      "[leads] Email notification failed (lead already saved):",
+      err
+    );
   }
 }
