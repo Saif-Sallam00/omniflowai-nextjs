@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProjectById, listProjectCategories, type SystemCard, type ResultMetric } from "@/lib/db/portfolio";
 import { updateProjectAction } from "../../actions";
 import { ProjectForm, type ProjectFormInitialValues } from "../../project-form";
 import type { SystemCardSlot } from "../../system-cards-editor";
 import type { ResultSlot } from "../../results-editor";
+
+export const metadata: Metadata = {
+  title: "Admin — Edit Project",
+};
 
 function zipSystemCards(en: SystemCard[], ar: SystemCard[]): SystemCardSlot[] {
   return en.map((enCard, i) => {

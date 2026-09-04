@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { LoginForm } from "./login-form";
 import { PageHeader } from "@/components/admin/page-header";
 import { Card } from "@/components/admin/card";
+
+export const metadata: Metadata = {
+  title: "Admin sign in",
+};
 
 export default function AdminAuthPage() {
   return (

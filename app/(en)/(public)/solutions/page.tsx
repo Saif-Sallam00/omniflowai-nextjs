@@ -16,7 +16,7 @@ export function generateMetadata() {
   return buildPageMetadata({
     path: "/solutions",
     language: "en",
-    title: "Build the systems behind your next stage of growth.",
+    title: "Solutions",
     description:
       "Your business already works. What it needs now is the infrastructure to scale. We find what's blocking growth, then build the marketing, technology, and AI systems that remove it.",
   });

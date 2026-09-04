@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getArticleById } from "@/lib/db/articles";
 import { listProjectsForSelect } from "@/lib/db/portfolio";
 import { getLanguagePath } from "@/lib/language";
 import { updateArticleAction } from "../../actions";
 import { ArticleForm } from "../../article-form";
+
+export const metadata: Metadata = {
+  title: "Admin — Edit Article",
+};
 
 export default async function EditArticlePage({
   params,

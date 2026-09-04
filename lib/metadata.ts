@@ -2,10 +2,23 @@ import type { Metadata } from "next";
 import { LANGUAGES, getLanguagePath, type Language } from "@/lib/language";
 import { siteUrl, DEFAULT_OG_IMAGE_PATH } from "@/lib/site";
 
+// Matches the root layouts' `title.template` ("%s — OmniflowAI"), applied
+// manually here because Next's title template only affects the <title> tag,
+// not openGraph.title / twitter.title.
+const TITLE_SUFFIX = " — OmniflowAI";
+
+// Falls back for a page that has no title of its own (the homepage). Mirrors
+// each root layout's `title.default`.
+export const SITE_DEFAULT_TITLE: Record<Language, string> = {
+  en: "OmniflowAI — Your Digital Transformation Partner",
+  ar: "OmniflowAI — حلول مدعومة بالذكاء الاصطناعي",
+};
+
 export type PageMetadataInput = {
   path: string;
   language: Language;
-  title: string;
+  /** Short page label, e.g. "About". Omit for the site-wide default (home). */
+  title?: string;
   description: string;
   languageAlternates?: { en: string | null; ar: string | null };
   imageUrl?: string;
@@ -53,15 +66,20 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
     ? [buildAbsoluteUrl(imageUrl)]
     : [buildAbsoluteUrl(DEFAULT_OG_IMAGE_PATH)];
 
+  // The <title> tag gets its " — OmniflowAI" suffix from the root layout's
+  // title.template, so `title` is passed through as the short label. OG/Twitter
+  // titles aren't templated by Next, so they're built out manually here.
+  const socialTitle = title ? `${title}${TITLE_SUFFIX}` : SITE_DEFAULT_TITLE[language];
+
   return {
-    title,
+    ...(title ? { title } : {}),
     description,
     alternates: {
       canonical: canonicalUrl,
       languages,
     },
     openGraph: {
-      title,
+      title: socialTitle,
       description,
       url: canonicalUrl,
       images: ogImages,
@@ -72,7 +90,7 @@ export function buildPageMetadata(input: PageMetadataInput): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: socialTitle,
       description,
       images: twitterImages,
     },

@@ -4,7 +4,10 @@ import { fontVariables } from "@/lib/fonts";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-  title: "OmniflowAI",
+  title: {
+    template: "%s — OmniflowAI",
+    default: "OmniflowAI — Your Digital Partner — Egypt, Saudi Arabia, USA",
+  },
   description: "OmniflowAI — AI-powered solutions.",
 };
 

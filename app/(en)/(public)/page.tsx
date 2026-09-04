@@ -16,7 +16,6 @@ export function generateMetadata() {
   return buildPageMetadata({
     path: "/",
     language: "en",
-    title: "Most teams buy the tool first. We diagnose first.",
     description:
       "AI, marketing, software, automation — we only build what the diagnosis supports. We look before we touch, so what we build fits how your business actually runs.",
   });

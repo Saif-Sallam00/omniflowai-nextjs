@@ -10,7 +10,7 @@ export function generateMetadata() {
   return buildPageMetadata({
     path: "/portfolio",
     language: "ar",
-    title: "أنظمة حقيقية. نتائج قابلة للقياس.",
+    title: "أعمالنا",
     description:
       "دراسات حالة من أنظمة التسويق والتقنية والذكاء الاصطناعي التي بنيناها — المشكلة والتشخيص وما تغيّر.",
   });

@@ -9,7 +9,7 @@ export function generateMetadata() {
   return buildPageMetadata({
     path: "/contact",
     language: LANGUAGE,
-    title: "لنتحدث",
+    title: "تواصل معنا",
     description: "أخبرنا عن أعمالك وما الذي يبطّئها، وسنخبرك بصراحة إن كنا نستطيع مساعدتك.",
   });
 }

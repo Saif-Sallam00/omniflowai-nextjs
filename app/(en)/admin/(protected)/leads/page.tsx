@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { leadStatusEnum } from "@/lib/db/schema";
 import { listLeads, type Lead } from "@/lib/db/leads";
@@ -12,6 +13,10 @@ const DATE_FORMAT = new Intl.DateTimeFormat("en-GB", {
   dateStyle: "medium",
   timeStyle: "short",
 });
+
+export const metadata: Metadata = {
+  title: "Admin — Leads",
+};
 
 const STATUS_FILTERS = leadStatusEnum.enumValues;
 

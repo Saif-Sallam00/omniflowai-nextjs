@@ -9,7 +9,7 @@ export function generateMetadata() {
   return buildPageMetadata({
     path: "/about",
     language: "en",
-    title: "Engineers who understand business.",
+    title: "About",
     description:
       "OmniflowAI is a digital transformation partner built around one belief: most companies don't need more tools — they need the right systems, built well and connected properly.",
   });

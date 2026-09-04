@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/admin/page-header";
 import { Card } from "@/components/admin/card";
+
+export const metadata: Metadata = {
+  title: "Admin dashboard",
+};
 
 export default function AdminDashboard() {
   return (

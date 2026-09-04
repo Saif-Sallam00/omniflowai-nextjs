@@ -10,7 +10,7 @@ export function generateMetadata() {
   return buildPageMetadata({
     path: "/portfolio",
     language: "en",
-    title: "Real systems. Measured outcomes.",
+    title: "Portfolio",
     description:
       "Case studies from the marketing, technology, and AI systems we've built — the problem, the diagnosis, and what changed.",
   });

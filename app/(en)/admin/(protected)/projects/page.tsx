@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { listProjectsForAdmin } from "@/lib/db/portfolio";
 import { getLanguagePath } from "@/lib/language";
@@ -7,6 +8,10 @@ import { PageHeader } from "@/components/admin/page-header";
 import { Button } from "@/components/admin/button";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { Table, TableHead, TableRow, TableCell } from "@/components/admin/table";
+
+export const metadata: Metadata = {
+  title: "Admin — Projects",
+};
 
 export default async function AdminProjectsPage() {
   const projects = await listProjectsForAdmin();

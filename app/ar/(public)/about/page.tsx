@@ -9,7 +9,7 @@ export function generateMetadata() {
   return buildPageMetadata({
     path: "/about",
     language: "ar",
-    title: "مهندسون يفهمون الأعمال.",
+    title: "من نحن",
     description:
       "‏OmniflowAI شريك في التحول الرقمي يقوم على قناعة واحدة: معظم الشركات لا تحتاج مزيداً من الأدوات — بل تحتاج الأنظمة الصحيحة، مبنية بإتقان ومترابطة كما ينبغي.",
   });

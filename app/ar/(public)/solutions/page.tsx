@@ -16,7 +16,7 @@ export function generateMetadata() {
   return buildPageMetadata({
     path: "/solutions",
     language: "ar",
-    title: "ابنِ الأنظمة التي يقوم عليها نموك في المرحلة القادمة.",
+    title: "الحلول",
     description:
       "أعمالك تعمل بالفعل. ما تحتاجه الآن هو البنية التي تتيح لها التوسّع. نكتشف ما الذي يعيق النمو، ثم نبني أنظمة التسويق والتقنية والذكاء الاصطناعي التي تزيله.",
   });

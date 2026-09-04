@@ -1,7 +1,12 @@
+import type { Metadata } from "next";
 import { listProjectsForSelect } from "@/lib/db/portfolio";
 import type { Language } from "@/lib/language";
 import { createArticleAction } from "../actions";
 import { ArticleForm } from "../article-form";
+
+export const metadata: Metadata = {
+  title: "Admin — New Article",
+};
 
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 

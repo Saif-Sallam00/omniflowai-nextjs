@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { listArticleGroups, type ArticleGroupRow } from "@/lib/db/articles";
 import { getLanguagePath } from "@/lib/language";
@@ -7,6 +8,10 @@ import { PageHeader } from "@/components/admin/page-header";
 import { Card } from "@/components/admin/card";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { Button } from "@/components/admin/button";
+
+export const metadata: Metadata = {
+  title: "Admin — Articles",
+};
 
 function LanguageColumn({
   language,

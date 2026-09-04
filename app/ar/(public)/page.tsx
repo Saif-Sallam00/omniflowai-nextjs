@@ -16,7 +16,6 @@ export function generateMetadata() {
   return buildPageMetadata({
     path: "/",
     language: "ar",
-    title: "معظم الفِرق تبدأ باختيار الأداة. نحن نبدأ بالتشخيص.",
     description:
       "ذكاء اصطناعي، تسويق، برمجيات، أتمتة — لا نبني إلا ما يدعمه التشخيص. ننظر قبل أن نلمس، ليلائم ما نبنيه طريقة عمل أعمالك فعلاً.",
   });

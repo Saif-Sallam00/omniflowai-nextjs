@@ -9,7 +9,7 @@ export function generateMetadata() {
   return buildPageMetadata({
     path: "/contact",
     language: LANGUAGE,
-    title: "Let's talk",
+    title: "Contact",
     description:
       "Tell us about your business and what's slowing it down. We'll tell you honestly if we can help.",
   });
