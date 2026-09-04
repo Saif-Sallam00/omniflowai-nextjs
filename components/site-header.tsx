@@ -73,7 +73,7 @@ export function SiteHeader({
                 dir="ltr"
                 className="flex items-center font-display text-4xl font-bold tracking-tight transition-colors"
               >
-                <Hexagon className="me-1 h-9 w-9 stroke-[3] text-brand-500 transition-colors group-hover:text-brand-400" />
+                <Hexagon className="me-1 h-9 w-9 rotate-90 stroke-[3] text-brand-500 transition-colors group-hover:text-brand-400" />
                 <span className="text-white transition-colors group-hover:text-brand-400">
                   Omniflow
                 </span>
