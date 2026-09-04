@@ -10,7 +10,7 @@ const TITLE_SUFFIX = " — OmniflowAI";
 // Falls back for a page that has no title of its own (the homepage). Mirrors
 // each root layout's `title.default`.
 export const SITE_DEFAULT_TITLE: Record<Language, string> = {
-  en: "OmniflowAI — Your Digital Transformation Partner",
+  en: "OmniflowAI — AI-Powered Solutions",
   ar: "OmniflowAI — حلول مدعومة بالذكاء الاصطناعي",
 };
 
