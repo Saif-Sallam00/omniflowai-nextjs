@@ -118,12 +118,12 @@ export default function HomePage() {
               </p>
               <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
                 <Link href={getLanguagePath("/contact", LANGUAGE)}>
-                  <span className="inline-flex h-12 w-full items-center justify-center rounded-full bg-primary px-8 font-bold text-primary-foreground shadow-sm transition hover:brightness-110 sm:w-auto md:h-14">
+                  <span className="inline-flex h-12 w-full items-center justify-center rounded-full bg-primary px-8 text-sm font-bold text-primary-foreground shadow-sm transition hover:brightness-110 sm:w-auto md:h-14">
                     Book a strategy call <ArrowRight className="ms-2 h-5 w-5" />
                   </span>
                 </Link>
                 <Link href={getLanguagePath("/portfolio", LANGUAGE)}>
-                  <span className="inline-flex h-12 w-full items-center justify-center rounded-full border border-slate-700 px-8 text-slate-300 transition hover:bg-white/10 hover:text-white sm:w-auto md:h-14">
+                  <span className="inline-flex h-12 w-full items-center justify-center rounded-full border border-slate-700 px-8 text-sm font-medium text-slate-300 transition hover:bg-white/10 hover:text-white sm:w-auto md:h-14">
                     See our work
                   </span>
                 </Link>

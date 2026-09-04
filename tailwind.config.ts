@@ -88,7 +88,7 @@ export default {
       fontFamily: {
         // Self-hosted via next/font (lib/fonts.ts): the generated font variable
         // is tried first, "Inter" kept as a harmless literal fallback label.
-        sans: ["var(--font-inter)", "Inter", "var(--font-sans)"],
+        sans: ["var(--font-inter)", "Inter", "sans-serif"],
         display: [
           "var(--font-space-grotesk)",
           "Space Grotesk",

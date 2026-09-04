@@ -95,10 +95,10 @@ export function PortfolioGrid({
 
                 <div className="space-y-1 px-1">
                   <div className="flex items-center justify-between gap-3">
-                    <h3 className="font-display text-xl font-bold text-white transition-colors group-hover:text-primary">
+                    <h3 className="text-xl font-bold text-white transition-colors group-hover:text-primary">
                       {item.title}
                     </h3>
-                    <span className="whitespace-nowrap rounded-md border border-slate-800 bg-slate-900 px-2 py-0.5 text-[10px] uppercase tracking-wider text-slate-400">
+                    <span className="whitespace-nowrap rounded-md border border-slate-800 bg-slate-900 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                       {item.categoryLabel || formatCategoryLabel(item.category)}
                     </span>
                   </div>

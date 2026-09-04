@@ -20,7 +20,7 @@ export default function ArabicRootLayout({
       className={fontVariables}
       data-scroll-behavior="smooth"
     >
-      <body className="font-sans">{children}</body>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }
