@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { listProjectsForSelect } from "@/lib/db/portfolio";
+import { getArticleByTranslationGroupAndLanguage } from "@/lib/db/articles";
 import type { Language } from "@/lib/language";
 import { createArticleAction } from "../actions";
 import { ArticleForm } from "../article-form";
+import { buildCounterpartInfo } from "../article-form-schema";
 
 export const metadata: Metadata = {
   title: "Admin — New Article",
@@ -29,16 +31,26 @@ export default async function NewArticlePage({
 
   const projects = await listProjectsForSelect();
 
+  const counterpart =
+    translationGroupId && lockedLanguage
+      ? buildCounterpartInfo(
+          translationGroupId,
+          lockedLanguage === "en" ? "ar" : "en",
+          await getArticleByTranslationGroupAndLanguage(
+            translationGroupId,
+            lockedLanguage === "en" ? "ar" : "en",
+          ),
+        )
+      : undefined;
+
   return (
-    <main>
-      <h1>New article</h1>
-      <ArticleForm
-        mode="create"
-        action={createArticleAction}
-        projects={projects}
-        lockedLanguage={lockedLanguage}
-        translationGroupId={translationGroupId}
-      />
-    </main>
+    <ArticleForm
+      mode="create"
+      action={createArticleAction}
+      projects={projects}
+      lockedLanguage={lockedLanguage}
+      translationGroupId={translationGroupId}
+      counterpart={counterpart}
+    />
   );
 }

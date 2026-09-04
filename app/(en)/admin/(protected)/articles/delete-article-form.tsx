@@ -1,28 +1,37 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { Button } from "@/components/admin/button";
 
-function SubmitButton() {
+const ITEM_DANGER_CLASSNAME = "block w-full px-3 py-1.5 text-left text-sm text-admin-danger hover:bg-admin-danger-bg";
+
+function SubmitButton({ label }: { label: string }) {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" disabled={pending} variant="destructive" className="text-sm">
-      {pending ? "Deleting…" : "Delete"}
-    </Button>
+    <button type="submit" role="menuitem" disabled={pending} className={ITEM_DANGER_CLASSNAME}>
+      {pending ? "Deleting…" : label}
+    </button>
   );
 }
 
-export function DeleteArticleForm({ action }: { action: () => Promise<void> }) {
+export function DeleteArticleForm({
+  action,
+  recordLabel,
+  menuLabel = "Delete",
+}: {
+  action: () => Promise<void>;
+  recordLabel: string;
+  menuLabel?: string;
+}) {
   return (
     <form
       action={action}
       onSubmit={(event) => {
-        if (!window.confirm("Delete this article?")) {
+        if (!window.confirm(`Delete "${recordLabel}"?\n\nThis action cannot be undone.`)) {
           event.preventDefault();
         }
       }}
     >
-      <SubmitButton />
+      <SubmitButton label={menuLabel} />
     </form>
   );
 }

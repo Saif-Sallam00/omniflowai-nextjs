@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { leadStatusEnum } from "@/lib/db/schema";
 import { listLeads, type Lead } from "@/lib/db/leads";
 import { updateLeadStatusAction, deleteLeadAction } from "./actions";
@@ -7,7 +6,16 @@ import { DeleteLeadForm } from "./delete-lead-form";
 import { PageHeader } from "@/components/admin/page-header";
 import { Card } from "@/components/admin/card";
 import { StatusBadge } from "@/components/admin/status-badge";
-import type { StatusBadgeTone } from "@/components/admin/palette";
+import { EmptyState } from "@/components/admin/empty-state";
+import { SearchInput } from "@/components/admin/search-input";
+import { FilterSelect } from "@/components/admin/filter-select";
+import {
+  type StatusBadgeTone,
+  textMuted,
+  textPrimary,
+  textSecondary,
+  inputClass,
+} from "@/components/admin/palette";
 
 const DATE_FORMAT = new Intl.DateTimeFormat("en-GB", {
   dateStyle: "medium",
@@ -32,57 +40,53 @@ function parseStatusFilter(value: string | undefined): Lead["status"] | undefine
     : undefined;
 }
 
+function filterBySearch(leads: Lead[], q: string): Lead[] {
+  if (!q.trim()) return leads;
+  const needle = q.trim().toLowerCase();
+  return leads.filter((lead) =>
+    [lead.name, lead.email, lead.company].some((field) => field?.toLowerCase().includes(needle)),
+  );
+}
+
 export default async function AdminLeadsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ status?: string }>;
+  searchParams: Promise<{ status?: string; q?: string }>;
 }) {
-  const { status: rawStatus } = await searchParams;
+  const { status: rawStatus, q = "" } = await searchParams;
   const status = parseStatusFilter(rawStatus);
-  const leads = await listLeads(status);
+  const allLeads = await listLeads(status);
+  const leads = filterBySearch(allLeads, q);
+  const isFiltered = Boolean(status || q.trim());
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
       <PageHeader
         title="Leads"
-        description={`${leads.length} lead${leads.length === 1 ? "" : "s"}`}
+        description={`${allLeads.length} lead${allLeads.length === 1 ? "" : "s"}`}
       />
 
-      <nav className="flex flex-wrap gap-2 text-sm">
-        <Link
-          href="/admin/leads"
-          className={
-            status === undefined
-              ? "font-semibold text-indigo-600 underline"
-              : "text-gray-600 underline"
-          }
-        >
-          All
-        </Link>
-        {STATUS_FILTERS.map((s) => (
-          <Link
-            key={s}
-            href={`/admin/leads?status=${s}`}
-            className={
-              status === s ? "font-semibold text-indigo-600 underline" : "text-gray-600 underline"
-            }
-          >
-            {s}
-          </Link>
-        ))}
-      </nav>
+      <div className="flex flex-wrap items-center gap-2">
+        <SearchInput placeholder="Search leads…" />
+        <FilterSelect
+          paramName="status"
+          ariaLabel="Filter by status"
+          options={[{ value: "", label: "All statuses" }, ...STATUS_FILTERS.map((s) => ({ value: s, label: s }))]}
+        />
+      </div>
 
       {leads.length === 0 ? (
-        <p className="text-sm text-gray-600">
-          {status === undefined ? "No leads yet." : "No leads match this filter."}
-        </p>
+        <EmptyState
+          title={isFiltered ? "No leads match these filters." : "No leads yet."}
+          description={isFiltered ? "Try changing your search or filters." : undefined}
+        />
       ) : (
         <ul className="space-y-4">
           {leads.map((lead) => (
             <li key={lead.id}>
               <Card>
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-semibold text-gray-900">{lead.name || lead.email}</span>
+                  <span className={`font-semibold ${textPrimary}`}>{lead.name || lead.email}</span>
                   <StatusBadge tone="neutral">{lead.source}</StatusBadge>
                   <form
                     action={updateLeadStatusAction.bind(null, lead.id)}
@@ -92,7 +96,7 @@ export default async function AdminLeadsPage({
                       key={lead.status}
                       name="status"
                       defaultValue={lead.status}
-                      className="rounded-md border border-gray-300 px-2 py-1 text-xs uppercase"
+                      className={`${inputClass} w-auto px-2 py-1 text-xs uppercase`}
                     >
                       {STATUS_FILTERS.map((s) => (
                         <option key={s} value={s}>
@@ -102,16 +106,16 @@ export default async function AdminLeadsPage({
                     </select>
                     <button
                       type="submit"
-                      className="rounded-md border border-gray-300 px-2 py-1 text-xs font-medium text-gray-700 hover:bg-gray-50"
+                      className={`rounded-md border border-admin-border px-2 py-1 text-xs font-medium ${textSecondary} hover:bg-admin-hover`}
                     >
                       Update
                     </button>
                   </form>
                   <StatusBadge tone={LEAD_STATUS_TONES[lead.status]}>{lead.status}</StatusBadge>
-                  <DeleteLeadForm action={deleteLeadAction.bind(null, lead.id)} />
+                  <DeleteLeadForm action={deleteLeadAction.bind(null, lead.id)} recordLabel={lead.name || lead.email} />
                 </div>
 
-                <dl className="mt-3 space-y-1 text-sm text-gray-700">
+                <dl className={`mt-3 space-y-1 text-sm ${textSecondary}`}>
                   <div>
                     <a href={`mailto:${lead.email}`} className="underline">
                       {lead.email}
@@ -123,13 +127,13 @@ export default async function AdminLeadsPage({
                 </dl>
 
                 {lead.message && (
-                  <details className="mt-2 text-sm text-gray-700">
+                  <details className={`mt-2 text-sm ${textSecondary}`}>
                     <summary className="cursor-pointer">Message</summary>
                     <p className="mt-1 whitespace-pre-wrap">{lead.message}</p>
                   </details>
                 )}
 
-                <p className="mt-2 text-xs text-gray-500">{DATE_FORMAT.format(lead.createdAt)}</p>
+                <p className={`mt-2 text-xs ${textMuted}`}>{DATE_FORMAT.format(lead.createdAt)}</p>
               </Card>
             </li>
           ))}

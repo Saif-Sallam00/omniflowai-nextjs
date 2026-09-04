@@ -12,12 +12,12 @@ function SubmitButton() {
   );
 }
 
-export function DeleteLeadForm({ action }: { action: () => Promise<void> }) {
+export function DeleteLeadForm({ action, recordLabel }: { action: () => Promise<void>; recordLabel: string }) {
   return (
     <form
       action={action}
       onSubmit={(event) => {
-        if (!window.confirm("Delete this lead?")) {
+        if (!window.confirm(`Delete "${recordLabel}"?\n\nThis action cannot be undone.`)) {
           event.preventDefault();
         }
       }}

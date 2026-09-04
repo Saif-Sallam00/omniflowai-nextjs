@@ -84,6 +84,37 @@ export default {
           border: "hsl(var(--sidebar-border) / <alpha-value>)",
           ring: "hsl(var(--sidebar-ring) / <alpha-value>)",
         },
+        // Admin dashboard — dark-only semantic tokens (app/(en)/admin/admin-theme.css).
+        // Independent of the tokens above: the admin never reads the public
+        // site's palette, and the public site never reads this one.
+        admin: {
+          background: "rgb(var(--admin-background) / <alpha-value>)",
+          sidebar: "rgb(var(--admin-sidebar) / <alpha-value>)",
+          surface: "rgb(var(--admin-surface) / <alpha-value>)",
+          "surface-muted": "rgb(var(--admin-surface-muted) / <alpha-value>)",
+          "surface-elevated": "rgb(var(--admin-surface-elevated) / <alpha-value>)",
+          input: "rgb(var(--admin-input) / <alpha-value>)",
+          hover: "rgb(var(--admin-hover) / <alpha-value>)",
+          border: "rgb(var(--admin-border) / <alpha-value>)",
+          "border-strong": "rgb(var(--admin-border-strong) / <alpha-value>)",
+          "text-primary": "rgb(var(--admin-text-primary) / <alpha-value>)",
+          "text-secondary": "rgb(var(--admin-text-secondary) / <alpha-value>)",
+          "text-muted": "rgb(var(--admin-text-muted) / <alpha-value>)",
+          "text-disabled": "rgb(var(--admin-text-disabled) / <alpha-value>)",
+          accent: "rgb(var(--admin-accent) / <alpha-value>)",
+          "accent-hover": "rgb(var(--admin-accent-hover) / <alpha-value>)",
+          "accent-muted": "rgb(var(--admin-accent-muted) / <alpha-value>)",
+          "accent-muted-text": "rgb(var(--admin-accent-muted-text) / <alpha-value>)",
+          success: "rgb(var(--admin-success) / <alpha-value>)",
+          "success-bg": "rgb(var(--admin-success-bg) / <alpha-value>)",
+          warning: "rgb(var(--admin-warning) / <alpha-value>)",
+          "warning-bg": "rgb(var(--admin-warning-bg) / <alpha-value>)",
+          danger: "rgb(var(--admin-danger) / <alpha-value>)",
+          "danger-bg": "rgb(var(--admin-danger-bg) / <alpha-value>)",
+          info: "rgb(var(--admin-info) / <alpha-value>)",
+          "info-bg": "rgb(var(--admin-info-bg) / <alpha-value>)",
+          "focus-ring": "rgb(var(--admin-focus-ring) / <alpha-value>)",
+        },
       },
       fontFamily: {
         // Self-hosted via next/font (lib/fonts.ts): the generated font variable
@@ -127,6 +158,8 @@ export default {
       boxShadow: {
         card: "var(--shadow-xs)",
         elevated: "var(--shadow-md)",
+        "admin-sm": "0 1px 2px rgb(0 0 0 / 0.4)",
+        "admin-md": "0 8px 24px -4px rgb(0 0 0 / 0.5)",
       },
       transitionTimingFunction: {
         standard: "var(--ease-standard)",

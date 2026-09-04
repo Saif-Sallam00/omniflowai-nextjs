@@ -1,23 +1,24 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { Button } from "@/components/admin/button";
+
+const ITEM_DANGER_CLASSNAME = "block w-full px-3 py-1.5 text-left text-sm text-admin-danger hover:bg-admin-danger-bg";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" disabled={pending} variant="destructive" className="text-sm">
+    <button type="submit" role="menuitem" disabled={pending} className={ITEM_DANGER_CLASSNAME}>
       {pending ? "Deleting…" : "Delete"}
-    </Button>
+    </button>
   );
 }
 
-export function DeleteProjectForm({ action }: { action: () => Promise<void> }) {
+export function DeleteProjectForm({ action, recordLabel }: { action: () => Promise<void>; recordLabel: string }) {
   return (
     <form
       action={action}
       onSubmit={(event) => {
-        if (!window.confirm("Delete this project?")) {
+        if (!window.confirm(`Delete "${recordLabel}"?\n\nThis action cannot be undone.`)) {
           event.preventDefault();
         }
       }}

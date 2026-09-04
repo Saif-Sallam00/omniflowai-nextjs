@@ -101,14 +101,11 @@ export default async function EditProjectPage({
   };
 
   return (
-    <main>
-      <h1>Edit project</h1>
-      <ProjectForm
-        mode="edit"
-        action={updateProjectAction.bind(null, id)}
-        categories={categories}
-        initialValues={initialValues}
-      />
-    </main>
+    <ProjectForm
+      mode="edit"
+      action={updateProjectAction.bind(null, id)}
+      categories={categories}
+      initialValues={initialValues}
+    />
   );
 }

@@ -1,9 +1,9 @@
-import { border, surfaceMuted, textMuted } from "./palette";
+import { border, surfaceMuted, textMuted, textPrimary } from "./palette";
 
 export function Table({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={`overflow-x-auto rounded-lg border ${border}`}>
-      <table className={`min-w-full divide-y ${border} ${className}`}>{children}</table>
+      <table className={`min-w-full divide-y divide-admin-border ${className}`}>{children}</table>
     </div>
   );
 }
@@ -29,7 +29,7 @@ export function TableCell({
   return (
     <Tag
       className={`px-4 py-3 text-left text-sm ${
-        header ? `font-medium uppercase tracking-wide text-xs ${textMuted}` : "text-gray-900"
+        header ? `font-medium uppercase tracking-wide text-xs ${textMuted}` : textPrimary
       } ${className}`}
     >
       {children}

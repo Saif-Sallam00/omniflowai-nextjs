@@ -10,10 +10,5 @@ export const metadata: Metadata = {
 export default async function NewProjectPage() {
   const categories = await listProjectCategories();
 
-  return (
-    <main>
-      <h1>New project</h1>
-      <ProjectForm mode="create" action={createProjectAction} categories={categories} />
-    </main>
-  );
+  return <ProjectForm mode="create" action={createProjectAction} categories={categories} />;
 }

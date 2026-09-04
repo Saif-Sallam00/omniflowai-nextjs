@@ -5,6 +5,11 @@ import { SLUG_PATTERN_EN } from "@/lib/article-slug";
 // Not a "use server" file — actions.ts (which is) may only export async
 // functions, so every non-action helper the actions need lives here instead.
 
+// The `(string & {})` branch keeps literal autocomplete for the common cases
+// below while still accepting the dynamic dotted/indexed paths this form's
+// errors actually use at runtime (e.g. "en.clientName", "systemCards.0.titleAr")
+// — see fieldErrorsFromIssues, which groups by the full dotted path, not just
+// these top-level names.
 export type ProjectFieldName =
   | "slug"
   | "category"
@@ -22,7 +27,8 @@ export type ProjectFieldName =
   | "en.tags"
   | "ar.tags"
   | "en.technologies"
-  | "ar.technologies";
+  | "ar.technologies"
+  | (string & {});
 
 export type ProjectFormState = {
   status: "idle" | "success" | "error";

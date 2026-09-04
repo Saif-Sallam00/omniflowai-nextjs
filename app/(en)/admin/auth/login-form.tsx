@@ -5,11 +5,9 @@ import { useFormStatus } from "react-dom";
 import { signInAction, type SignInState } from "./actions";
 import { Button } from "@/components/admin/button";
 import { FormField } from "@/components/admin/form-field";
+import { inputClass, errorTextClass } from "@/components/admin/palette";
 
 const initialState: SignInState = { error: null };
-
-const INPUT_CLASSNAME =
-  "w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -32,7 +30,7 @@ export function LoginForm() {
           type="text"
           autoComplete="username"
           required
-          className={INPUT_CLASSNAME}
+          className={inputClass}
         />
       </FormField>
       <FormField label="Password" htmlFor="password">
@@ -42,11 +40,11 @@ export function LoginForm() {
           type="password"
           autoComplete="current-password"
           required
-          className={INPUT_CLASSNAME}
+          className={inputClass}
         />
       </FormField>
       {state.error ? (
-        <p role="alert" className="text-sm text-red-600">
+        <p role="alert" className={errorTextClass}>
           {state.error}
         </p>
       ) : null}

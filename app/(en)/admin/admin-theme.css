@@ -1,0 +1,59 @@
+/* Admin dashboard — dark-only design tokens. Scoped under .admin-root so
+   these variables never leak into (and can never be reached by) the public
+   site's own token system in app/globals.css. There is no light variant and
+   no toggle by design (see specs/... admin redesign spec) — this file is the
+   single source of admin color truth; components should resolve colors via
+   the `admin-*` Tailwind tokens (tailwind.config.ts) built from these vars,
+   never via raw gray/white/black utilities. */
+
+.admin-root {
+  /* Surfaces — subtle elevation, darkest to lightest. RGB triples (not hex)
+     so Tailwind's `rgb(var(--x) / <alpha-value>)` pattern can apply opacity. */
+  --admin-background: 10 11 15;
+  --admin-sidebar: 16 18 24;
+  --admin-surface: 20 22 29;
+  --admin-surface-muted: 14 16 21;
+  --admin-surface-elevated: 27 30 39;
+  --admin-input: 18 20 26;
+  --admin-hover: 24 27 35;
+
+  /* Borders */
+  --admin-border: 38 42 53;
+  --admin-border-strong: 56 61 77;
+
+  /* Text */
+  --admin-text-primary: 241 242 246;
+  --admin-text-secondary: 195 198 212;
+  --admin-text-muted: 139 143 163;
+  --admin-text-disabled: 91 95 114;
+
+  /* Accent — indigo, carried over from the prior light admin palette so the
+     brand identity of the tool doesn't change, only its surfaces. */
+  --admin-accent: 99 102 241;
+  --admin-accent-hover: 129 140 248;
+  --admin-accent-muted: 32 28 66;
+  --admin-accent-muted-text: 165 180 252;
+
+  /* Semantic status — deliberately distinct from the accent hue so state
+     (success/warning/danger) never gets confused with brand/interactive. */
+  --admin-success: 52 211 153;
+  --admin-success-bg: 15 46 34;
+  --admin-warning: 251 191 36;
+  --admin-warning-bg: 51 39 5;
+  --admin-danger: 248 113 113;
+  --admin-danger-bg: 58 21 24;
+  --admin-info: 96 165 250;
+  --admin-info-bg: 18 42 68;
+
+  --admin-focus-ring: 129 140 248;
+
+  color-scheme: dark;
+}
+
+/* One visible keyboard-focus treatment for every focusable element in the
+   admin, so links/tabs/checkboxes get it without each component opting in
+   individually. */
+.admin-root :focus-visible {
+  outline: 2px solid rgb(var(--admin-focus-ring));
+  outline-offset: 2px;
+}

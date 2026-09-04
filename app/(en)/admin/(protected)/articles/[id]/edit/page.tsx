@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getArticleById } from "@/lib/db/articles";
+import { getArticleById, getArticleByTranslationGroupAndLanguage } from "@/lib/db/articles";
 import { listProjectsForSelect } from "@/lib/db/portfolio";
-import { getLanguagePath } from "@/lib/language";
 import { updateArticleAction } from "../../actions";
 import { ArticleForm } from "../../article-form";
+import { buildCounterpartInfo } from "../../article-form-schema";
 
 export const metadata: Metadata = {
   title: "Admin — Edit Article",
@@ -23,36 +23,31 @@ export default async function EditArticlePage({
   if (!article) notFound();
 
   const projects = await listProjectsForSelect();
+  const counterpartLanguage = article.language === "en" ? "ar" : "en";
+  const counterpart = buildCounterpartInfo(
+    article.translationGroupId,
+    counterpartLanguage,
+    await getArticleByTranslationGroupAndLanguage(article.translationGroupId, counterpartLanguage),
+  );
 
   return (
-    <main>
-      <h1>Edit article</h1>
-      {article.published && (
-        <a
-          href={getLanguagePath(`/articles/${article.slug}`, article.language)}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Preview
-        </a>
-      )}
-      <ArticleForm
-        mode="edit"
-        action={updateArticleAction.bind(null, id)}
-        projects={projects}
-        initialValues={{
-          language: article.language,
-          title: article.title,
-          slug: article.slug,
-          excerpt: article.excerpt,
-          coverImage: article.coverImage,
-          body: article.body,
-          published: article.published,
-          publishedAt: article.publishedAt,
-          relatedProjectId: article.relatedProjectId,
-          relatedSolution: article.relatedSolution,
-        }}
-      />
-    </main>
+    <ArticleForm
+      mode="edit"
+      action={updateArticleAction.bind(null, id)}
+      projects={projects}
+      counterpart={counterpart}
+      initialValues={{
+        language: article.language,
+        title: article.title,
+        slug: article.slug,
+        excerpt: article.excerpt,
+        coverImage: article.coverImage,
+        body: article.body,
+        published: article.published,
+        publishedAt: article.publishedAt,
+        relatedProjectId: article.relatedProjectId,
+        relatedSolution: article.relatedSolution,
+      }}
+    />
   );
 }

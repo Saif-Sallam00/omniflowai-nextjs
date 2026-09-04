@@ -1,11 +1,12 @@
-import { accentBg, accentBgHover } from "./palette";
+import { accentBg, accentBgHover, border, hoverBg, textSecondary, dangerText } from "./palette";
 
-type ButtonVariant = "primary" | "secondary" | "destructive";
+type ButtonVariant = "primary" | "secondary" | "destructive" | "ghost";
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary: `${accentBg} ${accentBgHover} text-white border border-transparent`,
-  secondary: "bg-white hover:bg-gray-50 text-gray-700 border border-gray-300",
-  destructive: "bg-white hover:bg-red-50 text-red-600 border border-red-200",
+  secondary: `bg-admin-surface-elevated ${hoverBg} ${textSecondary} border ${border}`,
+  destructive: `bg-admin-surface-elevated hover:bg-admin-danger-bg ${dangerText} border border-admin-danger/30`,
+  ghost: `bg-transparent ${hoverBg} ${textSecondary} border border-transparent`,
 };
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -15,7 +16,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 export function Button({ variant = "primary", className = "", ...rest }: ButtonProps) {
   return (
     <button
-      className={`inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${VARIANT_CLASSES[variant]} ${className}`}
+      className={`inline-flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${VARIANT_CLASSES[variant]} ${className}`}
       {...rest}
     />
   );

@@ -6,6 +6,34 @@ import type { Language } from "@/lib/language";
 
 // Not a "use server" file — actions.ts (which is) may only export async
 // functions, so every non-action helper the actions need lives here instead.
+// Also (deliberately) not a "use client" file — article-form.tsx is, and a
+// Server Component (the edit/new pages) cannot call a function exported from
+// a "use client" module, only render its components.
+
+export type CounterpartInfo = {
+  language: Language;
+  status: "published" | "draft" | "missing";
+  href: string;
+};
+
+export function buildCounterpartInfo(
+  translationGroupId: string,
+  counterpartLanguage: Language,
+  counterpartArticle: { id: number; published: boolean } | null,
+): CounterpartInfo {
+  if (!counterpartArticle) {
+    return {
+      language: counterpartLanguage,
+      status: "missing",
+      href: `/admin/articles/new?group=${translationGroupId}&lang=${counterpartLanguage}`,
+    };
+  }
+  return {
+    language: counterpartLanguage,
+    status: counterpartArticle.published ? "published" : "draft",
+    href: `/admin/articles/${counterpartArticle.id}/edit`,
+  };
+}
 
 export type ArticleFieldName =
   | "language"
