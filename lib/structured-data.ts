@@ -62,6 +62,37 @@ export function buildArticleJsonLd(
   };
 }
 
+export function buildServiceJsonLd(
+  service: { name: string; description: string; slug: string },
+  language: Language,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.description,
+    inLanguage: language,
+    url: buildAbsoluteUrl(getLanguagePath(`/services/${service.slug}`, language)),
+    provider: ORGANIZATION_REF(language),
+  };
+}
+
+export function buildBreadcrumbJsonLd(
+  items: { name: string; path: string }[],
+  language: Language,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: buildAbsoluteUrl(getLanguagePath(item.path, language)),
+    })),
+  };
+}
+
 export function buildCaseStudyJsonLd(
   project: { title: string; description: string; coverImage: string },
   slug: string,

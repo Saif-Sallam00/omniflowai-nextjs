@@ -103,7 +103,7 @@ export function SiteHeader({
           </div>
 
           <div className="hidden items-center gap-4 md:flex">
-            <LanguageSwitcher variant="icon" />
+            <LanguageSwitcher />
             <Link href={getLanguagePath("/contact", language)}>
               <span className="flex items-center whitespace-nowrap rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition hover:brightness-110 lg:px-6">
                 {bookCallLabel}
@@ -161,7 +161,7 @@ export function SiteHeader({
                   {bookCallLabel}
                 </span>
               </Link>
-              <LanguageSwitcher variant="label" />
+              <LanguageSwitcher fullWidth />
             </div>
           </div>
         </div>

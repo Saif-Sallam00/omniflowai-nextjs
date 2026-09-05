@@ -308,19 +308,19 @@ const HOW_WE_WORK = {
   capabilities: [
     {
       glyph: "marketing",
-      href: "/solutions",
+      href: "/services/digital-marketing",
       title: "أنظمة التسويق",
       body: "بناء أنظمة استقطاب قابلة للقياس — بحث وإعلانات مدفوعة وتحويل وقياس مترابطة معاً بدلاً من تشغيلها منفصلة.",
     },
     {
       glyph: "tech",
-      href: "/solutions",
+      href: "/services/software",
       title: "تقنية الأعمال",
       body: "بناء وربط الأنظمة التي تدير بها الأعمال — تخطيط الموارد وإدارة العملاء ومنصّات الويب والجوال والأتمتة بينها.",
     },
     {
       glyph: "ai",
-      href: "/solutions",
+      href: "/services/ai-training",
       title: "تمكين الذكاء الاصطناعي",
       body: "دمج الذكاء الاصطناعي في مسارات العمل الحقيقية ليستخدمه الفريق فعلاً، ضمن العمل الذي يؤدّيه أصلاً.",
     },

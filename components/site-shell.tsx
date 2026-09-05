@@ -39,14 +39,14 @@ const BOOK_CALL_LABEL: Record<Language, string> = {
 
 const FOOTER_SERVICE_LINKS: Record<Language, NavLink[]> = {
   en: [
-    { path: "/solutions", label: "AI Enablement" },
-    { path: "/solutions", label: "Marketing Systems" },
-    { path: "/solutions", label: "Business Technology" },
+    { path: "/services/ai-training", label: "AI Enablement" },
+    { path: "/services/digital-marketing", label: "Marketing Systems" },
+    { path: "/services/software", label: "Business Technology" },
   ],
   ar: [
-    { path: "/solutions", label: "تمكين الذكاء الاصطناعي" },
-    { path: "/solutions", label: "أنظمة التسويق" },
-    { path: "/solutions", label: "تقنية الأعمال" },
+    { path: "/services/ai-training", label: "تمكين الذكاء الاصطناعي" },
+    { path: "/services/digital-marketing", label: "أنظمة التسويق" },
+    { path: "/services/software", label: "تقنية الأعمال" },
   ],
 };
 

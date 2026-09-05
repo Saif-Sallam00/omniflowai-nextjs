@@ -4,7 +4,17 @@ import { getPortfolioSlugs } from "@/lib/db/portfolio";
 import { getLanguagePath } from "@/lib/language";
 import { siteUrl } from "@/lib/site";
 
-const STATIC_PAGES = ["/", "/about", "/solutions", "/contact", "/articles", "/portfolio"] as const;
+const STATIC_PAGES = [
+  "/",
+  "/about",
+  "/solutions",
+  "/contact",
+  "/articles",
+  "/portfolio",
+  "/services/ai-training",
+  "/services/digital-marketing",
+  "/services/software",
+] as const;
 const LANGUAGES = ["en", "ar"] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

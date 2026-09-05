@@ -38,19 +38,22 @@ const heroSystemNodes: InteractiveNode[] = [
 
 const PILLARS = [
   {
-    href: "/solutions",
+    id: "ai-training",
+    href: "/services/ai-training",
     icon: Bot,
     title: "تمكين الذكاء الاصطناعي",
     body: "نقدّم برامج منظّمة لتبنّي الذكاء الاصطناعي للفرق والقيادات — من جلسات استراتيجية للمدراء إلى دمج عملي في سير العمل. الهدف ليس مجرد المعرفة، بل قدرة تشغيلية حقيقية: أن يستخدم فريقك الذكاء الاصطناعي في عمل حقيقي، لا أن يشاهد عرضاً توضيحياً فحسب.",
   },
   {
-    href: "/solutions",
+    id: "digital-marketing",
+    href: "/services/digital-marketing",
     icon: Target,
     title: "أنظمة التسويق",
     body: "تحسين محركات البحث والحملات المدفوعة واستراتيجية التحويل، مدمجة في محرك واحد يستهدف المشترين المؤهّلين — لا الزيارات الشكلية. كل مرحلة قابلة للقياس، لتعرف كم يكلّفك العميل المحتمل فعلاً ومن أين تأتي الإيرادات.",
   },
   {
-    href: "/solutions",
+    id: "software",
+    href: "/services/software",
     icon: Layers,
     title: "تقنية الأعمال",
     body: (
@@ -234,8 +237,8 @@ export default function HomePage() {
           </h2>
 
           <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-            {PILLARS.map((pillar, index) => (
-              <Link key={index} href={getLanguagePath(pillar.href, LANGUAGE)}>
+            {PILLARS.map((pillar) => (
+              <Link key={pillar.id} href={getLanguagePath(pillar.href, LANGUAGE)}>
                 <div className="card-lift group flex h-full cursor-pointer flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-card hover:border-slate-300 md:p-8">
                   <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10">
                     <pillar.icon className="h-6 w-6 text-brand-600" />

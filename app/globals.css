@@ -12,6 +12,9 @@
   --brand-700: 17 88% 40%;
   --brand-light: 38 92% 50%;
   --surface-light: 210 14% 97%;
+  /* Warm counterpart to --surface-light, scoped to the service-detail pages'
+     capability band (paper vs. sand rhythm) — not used anywhere else. */
+  --surface-warm: 32 24% 95%;
 
   /* Core theme (light) */
   --background: 0 0% 100%;
