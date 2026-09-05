@@ -1,0 +1,2326 @@
+[
+  {
+    "sourceIndex": 1,
+    "project": {
+      "slug": "shoesnet-b2b-footwear-marketplace",
+      "category": "software",
+      "isFeatured": true,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "ShoesNet — B2B Wholesale Footwear Marketplace App",
+        "description": "Turned a wholesale footwear business running on a website and WhatsApp into a controlled ordering platform with real oversight of every vendor, product, and order.",
+        "categoryLabel": "Software",
+        "clientName": "Shoesnet.shop",
+        "clientSector": "Wholesale Footwear",
+        "clientCountry": "Egypt",
+        "clientModel": "B2B Marketplace",
+        "problemHeadline": "Wholesale business run like a retail storefront",
+        "problemBody": "The business connected footwear factories to wholesale buyers, but the website was built like a retail storefront while the business ran on wholesale rules — buyers order by the carton, from one supplier at a time, at negotiated volume prices. The result was that orders lived in WhatsApp threads instead of the system, the owner had no way to stop a vendor from listing bad or misrepresented products, price changes could be disputed after an order was placed, and there was no reliable record of what was sold, to whom, or at what price. Growth meant more chaos, not more revenue.",
+        "diagnosisHeadline": "The gap was control, not a shop window",
+        "diagnosisBody": "The client didn't need a better shop window — he needed control. Three specific gaps were doing the damage: no gate on who joins the platform, no gate on what gets listed, and no locked record of the commercial terms at the moment a deal is struck. Everything else was a symptom.",
+        "systemHeadline": "An approval-gated ordering platform, mobile-first",
+        "systemCards": [
+          {
+            "icon": "shield",
+            "title": "Vendor & Buyer Approval Queue",
+            "description": "Every new buyer and supplier waits in an approval queue before they can transact on the platform."
+          },
+          {
+            "icon": "shield",
+            "title": "Product Approval & Revocation",
+            "description": "Every product waits for owner approval before customers can see it, and approval can be revoked at any time."
+          },
+          {
+            "icon": "target",
+            "title": "Price-Locked Orders",
+            "description": "Every order is captured in the system with prices frozen at submission, ending disputes over later price changes."
+          },
+          {
+            "icon": "users",
+            "title": "Owner Override Authority",
+            "description": "The owner can override any supplier decision on any order, enforcing final authority through the system itself."
+          },
+          {
+            "icon": "messages-square",
+            "title": "In-App Buyer–Supplier Messaging",
+            "description": "Buyers and suppliers talk inside the app, giving the owner visibility into the conversations behind every order."
+          },
+          {
+            "icon": "workflow",
+            "title": "Full-Stack Arabic Mobile Platform",
+            "description": "Delivered as a custom backend plus an Arabic-first mobile app covering the buyer, supplier, and owner experiences, with Excel exports for accounting."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "The owner now approves every account and every listing before it goes live — quality control that didn't exist before"
+          },
+          {
+            "value": null,
+            "label": "Orders and their commercial terms are captured as records instead of chat messages, ending price disputes after the fact"
+          },
+          {
+            "value": null,
+            "label": "Full visibility for the owner: all orders, all conversations, all vendor activity, in one place"
+          },
+          {
+            "value": null,
+            "label": "Business data exports to Excel for accounting and reconciliation outside the app"
+          },
+          {
+            "value": null,
+            "label": "Owner decisions override supplier decisions on any order — final authority is enforced by the system, not by argument"
+          },
+          {
+            "value": null,
+            "label": "Built for the client's actual market: Arabic-first, carton-based pricing, single-supplier orders, no dependency on card payment infrastructure"
+          },
+          {
+            "value": null,
+            "label": "Shipped tested and hardened; deployment and app store launch in progress"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "B2B Marketplace",
+          "Mobile App",
+          "Egypt",
+          "Flutter",
+          "Python"
+        ],
+        "technologies": [
+          "Flutter (iOS + Android from one codebase)",
+          "Python / FastAPI backend",
+          "PostgreSQL",
+          "Docker containerized deployment",
+          "Firebase push notifications",
+          "Excel export / reporting"
+        ]
+      },
+      "ar": {
+        "title": "شوزنت – منصة جملة إلكترونية لتجارة الأحذية بين الشركات",
+        "description": "حوّلنا نشاطًا لبيع الأحذية بالجملة كان يعمل عبر موقع إلكتروني ومحادثات واتساب إلى منصة طلبات منضبطة تمنح صاحب العمل رقابة حقيقية على كل مورّد ومنتج وطلب.",
+        "categoryLabel": "برمجيات",
+        "clientName": "Shoesnet.shop",
+        "clientSector": "تجارة الأحذية بالجملة",
+        "clientCountry": "مصر",
+        "clientModel": "سوق إلكتروني بين الشركات (B2B)",
+        "problemHeadline": "نشاط جملة يُدار كأنه متجر تجزئة",
+        "problemBody": "كان النشاط يربط بين مصانع الأحذية وتجار الجملة، لكن الموقع الإلكتروني كان مصممًا كواجهة متجر تجزئة بينما يعمل النشاط بقواعد تجارة الجملة — يطلب المشترون بالكرتونة، من مورّد واحد في كل مرة، وبأسعار متفق عليها حسب الكمية. النتيجة أن الطلبات كانت تُدار عبر محادثات واتساب بدلًا من النظام، ولم يكن لدى صاحب العمل وسيلة لمنع مورّد من عرض منتجات رديئة أو مُضلِّلة، وكان بالإمكان الاعتراض على تغييرات الأسعار بعد تقديم الطلب، ولم يكن هناك سجل موثوق لما تم بيعه، ولمن، وبأي سعر. وكان النمو يعني المزيد من الفوضى لا المزيد من الإيرادات.",
+        "diagnosisHeadline": "الفجوة كانت في التحكم لا في واجهة العرض",
+        "diagnosisBody": "العميل لم يكن بحاجة لواجهة عرض أفضل، بل إلى التحكم. كانت هناك ثلاث فجوات محددة تسبب الضرر: لا رقابة على من ينضم إلى المنصة، ولا رقابة على ما يُعرض فيها، ولا سجل ثابت للشروط التجارية لحظة إتمام الصفقة. كل ما عدا ذلك كان مجرد أعراض.",
+        "systemHeadline": "منصة طلبات بموافقات صارمة، مبنية أولًا للموبايل",
+        "systemCards": [
+          {
+            "icon": "shield",
+            "title": "قائمة انتظار للموافقة على المشترين والموردين",
+            "description": "كل مشترٍ ومورّد جديد ينتظر في قائمة موافقة قبل أن يتمكن من التعامل على المنصة."
+          },
+          {
+            "icon": "shield",
+            "title": "الموافقة على المنتجات وإلغاؤها",
+            "description": "كل منتج ينتظر موافقة صاحب العمل قبل أن يراه العملاء، ويمكن سحب الموافقة في أي وقت."
+          },
+          {
+            "icon": "target",
+            "title": "طلبات بأسعار مُثبّتة",
+            "description": "يُسجَّل كل طلب في النظام مع تثبيت الأسعار عند تقديمه، مما ينهي النزاعات حول تغييرات الأسعار اللاحقة."
+          },
+          {
+            "icon": "users",
+            "title": "صلاحية تجاوز لصاحب العمل",
+            "description": "يمكن لصاحب العمل تجاوز أي قرار من المورّد بشأن أي طلب، بحيث تُفرض السلطة النهائية عبر النظام نفسه."
+          },
+          {
+            "icon": "messages-square",
+            "title": "محادثات داخل التطبيق بين المشترين والموردين",
+            "description": "يتواصل المشترون والموردون داخل التطبيق، مما يمنح صاحب العمل رؤية كاملة للمحادثات وراء كل طلب."
+          },
+          {
+            "icon": "workflow",
+            "title": "منصة موبايل متكاملة باللغة العربية",
+            "description": "تم التسليم كحزمة متكاملة: خلفية برمجية مخصصة وتطبيق موبايل يدعم اللغة العربية أولًا، يغطي تجارب المشتري والمورّد وصاحب العمل، مع تصدير البيانات إلى إكسل للمحاسبة."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "أصبح صاحب العمل الآن يوافق على كل حساب وكل منتج قبل ظهوره — رقابة جودة لم تكن موجودة من قبل"
+          },
+          {
+            "value": null,
+            "label": "أصبحت الطلبات وشروطها التجارية تُسجَّل كسجلات رسمية بدلًا من رسائل الدردشة، مما أنهى نزاعات الأسعار بعد إتمام الصفقة"
+          },
+          {
+            "value": null,
+            "label": "رؤية كاملة لصاحب العمل: جميع الطلبات، وكل المحادثات، وكل نشاط الموردين، في مكان واحد"
+          },
+          {
+            "value": null,
+            "label": "تصدير بيانات النشاط إلى إكسل لأغراض المحاسبة والتسوية خارج التطبيق"
+          },
+          {
+            "value": null,
+            "label": "قرارات صاحب العمل تتجاوز قرارات المورّد في أي طلب — السلطة النهائية يفرضها النظام لا الجدال"
+          },
+          {
+            "value": null,
+            "label": "مُصمَّم لسوق العميل الفعلي: باللغة العربية أولًا، وتسعير بالكرتونة، وطلبات من مورّد واحد، دون الاعتماد على بنية دفع بالبطاقة"
+          },
+          {
+            "value": null,
+            "label": "تم التسليم بعد الاختبار والتحصين؛ والنشر وإطلاق المتجرين جارٍ حاليًا"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "سوق بين الشركات",
+          "تطبيق موبايل",
+          "مصر",
+          "Flutter",
+          "Python"
+        ],
+        "technologies": [
+          "Flutter (iOS + Android from one codebase)",
+          "Python / FastAPI backend",
+          "PostgreSQL",
+          "Docker containerized deployment",
+          "Firebase push notifications",
+          "Excel export / reporting"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 2,
+    "project": {
+      "slug": "thaki-edtech-lead-generation",
+      "category": "digital-marketing",
+      "isFeatured": false,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Thaki — EdTech Lead Generation Engine (KSA)",
+        "description": "Built a full-funnel TikTok acquisition system for a Saudi EdTech startup teaching AI and programming to kids aged 8–18.",
+        "categoryLabel": "Digital Marketing",
+        "clientName": "Thaki Platform",
+        "clientSector": "EdTech",
+        "clientCountry": "Saudi Arabia",
+        "clientModel": "B2C",
+        "problemHeadline": "No structured funnel, low awareness, can't scale",
+        "problemBody": "The startup had no structured marketing funnel, weak creative direction, unoptimized tracking and data structure, very low brand awareness in the Saudi market, and a customer acquisition model that could not scale.",
+        "diagnosisHeadline": "Needed a full strategy, not just ads",
+        "diagnosisBody": "The business did not need ads — it needed a complete acquisition strategy. Lead generation was random rather than systematic, with no defined funnel stages or validated audience segments.",
+        "systemHeadline": "A four-pillar TikTok growth engine, rebuilt on data",
+        "systemCards": [
+          {
+            "icon": "workflow",
+            "title": "Full-Funnel Marketing Architecture",
+            "description": "Designed a complete funnel covering awareness, consideration, lead generation, and conversion."
+          },
+          {
+            "icon": "flask-conical",
+            "title": "Audience & Persona Testing on TikTok",
+            "description": "Ran audience discovery and persona testing on TikTok to identify the most responsive parent segments and winning messaging angles."
+          },
+          {
+            "icon": "messages-square",
+            "title": "Retargeting via WhatsApp & Social",
+            "description": "Built retargeting and conversion optimization through WhatsApp conversion flows and social remarketing."
+          },
+          {
+            "icon": "target",
+            "title": "Data-Driven Landing Page Optimization",
+            "description": "Optimized landing pages to lift conversion rate, increase trust, and reduce signup friction."
+          },
+          {
+            "icon": "bar-chart-3",
+            "title": "Clean Tracking Foundation",
+            "description": "Rebuilt tracking on Google Tag Manager with GA4 and Mixpanel to give campaigns a clean optimization signal."
+          }
+        ],
+        "results": [
+          {
+            "value": "760",
+            "label": "qualified leads generated"
+          },
+          {
+            "value": "8.27 SAR",
+            "label": "average cost per lead"
+          },
+          {
+            "value": "20%",
+            "label": "conversion rate"
+          },
+          {
+            "value": "0.82 SAR",
+            "label": "average CPC"
+          },
+          {
+            "value": null,
+            "label": "1,473,888 impressions and 7,665 clicks"
+          },
+          {
+            "value": null,
+            "label": "Total ad spend of 6,288 SAR"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "lead generation",
+          "EdTech",
+          "TikTok Ads",
+          "full-funnel strategy",
+          "WhatsApp conversion flow",
+          "GTM",
+          "Saudi Arabia",
+          "Mixpanel"
+        ],
+        "technologies": [
+          "TikTok Ads Manager",
+          "Google Tag Manager",
+          "Google Analytics 4",
+          "Mixpanel",
+          "TikTok Pixel / Events API",
+          "WhatsApp (conversion and retargeting flows)"
+        ]
+      },
+      "ar": {
+        "title": "ثقي — محرك جذب عملاء لمنصة تعليمية سعودية عبر تيك توك",
+        "description": "بنينا نظام استقطاب متكامل عبر تيك توك لشركة تعليم تقنية ناشئة في السعودية تُعلّم الذكاء الاصطناعي والبرمجة للأطفال من سن 8 إلى 18 عامًا.",
+        "categoryLabel": "التسويق الرقمي",
+        "clientName": "منصة ثقي",
+        "clientSector": "التعليم التقني (EdTech)",
+        "clientCountry": "السعودية",
+        "clientModel": "بين الشركة والمستهلك (B2C)",
+        "problemHeadline": "لا قمع تسويقي منظم، ووعي ضعيف بالعلامة",
+        "problemBody": "لم يكن لدى الشركة الناشئة قمع تسويقي منظم، وتوجيه إبداعي ضعيف، وتتبع وهيكلة بيانات غير محسّنة، ووعي منخفض جدًا بالعلامة التجارية في السوق السعودي، ونموذج استقطاب عملاء غير قابل للتوسع.",
+        "diagnosisHeadline": "احتاج النشاط إلى استراتيجية كاملة لا إعلانات فقط",
+        "diagnosisBody": "لم يكن النشاط بحاجة إلى إعلانات فحسب، بل إلى استراتيجية استقطاب متكاملة. كان توليد العملاء المحتملين عشوائيًا وليس منهجيًا، دون مراحل قمع محددة أو شرائح جمهور مُختبرة.",
+        "systemHeadline": "محرك نمو رباعي المحاور عبر تيك توك، مبني على البيانات",
+        "systemCards": [
+          {
+            "icon": "workflow",
+            "title": "بنية تسويقية كاملة القمع",
+            "description": "صممنا قمعًا تسويقيًا متكاملًا يغطي مراحل الوعي، والاعتبار، وتوليد العملاء المحتملين، والتحويل."
+          },
+          {
+            "icon": "flask-conical",
+            "title": "اختبار الجمهور والشخصيات على تيك توك",
+            "description": "أجرينا اكتشافًا للجمهور واختبارًا للشخصيات على تيك توك لتحديد شرائح الأهالي الأكثر تفاعلًا وأقوى زوايا الرسائل."
+          },
+          {
+            "icon": "messages-square",
+            "title": "إعادة الاستهداف عبر واتساب والسوشيال ميديا",
+            "description": "بنينا مسارات لإعادة الاستهداف وتحسين التحويل عبر تدفقات تحويل واتساب وإعادة التسويق عبر السوشيال ميديا."
+          },
+          {
+            "icon": "target",
+            "title": "تحسين صفحات الهبوط بالبيانات",
+            "description": "حسّنا صفحات الهبوط لرفع معدل التحويل وزيادة الثقة وتقليل احتكاك التسجيل."
+          },
+          {
+            "icon": "bar-chart-3",
+            "title": "أساس تتبع نظيف",
+            "description": "أعدنا بناء التتبع عبر Google Tag Manager مع GA4 وMixpanel لمنح الحملات إشارة تحسين نظيفة."
+          }
+        ],
+        "results": [
+          {
+            "value": "760",
+            "label": "عميل محتمل مؤهّل تم توليده"
+          },
+          {
+            "value": "8.27 ريال سعودي",
+            "label": "متوسط تكلفة العميل المحتمل"
+          },
+          {
+            "value": "20%",
+            "label": "معدل التحويل"
+          },
+          {
+            "value": "0.82 ريال سعودي",
+            "label": "متوسط تكلفة النقرة"
+          },
+          {
+            "value": null,
+            "label": "1,473,888 مشاهدة و7,665 نقرة"
+          },
+          {
+            "value": null,
+            "label": "إجمالي الإنفاق الإعلاني 6,288 ريال سعودي"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "توليد العملاء المحتملين",
+          "التعليم التقني",
+          "إعلانات تيك توك",
+          "استراتيجية كاملة القمع",
+          "تدفق تحويل واتساب",
+          "GTM",
+          "السعودية",
+          "Mixpanel"
+        ],
+        "technologies": [
+          "TikTok Ads Manager",
+          "Google Tag Manager",
+          "Google Analytics 4",
+          "Mixpanel",
+          "TikTok Pixel / Events API",
+          "WhatsApp (conversion and retargeting flows)"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 3,
+    "project": {
+      "slug": "versai-real-estate-lead-generation",
+      "category": "digital-marketing",
+      "isFeatured": false,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Versai — Real Estate Lead Generation (Riyadh, KSA)",
+        "description": "Generated qualified buyer leads for a Saudi real estate developer launching two residential projects in Riyadh.",
+        "categoryLabel": "Digital Marketing",
+        "clientName": "Versai",
+        "clientSector": "Real Estate",
+        "clientCountry": "Saudi Arabia",
+        "clientModel": "B2C",
+        "problemHeadline": "Strong brand offline, no digital lead engine",
+        "problemBody": "The developer was a well-known brand on the ground but had no digital presence, making it difficult to generate qualified leads online through social media. The internal sales team was also weak and struggling to convert leads into unit sales.",
+        "diagnosisHeadline": null,
+        "diagnosisBody": null,
+        "systemHeadline": "Structured creative testing tied to sales outcomes",
+        "systemCards": [
+          {
+            "icon": "flask-conical",
+            "title": "Structured Creative Testing Program",
+            "description": "Ran a structured testing program across multiple creative variations, formats, and messaging angles."
+          },
+          {
+            "icon": "target",
+            "title": "Highest-Performing Combination Identified",
+            "description": "Identified the highest-performing combination for generating qualified buyer leads for the Versai 14 and 15 projects."
+          },
+          {
+            "icon": "bar-chart-3",
+            "title": "Qualification Tracked to Sales Outcomes",
+            "description": "Tracked lead qualification through to actual sales outcomes, not just lead volume."
+          }
+        ],
+        "results": [
+          {
+            "value": "1,198",
+            "label": "leads generated"
+          },
+          {
+            "value": "45%",
+            "label": "lead qualification rate"
+          },
+          {
+            "value": "$9.47",
+            "label": "average cost per lead"
+          },
+          {
+            "value": "13",
+            "label": "units sold"
+          },
+          {
+            "value": null,
+            "label": "$11,348 total ad spend across 3,799 clicks"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "real estate",
+          "lead generation",
+          "lead qualification",
+          "creative testing",
+          "Riyadh",
+          "Saudi Arabia"
+        ],
+        "technologies": [
+          "Meta Ads Manager",
+          "Lead generation forms",
+          "Google Tag Manager",
+          "Google Analytics 4"
+        ]
+      },
+      "ar": {
+        "title": "فيرساي — توليد عملاء محتملين لمطوّر عقاري في الرياض",
+        "description": "ولّدنا عملاء محتملين مؤهلين لمشترين لصالح مطوّر عقاري سعودي يطلق مشروعين سكنيين في الرياض.",
+        "categoryLabel": "التسويق الرقمي",
+        "clientName": "فيرساي",
+        "clientSector": "العقارات",
+        "clientCountry": "السعودية",
+        "clientModel": "بين الشركة والمستهلك (B2C)",
+        "problemHeadline": "علامة قوية ميدانيًا دون محرك عملاء رقمي",
+        "problemBody": "كان المطوّر علامة معروفة على أرض الواقع لكن دون حضور رقمي، ما جعل توليد عملاء محتملين مؤهلين عبر السوشيال ميديا أمرًا صعبًا. كما كان فريق المبيعات الداخلي ضعيفًا ويواجه صعوبة في تحويل العملاء المحتملين إلى مبيعات وحدات.",
+        "diagnosisHeadline": null,
+        "diagnosisBody": null,
+        "systemHeadline": "اختبار إبداعي منظم مرتبط بنتائج المبيعات",
+        "systemCards": [
+          {
+            "icon": "flask-conical",
+            "title": "برنامج اختبار إبداعي منظم",
+            "description": "نفّذنا برنامج اختبار منظمًا عبر عدة نسخ إبداعية وصيغ وزوايا رسائل مختلفة."
+          },
+          {
+            "icon": "target",
+            "title": "تحديد التركيبة الأعلى أداءً",
+            "description": "حددنا التركيبة الأعلى أداءً لتوليد عملاء محتملين مؤهلين لمشروعي فيرساي 14 و15."
+          },
+          {
+            "icon": "bar-chart-3",
+            "title": "تتبع التأهيل حتى نتائج المبيعات",
+            "description": "تتبعنا تأهيل العملاء المحتملين وصولًا إلى نتائج المبيعات الفعلية، لا حجم العملاء فقط."
+          }
+        ],
+        "results": [
+          {
+            "value": "1,198",
+            "label": "عميل محتمل تم توليده"
+          },
+          {
+            "value": "45%",
+            "label": "معدل تأهيل العملاء المحتملين"
+          },
+          {
+            "value": "9.47$",
+            "label": "متوسط تكلفة العميل المحتمل"
+          },
+          {
+            "value": "13",
+            "label": "وحدة تم بيعها"
+          },
+          {
+            "value": null,
+            "label": "11,348$ إجمالي الإنفاق الإعلاني عبر 3,799 نقرة"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "العقارات",
+          "توليد العملاء المحتملين",
+          "تأهيل العملاء المحتملين",
+          "اختبار إبداعي",
+          "الرياض",
+          "السعودية"
+        ],
+        "technologies": [
+          "Meta Ads Manager",
+          "Lead generation forms",
+          "Google Tag Manager",
+          "Google Analytics 4"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 4,
+    "project": {
+      "slug": "clean-basket-app-growth-tracking",
+      "category": "digital-marketing",
+      "isFeatured": true,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Clean Basket — Mobile App Growth & Tracking Rebuild (Riyadh, KSA)",
+        "description": "Rebuilt the measurement infrastructure and paid social strategy for a Saudi on-demand laundry app, scaling installs and in-app purchases to the point of operational over-capacity.",
+        "categoryLabel": "Digital Marketing",
+        "clientName": "Clean Basket",
+        "clientSector": "On-Demand Laundry",
+        "clientCountry": "Saudi Arabia",
+        "clientModel": "B2C",
+        "problemHeadline": "Broken tracking made every ad dollar blind",
+        "problemBody": "Tracking infrastructure was completely broken — no conversion data was flowing from the app to any ad platform. iOS was effectively invisible: SKAdNetwork was not configured, so Apple's attribution framework returned nothing, and in-app events like Add to Cart and Purchase were not mapped to any platform SDK, leaving all campaigns running with zero optimization signal. On top of that, campaigns across all three platforms had no coherent testing framework, no OS segmentation and no platform-specific creative strategy, with budget scattered against no clear performance benchmarks.",
+        "diagnosisHeadline": "Measurement had to come before media spend",
+        "diagnosisBody": "Measurement infrastructure was the foundation, not a technical detail. Without conversion signal reaching the ad platforms, no amount of budget or creative investment could produce reliable results — so the fix had to be sequenced foundation-first.",
+        "systemHeadline": "Two-phase rebuild: tracking foundation, then media",
+        "systemCards": [
+          {
+            "icon": "workflow",
+            "title": "Phase 1 — Full Tracking Rebuild",
+            "description": "Mapped the full in-app user journey, identified key conversion events, and implemented the correct SDK per platform with the development team."
+          },
+          {
+            "icon": "target",
+            "title": "SKAdNetwork & Postback Configuration",
+            "description": "Configured SKAdNetwork conversion values through AppsFlyer and set up postbacks from AppsFlyer to each ad network."
+          },
+          {
+            "icon": "bar-chart-3",
+            "title": "Custom Monitoring Dashboards",
+            "description": "Built a custom AppsFlyer dashboard for ongoing monitoring alongside PostHog for product-level session analytics."
+          },
+          {
+            "icon": "layers",
+            "title": "Phase 2 — Clean iOS/Android Media Split",
+            "description": "Audited all accounts and rebuilt campaigns with clean iOS/Android separation and platform-specific creative directions."
+          },
+          {
+            "icon": "flask-conical",
+            "title": "Structured Creative Testing Process",
+            "description": "Ran a structured testing process to identify winning angles and scale variations from them."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "11,378 TikTok SKAN installs across 21 campaigns"
+          },
+          {
+            "value": "2.54 SAR",
+            "label": "average TikTok cost per install"
+          },
+          {
+            "value": null,
+            "label": "Best performing segment (Riyadh · Female · iOS 14+) at 2.18 SAR CPI"
+          },
+          {
+            "value": "5.05 SAR",
+            "label": "Meta Android CPI"
+          },
+          {
+            "value": null,
+            "label": "2.31% Snapchat CTR across 2M+ impressions"
+          },
+          {
+            "value": null,
+            "label": "650 Snapchat app installs at $3.68 CPI"
+          },
+          {
+            "value": null,
+            "label": "Campaigns paused at client request on Saudi National Day (23–24 Sep 2025) due to order volume exceeding operational capacity"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "mobile app marketing",
+          "MMP setup",
+          "SKAdNetwork",
+          "AppsFlyer",
+          "CPI optimization",
+          "tracking infrastructure",
+          "on-demand services",
+          "Riyadh"
+        ],
+        "technologies": [
+          "AppsFlyer (MMP)",
+          "SKAdNetwork",
+          "PostHog",
+          "TikTok Ads Manager",
+          "Meta Ads Manager",
+          "Snapchat Ads Manager",
+          "Platform SDK implementation (iOS / Android)"
+        ]
+      },
+      "ar": {
+        "title": "كلين باسكيت — إعادة بناء النمو والتتبع لتطبيق غسيل عند الطلب في الرياض",
+        "description": "أعدنا بناء البنية التحتية للقياس واستراتيجية السوشيال ميديا المدفوعة لتطبيق غسيل ملابس سعودي عند الطلب، ما أدى إلى توسع التثبيتات والمشتريات داخل التطبيق حتى تجاوزت الطاقة التشغيلية.",
+        "categoryLabel": "التسويق الرقمي",
+        "clientName": "كلين باسكيت",
+        "clientSector": "خدمات الغسيل عند الطلب",
+        "clientCountry": "السعودية",
+        "clientModel": "بين الشركة والمستهلك (B2C)",
+        "problemHeadline": "تتبع معطل جعل كل ريال إعلاني أعمى",
+        "problemBody": "كانت البنية التحتية للتتبع معطلة تمامًا — لا تصل أي بيانات تحويل من التطبيق إلى أي منصة إعلانية. وكان نظام iOS غير مرئي فعليًا: لم يكن SKAdNetwork مُهيَّأ، فكان إطار الإسناد الخاص بآبل لا يُعيد أي نتائج، ولم تكن أحداث داخل التطبيق مثل الإضافة للسلة والشراء مرتبطة بأي SDK لأي منصة، ما ترك كل الحملات تعمل دون أي إشارة تحسين. إضافة إلى ذلك، لم يكن لدى الحملات عبر المنصات الثلاث إطار اختبار متماسك، ولا تقسيم حسب نظام التشغيل، ولا استراتيجية إبداعية خاصة بكل منصة، مع تشتت الميزانية دون معايير أداء واضحة.",
+        "diagnosisHeadline": "كان لا بد أن يسبق القياس الإنفاق الإعلاني",
+        "diagnosisBody": "كانت بنية القياس هي الأساس، لا تفصيلة تقنية. فبدون إشارة تحويل تصل إلى المنصات الإعلانية، لم يكن بإمكان أي ميزانية أو استثمار إبداعي أن يحقق نتائج موثوقة — لذا كان لا بد من ترتيب الحل بدءًا بالأساس أولًا.",
+        "systemHeadline": "إعادة بناء على مرحلتين: أساس التتبع ثم الإعلام",
+        "systemCards": [
+          {
+            "icon": "workflow",
+            "title": "المرحلة الأولى — إعادة بناء كاملة للتتبع",
+            "description": "رسمنا رحلة المستخدم الكاملة داخل التطبيق، وحددنا أحداث التحويل الرئيسية، ونفّذنا الـSDK الصحيح لكل منصة مع فريق التطوير."
+          },
+          {
+            "icon": "target",
+            "title": "تهيئة SKAdNetwork وإعادة الإرسال",
+            "description": "هيّأنا قيم تحويل SKAdNetwork عبر AppsFlyer وأعددنا إعادة الإرسال من AppsFlyer إلى كل شبكة إعلانية."
+          },
+          {
+            "icon": "bar-chart-3",
+            "title": "لوحات مراقبة مخصصة",
+            "description": "بنينا لوحة AppsFlyer مخصصة للمراقبة المستمرة، إلى جانب PostHog لتحليلات الجلسات على مستوى المنتج."
+          },
+          {
+            "icon": "layers",
+            "title": "المرحلة الثانية — فصل نظيف بين iOS وAndroid",
+            "description": "دقّقنا جميع الحسابات وأعدنا بناء الحملات بفصل نظيف بين iOS وAndroid وتوجهات إبداعية خاصة بكل منصة."
+          },
+          {
+            "icon": "flask-conical",
+            "title": "عملية اختبار إبداعي منظمة",
+            "description": "نفّذنا عملية اختبار منظمة لتحديد الزوايا الرابحة وتوسيع النسخ المنبثقة منها."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "11,378 تثبيت عبر SKAN على تيك توك موزعة على 21 حملة"
+          },
+          {
+            "value": "2.54 ريال سعودي",
+            "label": "متوسط تكلفة التثبيت على تيك توك"
+          },
+          {
+            "value": null,
+            "label": "أفضل شريحة أداء (الرياض · إناث · iOS 14+) بتكلفة تثبيت 2.18 ريال سعودي"
+          },
+          {
+            "value": "5.05 ريال سعودي",
+            "label": "تكلفة التثبيت على أندرويد عبر ميتا"
+          },
+          {
+            "value": null,
+            "label": "معدل نقر 2.31% على سناب شات عبر أكثر من 2 مليون ظهور"
+          },
+          {
+            "value": null,
+            "label": "650 تثبيتًا لتطبيق سناب شات بتكلفة 3.68$ للتثبيت"
+          },
+          {
+            "value": null,
+            "label": "أُوقفت الحملات بناءً على طلب العميل في اليوم الوطني السعودي (23–24 سبتمبر 2025) بسبب تجاوز حجم الطلبات للطاقة التشغيلية"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "تسويق تطبيقات الموبايل",
+          "إعداد MMP",
+          "SKAdNetwork",
+          "AppsFlyer",
+          "تحسين تكلفة التثبيت",
+          "بنية تحتية للتتبع",
+          "خدمات عند الطلب",
+          "الرياض"
+        ],
+        "technologies": [
+          "AppsFlyer (MMP)",
+          "SKAdNetwork",
+          "PostHog",
+          "TikTok Ads Manager",
+          "Meta Ads Manager",
+          "Snapchat Ads Manager",
+          "Platform SDK implementation (iOS / Android)"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 5,
+    "project": {
+      "slug": "beautify-me-google-ads-acquisition",
+      "category": "digital-marketing",
+      "isFeatured": false,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Beautify Me Medical Center — Google Ads Acquisition & Retention (Dubai, UAE)",
+        "description": "Rebuilt a Google Ads account for a Dubai aesthetic clinic, fixing broken tracking and restructuring campaigns by service to drive consistent daily appointment bookings.",
+        "categoryLabel": "Digital Marketing",
+        "clientName": "Beautify Me Medical Center",
+        "clientSector": "Medical Aesthetics",
+        "clientCountry": "UAE",
+        "clientModel": "B2C",
+        "problemHeadline": "Broken tracking, no service-level ad structure",
+        "problemBody": "Two problems defined the account. Conversion tracking was broken — bookings and form submissions were not recording correctly, so the campaign algorithm had no reliable signal to optimize against and budget was being spent without knowing what worked. Campaign architecture was also unstructured: all services were grouped together with no meaningful separation, making it impossible to optimize individual services independently, and there were no negative keyword lists at either service or brand level, leading to wasted spend on irrelevant queries.",
+        "diagnosisHeadline": "Competitive category needed signal and segmentation",
+        "diagnosisBody": "Medical aesthetics is one of the most competitive search categories in Dubai — high intent, high CPC and high customer lifetime value. Without accurate conversion signal and service-level segmentation, the account could not compete efficiently or match ad copy to search intent.",
+        "systemHeadline": "Three-phase rebuild: tracking, structure, retention",
+        "systemCards": [
+          {
+            "icon": "target",
+            "title": "Conversion Tracking Audit & Fix",
+            "description": "Audited the full conversion setup and corrected event firing, giving campaigns a clean optimization signal for the first time."
+          },
+          {
+            "icon": "layers",
+            "title": "Service-Level Account Restructure",
+            "description": "Broke each service category into its own dedicated ad group for independent bid management, ad copy, and optimization."
+          },
+          {
+            "icon": "shield",
+            "title": "Tiered Negative Keyword Strategy",
+            "description": "Built category-level negative keyword lists to prevent cross-contamination between services, plus a brand-level list to protect budget from unqualified queries."
+          },
+          {
+            "icon": "messages-square",
+            "title": "WhatsApp Retention Workflow",
+            "description": "Built a WhatsApp-based retention workflow on top of the existing customer database to drive repeat bookings and increase lifetime value."
+          }
+        ],
+        "results": [
+          {
+            "value": "8+",
+            "label": "confirmed appointments booked per day at peak"
+          },
+          {
+            "value": "10,000",
+            "label": "clicks in the last 30 days"
+          },
+          {
+            "value": "4.23%",
+            "label": "CTR on a competitive search account"
+          },
+          {
+            "value": "AED 7.93",
+            "label": "average CPC"
+          },
+          {
+            "value": "AED 79,500",
+            "label": "total spend (last 30 days)"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "Google Ads",
+          "medical aesthetics",
+          "conversion tracking fix",
+          "account restructure",
+          "negative keyword strategy",
+          "WhatsApp retention",
+          "Dubai"
+        ],
+        "technologies": [
+          "Google Ads (Search)",
+          "Google Tag Manager",
+          "Google Analytics 4",
+          "Conversion tracking / event configuration",
+          "WhatsApp (retention workflow)"
+        ]
+      },
+      "ar": {
+        "title": "بيوتيفاي مي ميديكال سنتر — اكتساب عملاء عبر إعلانات جوجل والاحتفاظ بهم (دبي، الإمارات)",
+        "description": "أعدنا بناء حساب إعلانات جوجل لعيادة تجميل في دبي، بإصلاح التتبع المعطل وإعادة هيكلة الحملات حسب كل خدمة لتحقيق حجوزات مواعيد يومية ثابتة.",
+        "categoryLabel": "التسويق الرقمي",
+        "clientName": "بيوتيفاي مي ميديكال سنتر",
+        "clientSector": "طب التجميل",
+        "clientCountry": "الإمارات العربية المتحدة",
+        "clientModel": "بين الشركة والمستهلك (B2C)",
+        "problemHeadline": "تتبع معطل وحملات بلا هيكلة حسب الخدمة",
+        "problemBody": "حدد الحساب مشكلتان رئيسيتان. كان تتبع التحويلات معطلاً — لم تكن الحجوزات ونماذج التسجيل تُسجَّل بشكل صحيح، ما ترك خوارزمية الحملة دون إشارة موثوقة للتحسين، وكانت الميزانية تُنفق دون معرفة ما ينجح فعلًا. كما كانت بنية الحملات غير منظمة: جُمعت كل الخدمات معًا دون فصل حقيقي، ما جعل تحسين كل خدمة على حدة مستحيلاً، ولم تكن هناك قوائم كلمات سلبية على مستوى الخدمة أو العلامة التجارية، ما أدى إلى هدر الإنفاق على عبارات بحث غير ذات صلة.",
+        "diagnosisHeadline": "فئة تنافسية تتطلب إشارة دقيقة وتقسيمًا واضحًا",
+        "diagnosisBody": "طب التجميل من أكثر فئات البحث تنافسية في دبي — نية شراء عالية، وتكلفة نقرة مرتفعة، وقيمة عميل مرتفعة على المدى الطويل. بدون إشارة تحويل دقيقة وتقسيم على مستوى الخدمة، لم يكن بإمكان الحساب المنافسة بكفاءة أو مطابقة نص الإعلان مع نية البحث.",
+        "systemHeadline": "إعادة بناء على ثلاث مراحل: التتبع، الهيكلة، الاحتفاظ",
+        "systemCards": [
+          {
+            "icon": "target",
+            "title": "تدقيق وإصلاح تتبع التحويلات",
+            "description": "دققنا إعداد التحويلات بالكامل وصححنا تسجيل الأحداث، ما منح الحملات إشارة تحسين نظيفة لأول مرة."
+          },
+          {
+            "icon": "layers",
+            "title": "إعادة هيكلة الحساب على مستوى الخدمة",
+            "description": "قسّمنا كل فئة خدمة إلى مجموعة إعلانية مستقلة لإدارة مزايدات ونصوص إعلانية وتحسين خاص بها."
+          },
+          {
+            "icon": "shield",
+            "title": "استراتيجية كلمات سلبية متدرجة",
+            "description": "بنينا قوائم كلمات سلبية على مستوى كل خدمة لمنع التداخل بينها، بالإضافة إلى قائمة على مستوى العلامة التجارية لحماية الميزانية من عبارات البحث غير المؤهلة."
+          },
+          {
+            "icon": "messages-square",
+            "title": "مسار احتفاظ عبر واتساب",
+            "description": "بنينا مسار احتفاظ عبر واتساب فوق قاعدة بيانات العملاء الحالية لزيادة الحجوزات المتكررة ورفع القيمة الدائمة للعميل."
+          }
+        ],
+        "results": [
+          {
+            "value": "+8",
+            "label": "موعد مؤكد يوميًا في أوقات الذروة"
+          },
+          {
+            "value": "10,000",
+            "label": "نقرة خلال آخر 30 يومًا"
+          },
+          {
+            "value": "4.23%",
+            "label": "معدل نقر على حساب بحث تنافسي"
+          },
+          {
+            "value": "7.93 درهم",
+            "label": "متوسط تكلفة النقرة"
+          },
+          {
+            "value": "79,500 درهم",
+            "label": "إجمالي الإنفاق (آخر 30 يومًا)"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "إعلانات جوجل",
+          "طب التجميل",
+          "إصلاح تتبع التحويلات",
+          "إعادة هيكلة الحساب",
+          "استراتيجية كلمات سلبية",
+          "احتفاظ عبر واتساب",
+          "دبي"
+        ],
+        "technologies": [
+          "Google Ads (Search)",
+          "Google Tag Manager",
+          "Google Analytics 4",
+          "Conversion tracking / event configuration",
+          "WhatsApp (retention workflow)"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 6,
+    "project": {
+      "slug": "concord-language-institute-lead-generation",
+      "category": "digital-marketing",
+      "isFeatured": false,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Concord Language Institute — Lead Generation & Sales Enablement (KSA)",
+        "description": "Turned one of Saudi Arabia's oldest English language institutes into a lead generation machine by fixing tracking, rebuilding the sales process, and unlocking two untapped audience segments.",
+        "categoryLabel": "Digital Marketing",
+        "clientName": "Concord Language Institute",
+        "clientSector": "Language Education",
+        "clientCountry": "Saudi Arabia",
+        "clientModel": "B2C",
+        "problemHeadline": "Tracking, sales process, and audience all broken",
+        "problemBody": "Three interconnected problems were limiting growth. Conversion tracking was not set up correctly, making it impossible to measure true campaign performance or optimize against real enrollment signals. The sales team handling inbound WhatsApp leads and calls had no structured process — no call framework, no objection handling and no follow-up system — so leads were generated but not converted, making the entire top-of-funnel investment inefficient. And audience strategy was narrow, focused almost exclusively on adults 30+, leaving two large addressable segments completely untapped.",
+        "diagnosisHeadline": "The ad was only half the equation",
+        "diagnosisBody": "In a service business where the entire sales cycle closes over WhatsApp and phone, the ad campaign is only half the equation. The biggest constraint was not media buying — it was what happened after the lead arrived.",
+        "systemHeadline": "Fixed tracking, sales coaching, and new audiences together",
+        "systemCards": [
+          {
+            "icon": "target",
+            "title": "Conversion Event Configuration",
+            "description": "Properly configured conversion events across TikTok and Snapchat so real lead and enrollment signals flowed into the campaign algorithms."
+          },
+          {
+            "icon": "users",
+            "title": "Sales Team Mentorship & Call Framework",
+            "description": "Implemented ongoing mentorship and direct follow-up with the sales team, covering how to open a call, handle objections, and close an enrollment."
+          },
+          {
+            "icon": "compass",
+            "title": "Two New Audience Segments Activated",
+            "description": "Activated younger audiences positioned around career opportunity, and housewives positioned around financial independence and household income."
+          }
+        ],
+        "results": [
+          {
+            "value": "SAR 100,000+",
+            "label": "revenue in the first standard working month — a level the business had not reached before"
+          },
+          {
+            "value": null,
+            "label": "10,709 total TikTok conversions across 16 campaigns"
+          },
+          {
+            "value": "1.65 SAR",
+            "label": "average TikTok cost per conversion"
+          },
+          {
+            "value": null,
+            "label": "Best campaign delivered 3,215 conversions at 1.47 SAR"
+          },
+          {
+            "value": null,
+            "label": "41,115 TikTok clicks at 1.03% CTR and 0.43 SAR CPC"
+          },
+          {
+            "value": null,
+            "label": "871,424 Snapchat paid impressions and 10,906 clicks at 1.25% click rate"
+          },
+          {
+            "value": "$1,822",
+            "label": "total Snapchat spend"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "lead generation",
+          "education",
+          "sales enablement",
+          "audience segmentation",
+          "conversion tracking fix",
+          "WhatsApp sales cycle",
+          "Saudi Arabia"
+        ],
+        "technologies": [
+          "TikTok Ads Manager",
+          "Snapchat Ads Manager",
+          "Google Tag Manager",
+          "Google Analytics 4",
+          "Conversion tracking / event configuration",
+          "WhatsApp (sales and lead handling)"
+        ]
+      },
+      "ar": {
+        "title": "كونكورد لتعليم اللغات — توليد عملاء محتملين وتمكين المبيعات (السعودية)",
+        "description": "حوّلنا أحد أقدم معاهد تعليم اللغة الإنجليزية في السعودية إلى آلة لتوليد العملاء المحتملين عبر إصلاح التتبع، وإعادة بناء عملية المبيعات، وفتح شريحتي جمهور لم يتم استغلالهما من قبل.",
+        "categoryLabel": "التسويق الرقمي",
+        "clientName": "معهد كونكورد لتعليم اللغات",
+        "clientSector": "تعليم اللغات",
+        "clientCountry": "السعودية",
+        "clientModel": "بين الشركة والمستهلك (B2C)",
+        "problemHeadline": "تتبع، وعملية بيع، وجمهور كلها معطلة",
+        "problemBody": "كانت ثلاث مشكلات مترابطة تحد من النمو. لم يكن تتبع التحويلات معدًا بشكل صحيح، ما جعل من المستحيل قياس الأداء الحقيقي للحملات أو التحسين بناءً على إشارات تسجيل فعلية. كما كان فريق المبيعات الذي يتعامل مع رسائل واتساب والمكالمات الواردة يفتقر إلى عملية منظمة — لا إطار للمكالمات، ولا معالجة للاعتراضات، ولا نظام متابعة — ما جعل العملاء المحتملين يُولَّدون دون أن يتحولوا إلى تسجيلات فعلية، مما جعل الاستثمار في أعلى القمع غير فعّال بالكامل. وكانت استراتيجية الجمهور ضيقة، تركز بشكل شبه حصري على البالغين فوق 30 عامًا، تاركة شريحتين كبيرتين دون استغلال.",
+        "diagnosisHeadline": "الإعلان كان نصف المعادلة فقط",
+        "diagnosisBody": "في نشاط خدمي تُغلق فيه دورة البيع بالكامل عبر واتساب والهاتف، الحملة الإعلانية ليست سوى نصف المعادلة. لم يكن العائق الأكبر في شراء الإعلانات، بل فيما يحدث بعد وصول العميل المحتمل.",
+        "systemHeadline": "إصلاح التتبع وتدريب المبيعات وجمهور جديد معًا",
+        "systemCards": [
+          {
+            "icon": "target",
+            "title": "تهيئة أحداث التحويل",
+            "description": "هيّأنا أحداث التحويل بشكل صحيح عبر تيك توك وسناب شات لتصل إشارات العملاء المحتملين والتسجيل الفعلية إلى خوارزميات الحملات."
+          },
+          {
+            "icon": "users",
+            "title": "توجيه فريق المبيعات وإطار عمل للمكالمات",
+            "description": "طبّقنا توجيهًا مستمرًا ومتابعة مباشرة مع فريق المبيعات، يغطي كيفية بدء المكالمة، ومعالجة الاعتراضات، وإتمام التسجيل."
+          },
+          {
+            "icon": "compass",
+            "title": "تفعيل شريحتي جمهور جديدتين",
+            "description": "فعّلنا جمهورًا أصغر سنًا حول فرص العمل، وربات بيوت حول الاستقلال المالي وزيادة دخل الأسرة."
+          }
+        ],
+        "results": [
+          {
+            "value": "+100,000 ريال سعودي",
+            "label": "إيرادات في أول شهر عمل قياسي — مستوى لم يصله النشاط من قبل"
+          },
+          {
+            "value": null,
+            "label": "10,709 تحويلاً إجماليًا على تيك توك عبر 16 حملة"
+          },
+          {
+            "value": "1.65 ريال سعودي",
+            "label": "متوسط تكلفة التحويل على تيك توك"
+          },
+          {
+            "value": null,
+            "label": "أفضل حملة حققت 3,215 تحويلاً بتكلفة 1.47 ريال سعودي"
+          },
+          {
+            "value": null,
+            "label": "41,115 نقرة على تيك توك بمعدل نقر 1.03% وتكلفة نقرة 0.43 ريال سعودي"
+          },
+          {
+            "value": null,
+            "label": "871,424 ظهورًا مدفوعًا على سناب شات و10,906 نقرة بمعدل نقر 1.25%"
+          },
+          {
+            "value": "1,822$",
+            "label": "إجمالي الإنفاق على سناب شات"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "توليد العملاء المحتملين",
+          "التعليم",
+          "تمكين المبيعات",
+          "تقسيم الجمهور",
+          "إصلاح تتبع التحويلات",
+          "دورة مبيعات عبر واتساب",
+          "السعودية"
+        ],
+        "technologies": [
+          "TikTok Ads Manager",
+          "Snapchat Ads Manager",
+          "Google Tag Manager",
+          "Google Analytics 4",
+          "Conversion tracking / event configuration",
+          "WhatsApp (sales and lead handling)"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 7,
+    "project": {
+      "slug": "kayan-medical-ultrasound-platform",
+      "category": "software",
+      "isFeatured": true,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Kayan Medical Store — Medical Ultrasound Equipment Platform",
+        "description": "Arabic-first web platform for browsing, requesting service for, and purchasing ultrasound equipment in Egypt.",
+        "categoryLabel": "Software",
+        "clientName": "Kayan Medical",
+        "clientSector": "Medical Equipment",
+        "clientCountry": "Egypt",
+        "clientModel": "B2B",
+        "problemHeadline": "No digital presence, all leads lost to phone calls",
+        "problemBody": "Kayan Medical had no digital presence — doctors and clinics couldn't browse their equipment catalog, request maintenance, or book consultations online, forcing all interactions through phone calls with no lead capture system.",
+        "diagnosisHeadline": "A greenfield build, not a migration",
+        "diagnosisBody": "Greenfield build — no prior system existed to replace or migrate from.",
+        "systemHeadline": "A bilingual RTL platform with a self-serve CMS",
+        "systemCards": [
+          {
+            "icon": "layers",
+            "title": "Bilingual RTL Product Catalog",
+            "description": "Built a full-stack bilingual (Arabic-first, RTL) platform with a filterable product catalog for ultrasound equipment."
+          },
+          {
+            "icon": "messages-square",
+            "title": "WhatsApp-First Contact Flow",
+            "description": "WhatsApp-first CTAs connect doctors and clinics directly to the Kayan Medical team."
+          },
+          {
+            "icon": "workflow",
+            "title": "Maintenance & Consultation Requests",
+            "description": "Maintenance and consultation request forms capture inbound service requests directly into the system."
+          },
+          {
+            "icon": "shield",
+            "title": "Protected CMS Admin Dashboard",
+            "description": "A fully protected CMS admin dashboard lets the client manage all content — products, testimonials, offers, stats, hero sections — independently, without developer involvement."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "Delivered to production with complete Arabic RTL interface and mobile-responsive design"
+          },
+          {
+            "value": null,
+            "label": "Admin can create, edit, activate/deactivate, and reorder all content types with live updates — no developer needed"
+          },
+          {
+            "value": null,
+            "label": "WhatsApp-first contact flow connects doctors directly to the Kayan Medical team"
+          },
+          {
+            "value": null,
+            "label": "Maintenance and consultation request submissions captured and viewable in the admin dashboard"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "E-commerce",
+          "Dashboard",
+          "CMS",
+          "SEO",
+          "Medical",
+          "Website",
+          "Egypt"
+        ],
+        "technologies": [
+          "React 18 + TypeScript (frontend)",
+          "Vite (build tooling)",
+          "Express.js (backend API)",
+          "PostgreSQL via Neon Serverless (database)",
+          "Drizzle ORM (type-safe queries + migrations)",
+          "TanStack Query / React Query (server state)",
+          "Tailwind CSS + Shadcn UI / Radix UI (component system)",
+          "Wouter (client-side routing)",
+          "Passport.js + bcryptjs (authentication)",
+          "Zod + React Hook Form (validation)",
+          "Google Cloud Storage (file uploads)"
+        ]
+      },
+      "ar": {
+        "title": "كايان ميديكال ستور — منصة لمعدات الموجات فوق الصوتية الطبية",
+        "description": "منصة إلكترونية باللغة العربية أولًا لتصفح معدات الموجات فوق الصوتية وطلب الصيانة وشرائها في مصر.",
+        "categoryLabel": "برمجيات",
+        "clientName": "كايان ميديكال",
+        "clientSector": "المعدات الطبية",
+        "clientCountry": "مصر",
+        "clientModel": "بين الشركات (B2B)",
+        "problemHeadline": "لا حضور رقمي، وكل الفرص تُفقد عبر الهاتف",
+        "problemBody": "لم يكن لدى كايان ميديكال أي حضور رقمي — لم يكن بإمكان الأطباء والعيادات تصفح كتالوج المعدات، أو طلب الصيانة، أو حجز استشارات عبر الإنترنت، ما أجبر كل التعاملات على المرور عبر مكالمات هاتفية دون أي نظام لالتقاط العملاء المحتملين.",
+        "diagnosisHeadline": "بناء من الصفر لا نقل من نظام سابق",
+        "diagnosisBody": "بناء من الصفر — لم يكن هناك أي نظام سابق لاستبداله أو النقل منه.",
+        "systemHeadline": "منصة ثنائية اللغة باتجاه RTL مع نظام إدارة محتوى ذاتي",
+        "systemCards": [
+          {
+            "icon": "layers",
+            "title": "كتالوج منتجات ثنائي اللغة باتجاه RTL",
+            "description": "بنينا منصة متكاملة ثنائية اللغة (عربي أولًا، باتجاه من اليمين لليسار) مع كتالوج منتجات قابل للتصفية لمعدات الموجات فوق الصوتية."
+          },
+          {
+            "icon": "messages-square",
+            "title": "مسار تواصل عبر واتساب أولًا",
+            "description": "أزرار دعوة للتواصل عبر واتساب أولًا تربط الأطباء والعيادات مباشرة بفريق كايان ميديكال."
+          },
+          {
+            "icon": "workflow",
+            "title": "طلبات صيانة واستشارة",
+            "description": "نماذج طلب الصيانة والاستشارة تلتقط الطلبات الواردة مباشرة داخل النظام."
+          },
+          {
+            "icon": "shield",
+            "title": "لوحة تحكم محمية بالكامل",
+            "description": "لوحة تحكم إدارية محمية بالكامل تتيح للعميل إدارة كل المحتوى — المنتجات، الشهادات، العروض، الإحصاءات، أقسام البداية — بشكل مستقل دون الحاجة لمطور."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "تم التسليم للإنتاج بواجهة عربية كاملة باتجاه RTL وتصميم متجاوب مع الموبايل"
+          },
+          {
+            "value": null,
+            "label": "يمكن للمسؤول إنشاء وتعديل وتفعيل/إيقاف وإعادة ترتيب كل أنواع المحتوى بتحديثات فورية — دون الحاجة لمطور"
+          },
+          {
+            "value": null,
+            "label": "مسار تواصل عبر واتساب أولًا يربط الأطباء مباشرة بفريق كايان ميديكال"
+          },
+          {
+            "value": null,
+            "label": "تُلتقط طلبات الصيانة والاستشارة وتظهر في لوحة التحكم الإدارية"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "تجارة إلكترونية",
+          "لوحة تحكم",
+          "نظام إدارة محتوى",
+          "سيو",
+          "طبي",
+          "موقع إلكتروني",
+          "مصر"
+        ],
+        "technologies": [
+          "React 18 + TypeScript (frontend)",
+          "Vite (build tooling)",
+          "Express.js (backend API)",
+          "PostgreSQL via Neon Serverless (database)",
+          "Drizzle ORM (type-safe queries + migrations)",
+          "TanStack Query / React Query (server state)",
+          "Tailwind CSS + Shadcn UI / Radix UI (component system)",
+          "Wouter (client-side routing)",
+          "Passport.js + bcryptjs (authentication)",
+          "Zod + React Hook Form (validation)",
+          "Google Cloud Storage (file uploads)"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 8,
+    "project": {
+      "slug": "orem-orthodontics",
+      "category": "software",
+      "isFeatured": false,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Orem Orthodontics",
+        "description": "Orem Orthodontics, led by a Harvard-educated specialist, was constrained by a restrictive, DIY Google Sites web presence that failed to reflect the practice's premium clinical standards. Recognizing that managing a subpar website was distracting from patient care, the clinic partnered with OmniflowAI for a complete digital overhaul. We architected a premium, HIPAA-compliant, bilingual platform (English/Spanish) designed to establish authority, streamline patient onboarding, and serve as a hands-off growth engine. The redesign prioritized responsive UI/UX, comprehensive on-page SEO, and high-performance page speeds to ensure a frictionless patient journey and elevate the brand's digital footprint.",
+        "categoryLabel": "Software",
+        "clientName": "Orem Orthodontics",
+        "clientSector": "Orthodontics",
+        "clientCountry": "USA",
+        "clientModel": "B2C",
+        "problemHeadline": "DIY website undermined a premium practice",
+        "problemBody": "The existing digital storefront was built on a limited DIY platform, resulting in a fragmented user experience, missing content, and poor structural organization. The complete lack of technical and on-page SEO rendered the practice virtually invisible to local search traffic, creating a severe bottleneck for new patient acquisition.",
+        "diagnosisHeadline": "Brand disconnect was costing high-value patients",
+        "diagnosisBody": "The practice suffered from a massive brand disconnect: a top-tier orthodontic clinic represented by an amateur digital presence. The absence of a structured lead-capture funnel, bilingual accessibility for the local demographic, and foundational SEO meant the clinic was losing high-value patients to competitors and wasting internal time trying to manage an inefficient system.",
+        "systemHeadline": "A bilingual, SEO-driven growth engine for the practice",
+        "systemCards": [
+          {
+            "icon": "layers",
+            "title": "Custom Bilingual Web Infrastructure",
+            "description": "Engineered a fully custom, bilingual (English/Spanish) web infrastructure optimized for local search visibility and conversion rate optimization."
+          },
+          {
+            "icon": "shield",
+            "title": "Secure, Spam-Protected Lead Capture",
+            "description": "Built a secure, high-converting lead capture system equipped with stringent fraud and spam prevention."
+          },
+          {
+            "icon": "search",
+            "title": "Localized SEO Blog Architecture",
+            "description": "Built a localized blog architecture for ongoing SEO."
+          },
+          {
+            "icon": "workflow",
+            "title": "Automated Administrative Workflows",
+            "description": "Set up automated digital workflows to eliminate administrative distractions for the medical team."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "Achieved a 100% Return on Investment (ROI) for the entire build from just a single new patient conversion."
+          },
+          {
+            "value": null,
+            "label": "Generated 15 highly qualified patient leads in the first 30 days post-launch, relying exclusively on zero-cost organic search reach."
+          },
+          {
+            "value": null,
+            "label": "Established a consistent, compounding growth trajectory, consistently capturing 5+ additional organic leads month-over-month."
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "Healthcare Tech",
+          "Orthodontic Marketing",
+          "Local SEO",
+          "B2B Webflow Development",
+          "Conversion Rate Optimization (CRO)",
+          "USA",
+          "Utah",
+          "Website",
+          "Lead Gen"
+        ],
+        "technologies": [
+          "Figma (UI/UX Strategy & Prototyping)",
+          "Webflow (Custom Development & CMS Architecture)"
+        ]
+      },
+      "ar": {
+        "title": "أوريم أورثودونتيكس",
+        "description": "كانت عيادة أوريم أورثودونتيكس، بقيادة أخصائي خريج هارفارد، مقيدة بحضور إلكتروني هاوٍ عبر Google Sites لم يعكس المستوى السريري الراقي للعيادة. وإدراكًا من العيادة أن إدارة موقع دون المستوى المطلوب كانت تشتت الفريق عن رعاية المرضى، تعاونت العيادة مع OmniflowAI لتنفيذ تحول رقمي كامل. صممنا منصة راقية، متوافقة مع HIPAA، وثنائية اللغة (إنجليزي/إسباني)، لبناء المصداقية وتبسيط استقبال المرضى، والعمل كمحرك نمو يعمل بشكل شبه ذاتي. ركز التصميم على واجهة متجاوبة، وتحسين شامل لمحركات البحث داخل الصفحة، وسرعة تحميل عالية لضمان رحلة سلسة للمرضى ورفع الحضور الرقمي للعلامة.",
+        "categoryLabel": "برمجيات",
+        "clientName": "أوريم أورثودونتيكس",
+        "clientSector": "تقويم الأسنان",
+        "clientCountry": "الولايات المتحدة الأمريكية",
+        "clientModel": "بين الشركة والمستهلك (B2C)",
+        "problemHeadline": "موقع هاوٍ قوّض مصداقية عيادة راقية",
+        "problemBody": "كان الحضور الرقمي السابق مبنيًا على منصة هاوية محدودة، ما أدى إلى تجربة مستخدم مفككة، ومحتوى ناقص، وتنظيم هيكلي ضعيف. أدى الغياب التام لتحسين محركات البحث التقني وعلى مستوى الصفحة إلى جعل العيادة شبه غائبة عن نتائج البحث المحلي، ما شكّل عائقًا خطيرًا أمام استقطاب مرضى جدد.",
+        "diagnosisHeadline": "انفصال العلامة كان يكلّف مرضى ذوي قيمة عالية",
+        "diagnosisBody": "عانت العيادة من انفصال كبير بين علامتها ومظهرها الرقمي: عيادة تقويم أسنان من الطراز الأول ممثَّلة بحضور رقمي هاوٍ. أدى غياب قمع منظم لالتقاط العملاء المحتملين، وإتاحة اللغتين للفئة السكانية المحلية، والأساسيات الخاصة بتحسين محركات البحث إلى خسارة العيادة لمرضى ذوي قيمة عالية لصالح المنافسين، وإهدار وقت داخلي في إدارة نظام غير فعّال.",
+        "systemHeadline": "محرك نمو ثنائي اللغة قائم على تحسين محركات البحث",
+        "systemCards": [
+          {
+            "icon": "layers",
+            "title": "بنية ويب مخصصة ثنائية اللغة",
+            "description": "صممنا بنية ويب مخصصة بالكامل، ثنائية اللغة (إنجليزي/إسباني)، محسّنة للظهور في البحث المحلي وتحسين معدل التحويل."
+          },
+          {
+            "icon": "shield",
+            "title": "التقاط عملاء محتملين آمن ومحمي من السبام",
+            "description": "بنينا نظام التقاط عملاء محتملين آمنًا وعالي التحويل مزودًا بحماية صارمة من الاحتيال والسبام."
+          },
+          {
+            "icon": "search",
+            "title": "بنية مدونة محلية لتحسين محركات البحث",
+            "description": "بنينا بنية مدونة محلية لدعم تحسين محركات البحث المستمر."
+          },
+          {
+            "icon": "workflow",
+            "title": "مسارات عمل إدارية آلية",
+            "description": "أعددنا مسارات عمل رقمية آلية للتخلص من المشتتات الإدارية عن الفريق الطبي."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "تحقيق عائد استثمار بنسبة 100% لكامل عملية البناء من تحويل مريض جديد واحد فقط"
+          },
+          {
+            "value": null,
+            "label": "توليد 15 عميلاً محتملاً مؤهلاً بشكل كبير خلال أول 30 يومًا من الإطلاق، معتمدين حصريًا على وصول بحث عضوي بلا تكلفة"
+          },
+          {
+            "value": null,
+            "label": "تحقيق مسار نمو ثابت ومتراكم، بمعدل 5+ عملاء محتملين عضويين إضافيين شهريًا"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "تقنية الرعاية الصحية",
+          "تسويق تقويم الأسنان",
+          "سيو محلي",
+          "تطوير Webflow بين الشركات",
+          "تحسين معدل التحويل (CRO)",
+          "الولايات المتحدة",
+          "يوتا",
+          "موقع إلكتروني",
+          "توليد عملاء محتملين"
+        ],
+        "technologies": [
+          "Figma (UI/UX Strategy & Prototyping)",
+          "Webflow (Custom Development & CMS Architecture)"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 9,
+    "project": {
+      "slug": "darat-ramlah-real-estate-website",
+      "category": "software",
+      "isFeatured": true,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Darat Ramlah - KSA - Real Estate Website",
+        "description": "Website for Saudi real estate developer Darat Ramlah.",
+        "categoryLabel": "Software",
+        "clientName": "daratramlah.com",
+        "clientSector": "Real Estate",
+        "clientCountry": "Saudi Arabia",
+        "clientModel": "B2C",
+        "problemHeadline": "No website — no place to browse projects",
+        "problemBody": "Darat Ramlah had no website — buyers had no place online to browse their projects, units, and prices.",
+        "diagnosisHeadline": null,
+        "diagnosisBody": null,
+        "systemHeadline": "A WordPress site built project-by-project",
+        "systemCards": [
+          {
+            "icon": "layers",
+            "title": "Main Landing Page + Per-Development Sections",
+            "description": "A WordPress website with custom Photoshop-designed pages: a main landing page plus a dedicated section for each development — Latier duplex villas, Shahiqat Al Izdihar 15, Al Narjis floors, and Al Maghrazat units."
+          },
+          {
+            "icon": "target",
+            "title": "Unit Details, Pricing & Sold-Out Status",
+            "description": "Each development section shows unit details, pricing, and sold-out status."
+          },
+          {
+            "icon": "workflow",
+            "title": "Domain, Hosting & 12 Months of Support",
+            "description": "Delivered with domain, hosting, cPanel, and 12 months of support."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "Website launched and live — the client's first online presence for its developments"
+          },
+          {
+            "value": null,
+            "label": "https://daratramlah.com/"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "Real estate",
+          "WordPress",
+          "Web design",
+          "Landing page"
+        ],
+        "technologies": [
+          "WordPress",
+          "Adobe Photoshop",
+          "cPanel",
+          "Shared hosting"
+        ]
+      },
+      "ar": {
+        "title": "دارة رملة — موقع إلكتروني عقاري في السعودية",
+        "description": "موقع إلكتروني لمطوّر عقاري سعودي، دارة رملة.",
+        "categoryLabel": "برمجيات",
+        "clientName": "daratramlah.com",
+        "clientSector": "العقارات",
+        "clientCountry": "السعودية",
+        "clientModel": "بين الشركة والمستهلك (B2C)",
+        "problemHeadline": "لا موقع إلكتروني — لا مكان لتصفح المشاريع",
+        "problemBody": "لم يكن لدى دارة رملة أي موقع إلكتروني — لم يكن لدى المشترين مكان عبر الإنترنت لتصفح مشاريعها ووحداتها وأسعارها.",
+        "diagnosisHeadline": null,
+        "diagnosisBody": null,
+        "systemHeadline": "موقع ووردبريس مبني مشروعًا تلو الآخر",
+        "systemCards": [
+          {
+            "icon": "layers",
+            "title": "صفحة رئيسية وأقسام لكل مشروع",
+            "description": "موقع ووردبريس بصفحات مصممة خصيصًا عبر فوتوشوب: صفحة هبوط رئيسية بالإضافة إلى قسم مخصص لكل مشروع — فيلات لاتييه الدوبلكس، شقيقات الازدهار 15، أدوار النرجس، ووحدات المغرزات."
+          },
+          {
+            "icon": "target",
+            "title": "تفاصيل الوحدات والأسعار وحالة النفاد",
+            "description": "يعرض كل قسم مشروع تفاصيل الوحدات والأسعار وحالة النفاد."
+          },
+          {
+            "icon": "workflow",
+            "title": "نطاق واستضافة و12 شهر دعم",
+            "description": "تم التسليم مع النطاق والاستضافة ولوحة تحكم cPanel و12 شهرًا من الدعم الفني."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "تم إطلاق الموقع الإلكتروني وتشغيله — أول حضور إلكتروني للعميل لمشاريعه"
+          },
+          {
+            "value": null,
+            "label": "https://daratramlah.com/"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "العقارات",
+          "ووردبريس",
+          "تصميم مواقع",
+          "صفحة هبوط"
+        ],
+        "technologies": [
+          "WordPress",
+          "Adobe Photoshop",
+          "cPanel",
+          "Shared hosting"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 10,
+    "project": {
+      "slug": "dr-toy-website-optimization",
+      "category": "digital-marketing",
+      "isFeatured": true,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Dr-Toy - Egypt - Website Optimization (CRO, SEO & UX/UI)",
+        "description": "Conversion, SEO, and UX/UI optimization for Dr-Toy, an Egyptian educational toys online store.",
+        "categoryLabel": "Digital Marketing",
+        "clientName": "Dr-Toy",
+        "clientSector": "Educational Toys Retail",
+        "clientCountry": "Egypt",
+        "clientModel": "B2C",
+        "problemHeadline": "A passive catalog that leaked conversions",
+        "problemBody": "Dr-Toy's Shopify store worked as a passive product catalog — friction-heavy navigation, thin feature-only product descriptions, weak trust signals, and unoptimized pages that leaked conversions.",
+        "diagnosisHeadline": "Built as storage, not a persuasion funnel",
+        "diagnosisBody": "The site was built as a digital storage of products rather than a persuasion and conversion funnel; the audit traced the leakage to weak trust signals, poor navigation, missing urgency triggers, and unoptimized product pages.",
+        "systemHeadline": "A four-pillar SEO, CRO, and localization overhaul",
+        "systemCards": [
+          {
+            "icon": "search",
+            "title": "Technical SEO Overhaul",
+            "description": "Improved speed, WebP compression, HSTS, hreflang AR/EN, and indexing control."
+          },
+          {
+            "icon": "target",
+            "title": "On-Page SEO & Content Architecture",
+            "description": "Built keyword strategy and benefit-driven, age-targeted content architecture."
+          },
+          {
+            "icon": "compass",
+            "title": "Off-Page Ecosystem",
+            "description": "Built out Google Business Profile, reviews, PR & backlinks, and social presence."
+          },
+          {
+            "icon": "flask-conical",
+            "title": "CRO / UX-UI Redesign",
+            "description": "Redesigned the homepage for conversion, streamlined navigation and search, added trust badges, urgency triggers, bundle upsells, sticky CTAs, COD prominence, and checkout/mobile optimization."
+          },
+          {
+            "icon": "layers",
+            "title": "Arabic Storefront Localization",
+            "description": "Localized the Arabic storefront on Shopify as the primary language, plus SEO/CRO product-image guidelines."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "Delivered a complete audit and conversion-driven optimization blueprint, ready for deployment"
+          },
+          {
+            "value": null,
+            "label": "Fixed the store's Arabic localization (Arabic as primary storefront language)"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "E-commerce optimization",
+          "CRO",
+          "SEO",
+          "Shopify",
+          "UX",
+          "UI"
+        ],
+        "technologies": [
+          "Shopify",
+          "SEO (technical, on-page, off-page)",
+          "CRO / UX-UI"
+        ]
+      },
+      "ar": {
+        "title": "در-توي — تحسين موقع إلكتروني في مصر (CRO وSEO وتجربة المستخدم)",
+        "description": "تحسين التحويل ومحركات البحث وتجربة المستخدم لمتجر در-توي، متجر إلكتروني مصري للألعاب التعليمية.",
+        "categoryLabel": "التسويق الرقمي",
+        "clientName": "در-توي",
+        "clientSector": "تجارة الألعاب التعليمية",
+        "clientCountry": "مصر",
+        "clientModel": "بين الشركة والمستهلك (B2C)",
+        "problemHeadline": "كتالوج سلبي كان يُسرّب التحويلات",
+        "problemBody": "كان متجر در-توي على Shopify يعمل ككتالوج منتجات سلبي — تنقل مليء بالاحتكاك، ووصف منتجات ضعيف يركز على المزايا فقط، وإشارات ثقة ضعيفة، وصفحات غير محسّنة تُسرّب التحويلات.",
+        "diagnosisHeadline": "بُني كمخزن، لا كقمع إقناع وتحويل",
+        "diagnosisBody": "بُني الموقع كمخزن رقمي للمنتجات بدلًا من قمع إقناع وتحويل؛ وأرجع التدقيق مصدر التسرب إلى إشارات ثقة ضعيفة، وتنقل ضعيف، وغياب محفزات الاستعجال، وصفحات منتجات غير محسّنة.",
+        "systemHeadline": "تحول رباعي المحاور في السيو والتحويل والتعريب",
+        "systemCards": [
+          {
+            "icon": "search",
+            "title": "تحسين تقني شامل لمحركات البحث",
+            "description": "حسّنا السرعة، وضغط الصور بصيغة WebP، وHSTS، وhreflang للعربية والإنجليزية، والتحكم في الفهرسة."
+          },
+          {
+            "icon": "target",
+            "title": "تحسين محتوى داخل الصفحة",
+            "description": "بنينا استراتيجية كلمات مفتاحية وبنية محتوى تركز على المزايا وموجهة حسب الفئة العمرية."
+          },
+          {
+            "icon": "compass",
+            "title": "منظومة خارج الصفحة",
+            "description": "بنينا الملف التجاري على جوجل، والتقييمات، والعلاقات العامة والروابط الخلفية، والحضور الاجتماعي."
+          },
+          {
+            "icon": "flask-conical",
+            "title": "إعادة تصميم لتحسين التحويل وتجربة المستخدم",
+            "description": "أعدنا تصميم الصفحة الرئيسية لرفع التحويل، وبسّطنا التنقل والبحث، وأضفنا شارات ثقة، ومحفزات استعجال، وعروض تجميع، وأزرار دعوة ثابتة، وإبراز الدفع عند الاستلام، وتحسين الدفع والموبايل."
+          },
+          {
+            "icon": "layers",
+            "title": "تعريب واجهة المتجر",
+            "description": "عرّبنا واجهة المتجر على Shopify لتصبح اللغة العربية هي اللغة الأساسية، مع إرشادات سيو وتحويل لصور المنتجات."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "تسليم تدقيق كامل ومخطط تحسين مبني على التحويل، جاهز للتنفيذ"
+          },
+          {
+            "value": null,
+            "label": "إصلاح تعريب المتجر (اللغة العربية كلغة أساسية للواجهة)"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "تحسين التجارة الإلكترونية",
+          "تحسين التحويل",
+          "سيو",
+          "Shopify",
+          "تجربة المستخدم",
+          "واجهة المستخدم"
+        ],
+        "technologies": [
+          "Shopify",
+          "SEO (technical, on-page, off-page)",
+          "CRO / UX-UI"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 11,
+    "project": {
+      "slug": "cutz-wholesale-food-marketing",
+      "category": "digital-marketing",
+      "isFeatured": true,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Cutz - Egypt - B2B & B2C wholesale food online store in Egypt.",
+        "description": "Full-funnel social media marketing for Cutz — strategy, content, and media buying.",
+        "categoryLabel": "Digital Marketing",
+        "clientName": "Cutz",
+        "clientSector": "Food E-commerce (Meat & Seafood)",
+        "clientCountry": "Egypt",
+        "clientModel": "B2B & B2C",
+        "problemHeadline": "Needed to stand out in a crowded food market",
+        "problemBody": "Cutz needed to build a strong digital presence and stand out in Egypt's competitive meat and food market.",
+        "diagnosisHeadline": null,
+        "diagnosisBody": null,
+        "systemHeadline": "An end-to-end content and media-buying engine",
+        "systemCards": [
+          {
+            "icon": "compass",
+            "title": "Brand & Content Strategy",
+            "description": "Built brand and content strategy with art direction and market research, including SWOT and competitor benchmarking."
+          },
+          {
+            "icon": "workflow",
+            "title": "Monthly Content Calendars & Production",
+            "description": "Ran monthly content calendars with content creation, photoshoots, and post/video design."
+          },
+          {
+            "icon": "users",
+            "title": "Social Media Management",
+            "description": "Managed social media presence on an ongoing basis."
+          },
+          {
+            "icon": "target",
+            "title": "Media Plans & Paid Buying",
+            "description": "Built media plans with paid media buying across platforms."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "Built a full conversion pipeline from social content to sales"
+          },
+          {
+            "value": null,
+            "label": "Established a strong presence across social media platforms"
+          },
+          {
+            "value": null,
+            "label": "Positioned Cutz as the #1 meat, poultry, and seafood market in Egypt"
+          },
+          {
+            "value": null,
+            "label": "Added new value to Egypt's food market"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "Content creation",
+          "Social media management",
+          "Media buying",
+          "Marketing strategy",
+          "Growth Hacking",
+          "Performance Marketing",
+          "Brand Identity",
+          "Brand Guideline",
+          "Brand moodboard",
+          "SEO",
+          "CRO"
+        ],
+        "technologies": [
+          "Meta Platforms",
+          "Meta Ads",
+          "shopify website",
+          "Photoshop"
+        ]
+      },
+      "ar": {
+        "title": "كتز - مصر - متجر جملة إلكتروني للأغذية بين الشركات والمستهلكين",
+        "description": "تسويق متكامل عبر السوشيال ميديا لكتز — استراتيجية ومحتوى وشراء إعلاني.",
+        "categoryLabel": "التسويق الرقمي",
+        "clientName": "كتز",
+        "clientSector": "تجارة الأغذية إلكترونيًا (لحوم وأسماك)",
+        "clientCountry": "مصر",
+        "clientModel": "بين الشركات وبين الشركة والمستهلك (B2B & B2C)",
+        "problemHeadline": "الحاجة للتميّز في سوق أغذية مزدحم",
+        "problemBody": "احتاجت كتز إلى بناء حضور رقمي قوي والتميّز في سوق اللحوم والأغذية التنافسي في مصر.",
+        "diagnosisHeadline": null,
+        "diagnosisBody": null,
+        "systemHeadline": "محرك متكامل للمحتوى والشراء الإعلاني",
+        "systemCards": [
+          {
+            "icon": "compass",
+            "title": "استراتيجية العلامة والمحتوى",
+            "description": "بنينا استراتيجية العلامة والمحتوى مع التوجيه الفني وأبحاث السوق، بما في ذلك تحليل SWOT ومقارنة المنافسين."
+          },
+          {
+            "icon": "workflow",
+            "title": "تقاويم محتوى شهرية وإنتاج",
+            "description": "نفّذنا تقاويم محتوى شهرية شملت إنتاج المحتوى والتصوير وتصميم المنشورات والفيديوهات."
+          },
+          {
+            "icon": "users",
+            "title": "إدارة السوشيال ميديا",
+            "description": "أدرنا الحضور على منصات السوشيال ميديا بشكل مستمر."
+          },
+          {
+            "icon": "target",
+            "title": "خطط إعلامية وشراء مدفوع",
+            "description": "بنينا خططًا إعلامية مع شراء إعلاني مدفوع عبر المنصات."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "بناء مسار تحويل متكامل من محتوى السوشيال ميديا إلى المبيعات"
+          },
+          {
+            "value": null,
+            "label": "ترسيخ حضور قوي عبر منصات السوشيال ميديا"
+          },
+          {
+            "value": null,
+            "label": "تموضع كتز كسوق رقم 1 للحوم والدواجن والمأكولات البحرية في مصر"
+          },
+          {
+            "value": null,
+            "label": "إضافة قيمة جديدة لسوق الأغذية في مصر"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "إنشاء محتوى",
+          "إدارة سوشيال ميديا",
+          "شراء إعلاني",
+          "استراتيجية تسويقية",
+          "نمو سريع (Growth Hacking)",
+          "تسويق أداء",
+          "هوية العلامة التجارية",
+          "دليل العلامة التجارية",
+          "لوحة مزاج العلامة",
+          "سيو",
+          "تحسين التحويل"
+        ],
+        "technologies": [
+          "Meta Platforms",
+          "Meta Ads",
+          "shopify website",
+          "Photoshop"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 12,
+    "project": {
+      "slug": "rema-ecommerce-growth-engine",
+      "category": "digital-marketing",
+      "isFeatured": true,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Rema — Multi-Platform E-Commerce Growth Engine (KSA)",
+        "description": "Restructured the full multi-platform performance strategy for a market-leading Saudi FMCG e-commerce brand, nearly doubling monthly revenue.",
+        "categoryLabel": "Digital Marketing",
+        "clientName": "Rema",
+        "clientSector": "FMCG E-commerce",
+        "clientCountry": "Saudi Arabia",
+        "clientModel": "B2C",
+        "problemHeadline": "Fragmented data, no clear platform strategy",
+        "problemBody": "The account had no centralized analytics system to understand customer behavior, winning creatives were not being scaled effectively, there was no clear understanding of which platforms drove ROAS versus conversions, retargeting infrastructure was weak, and data across platforms was fragmented and not actionable — resulting in unstable performance and missed growth opportunities.",
+        "diagnosisHeadline": "Each platform needed a distinct funnel role",
+        "diagnosisBody": "Each platform was performing differently within the funnel, but the strategy treated them all the same. The opportunity was to assign a clear role to each platform, scale winning creative angles, and strengthen retargeting and demand capture.",
+        "systemHeadline": "A four-pillar multi-platform growth engine",
+        "systemCards": [
+          {
+            "icon": "bar-chart-3",
+            "title": "Integrated Analytics & Dashboards",
+            "description": "Integrated Mixpanel and performance dashboards to visualize platform performance, map conversion paths, and surface growth opportunities."
+          },
+          {
+            "icon": "flask-conical",
+            "title": "Creative Scaling System",
+            "description": "Identified winning creatives from historical data and produced five variations of each, testing multiple tones of voice and messaging angles."
+          },
+          {
+            "icon": "layers",
+            "title": "Platform Role Optimization",
+            "description": "Assigned each platform a clear funnel role: Google for high-intent conversions and ROAS stability, Snapchat as the primary revenue driver, TikTok for acquisition and traffic scale, Meta for expansion and retargeting."
+          },
+          {
+            "icon": "target",
+            "title": "Full Google Ads Rebuild",
+            "description": "Rebuilt Google Ads using Performance Max, Shopping, full-funnel search coverage, and a brand protection strategy holding 100% impression share."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "Monthly revenue scaled from 138K SAR to 170K SAR to 260K SAR"
+          },
+          {
+            "value": null,
+            "label": "Monthly orders grew from 679 to 830 to 1,230"
+          },
+          {
+            "value": null,
+            "label": "Website traffic scaled from 26K to 52K to 84K monthly visits"
+          },
+          {
+            "value": null,
+            "label": "Google Ads ROAS improved from 0.54 to 5.35"
+          },
+          {
+            "value": null,
+            "label": "Snapchat reached 6.71 ROAS, scaling from 34 to 462 monthly orders"
+          },
+          {
+            "value": null,
+            "label": "TikTok delivered up to 378 orders as the customer acquisition channel"
+          },
+          {
+            "value": null,
+            "label": "Meta scaled from 0 to 425 orders after being introduced later in the strategy"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "multi-platform strategy",
+          "e-commerce",
+          "FMCG",
+          "ROAS scaling",
+          "Performance Max",
+          "creative scaling system",
+          "Mixpanel analytics",
+          "Saudi Arabia"
+        ],
+        "technologies": [
+          "Google Ads (Performance Max, Shopping, Search)",
+          "Snapchat Ads",
+          "TikTok Ads Manager",
+          "Meta Ads Manager",
+          "Mixpanel",
+          "Google Tag Manager",
+          "Google Analytics 4",
+          "Zid (e-commerce platform)"
+        ]
+      },
+      "ar": {
+        "title": "ريما — محرك نمو للتجارة الإلكترونية متعدد المنصات (السعودية)",
+        "description": "أعدنا هيكلة الاستراتيجية الكاملة للأداء متعدد المنصات لعلامة سعودية رائدة في التجارة الإلكترونية للسلع الاستهلاكية سريعة الدوران، ما ضاعف الإيرادات الشهرية تقريبًا.",
+        "categoryLabel": "التسويق الرقمي",
+        "clientName": "ريما",
+        "clientSector": "التجارة الإلكترونية للسلع الاستهلاكية سريعة الدوران",
+        "clientCountry": "السعودية",
+        "clientModel": "بين الشركة والمستهلك (B2C)",
+        "problemHeadline": "بيانات مشتتة ولا استراتيجية واضحة للمنصات",
+        "problemBody": "لم يكن لدى الحساب نظام تحليلات مركزي لفهم سلوك العملاء، ولم تكن الإبداعات الرابحة تُوسَّع بفعالية، ولم يكن هناك فهم واضح لأي المنصات تقود العائد على الإنفاق الإعلاني مقابل التحويلات، وكانت بنية إعادة الاستهداف ضعيفة، وكانت البيانات عبر المنصات مشتتة وغير قابلة للتفعيل — ما أدى إلى أداء غير مستقر وفرص نمو ضائعة.",
+        "diagnosisHeadline": "كل منصة تحتاج دورًا مختلفًا في القمع",
+        "diagnosisBody": "كانت كل منصة تؤدي دورًا مختلفًا داخل قمع التحويل، لكن الاستراتيجية كانت تعامل جميعها بالطريقة نفسها. كانت الفرصة تكمن في تحديد دور واضح لكل منصة، وتوسيع الزوايا الإبداعية الرابحة، وتقوية إعادة الاستهداف والتقاط الطلب.",
+        "systemHeadline": "محرك نمو رباعي المحاور متعدد المنصات",
+        "systemCards": [
+          {
+            "icon": "bar-chart-3",
+            "title": "تحليلات ولوحات بيانات متكاملة",
+            "description": "دمجنا Mixpanel ولوحات أداء لعرض أداء المنصات، ورسم مسارات التحويل، وكشف فرص النمو."
+          },
+          {
+            "icon": "flask-conical",
+            "title": "نظام توسيع الإبداعات",
+            "description": "حددنا الإبداعات الرابحة من البيانات التاريخية وأنتجنا خمس نسخ من كل منها، باختبار نبرات صوت وزوايا رسائل متعددة."
+          },
+          {
+            "icon": "layers",
+            "title": "تحسين دور كل منصة",
+            "description": "حددنا لكل منصة دورًا واضحًا في القمع: جوجل للتحويلات عالية النية واستقرار العائد، سناب شات كمحرك الإيرادات الرئيسي، تيك توك لاستقطاب العملاء وتوسيع الوصول، وميتا للتوسع وإعادة الاستهداف."
+          },
+          {
+            "icon": "target",
+            "title": "إعادة بناء كاملة لإعلانات جوجل",
+            "description": "أعدنا بناء إعلانات جوجل باستخدام Performance Max والتسوق وتغطية بحث كاملة القمع، واستراتيجية حماية العلامة التجارية بنسبة ظهور 100%."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "نمو الإيرادات الشهرية من 138 ألف ريال إلى 170 ألف ريال ثم إلى 260 ألف ريال سعودي"
+          },
+          {
+            "value": null,
+            "label": "نمو الطلبات الشهرية من 679 إلى 830 ثم إلى 1,230 طلبًا"
+          },
+          {
+            "value": null,
+            "label": "نمو الزيارات الشهرية للموقع من 26 ألف إلى 52 ألف ثم إلى 84 ألف زيارة"
+          },
+          {
+            "value": null,
+            "label": "تحسّن عائد الإنفاق الإعلاني على جوجل من 0.54 إلى 5.35"
+          },
+          {
+            "value": null,
+            "label": "وصل سناب شات إلى عائد إنفاق إعلاني 6.71، بنمو من 34 إلى 462 طلبًا شهريًا"
+          },
+          {
+            "value": null,
+            "label": "حقق تيك توك ما يصل إلى 378 طلبًا كقناة لاستقطاب العملاء"
+          },
+          {
+            "value": null,
+            "label": "نما ميتا من صفر إلى 425 طلبًا بعد إدخاله لاحقًا في الاستراتيجية"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "استراتيجية متعددة المنصات",
+          "تجارة إلكترونية",
+          "سلع استهلاكية سريعة الدوران",
+          "توسيع العائد الإعلاني",
+          "Performance Max",
+          "نظام توسيع الإبداعات",
+          "تحليلات Mixpanel",
+          "السعودية"
+        ],
+        "technologies": [
+          "Google Ads (Performance Max, Shopping, Search)",
+          "Snapchat Ads",
+          "TikTok Ads Manager",
+          "Meta Ads Manager",
+          "Mixpanel",
+          "Google Tag Manager",
+          "Google Analytics 4",
+          "Zid (e-commerce platform)"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 13,
+    "project": {
+      "slug": "arcade-engineering-digital-transformation",
+      "category": "software",
+      "isFeatured": false,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Arcade Engineering Digital Transformation",
+        "description": "A dual-purpose digital platform developed for an engineering academy to effectively serve both corporate clients (B2B consultations) and individual engineers (B2C courses). The project required establishing a highly authoritative brand presence to build trust with large enterprises while implementing a robust conversion funnel. Key deliverables included gated membership content for lead capture, an SEO-optimized blog, automated email marketing integration, and a custom certification verification system utilizing unique student access codes.",
+        "categoryLabel": "Software",
+        "clientName": "Arcade Engineering Company",
+        "clientSector": "Engineering Education",
+        "clientCountry": null,
+        "clientModel": "B2B & B2C",
+        "problemHeadline": "DIY site couldn't support B2B or B2C growth",
+        "problemBody": "The client's previous DIY website failed to communicate their premium value, resulting in poor user engagement and unqualified traffic. Technical limitations prevented the in-house team from executing their strategic vision, creating severe bottlenecks in lead generation, audience segmentation, and overall brand perception.",
+        "diagnosisHeadline": "Diluted messaging without distinct user journeys",
+        "diagnosisBody": "The existing digital infrastructure lacked a scalable architecture and clear user journeys. Without distinct conversion pathways for B2B and B2C audiences, the messaging was diluted. Additionally, the absence of automated funnels, secure gated content, and integrated SEO practices severely limited organic growth and lead capture capabilities.",
+        "systemHeadline": "Dual-pathway platform with gated content and certification",
+        "systemCards": [
+          {
+            "icon": "layers",
+            "title": "Dual B2B/B2C Conversion Pathways",
+            "description": "Established clear conversion pathways for both corporate partners and individual learners."
+          },
+          {
+            "icon": "shield",
+            "title": "Membership Portals & Gated Content",
+            "description": "Integrated seamless membership portals with gated content for lead capture."
+          },
+          {
+            "icon": "workflow",
+            "title": "Automated Lead-Capture & Email Funnels",
+            "description": "Built automated lead-capture forms feeding an automated, gated-content pipeline for continuous email list growth."
+          },
+          {
+            "icon": "bot",
+            "title": "Certification Verification Tool",
+            "description": "Built a bespoke certification verification tool using unique student access codes."
+          },
+          {
+            "icon": "search",
+            "title": "SEO & AEO Optimization",
+            "description": "Optimized the entire infrastructure for both Search Engine Optimization (SEO) and Answer Engine Optimization (AEO)."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "Captured 250+ highly qualified user signups within the first 30 days of launch."
+          },
+          {
+            "value": null,
+            "label": "Successfully deployed an automated, gated-content pipeline to drive continuous email list growth."
+          },
+          {
+            "value": null,
+            "label": "Elevated brand authority for enterprise clients through a unified, high-performance digital presence and secure certification portal."
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "B2B",
+          "B2C",
+          "Lead Generation",
+          "Web Development",
+          "SEO",
+          "EdTech"
+        ],
+        "technologies": [
+          "Figma (UI/UX Architecture)",
+          "WordPress (Content Management System)",
+          "Elementor (Frontend Development)"
+        ]
+      },
+      "ar": {
+        "title": "أركيد إنجينيرنغ — تحول رقمي لأكاديمية هندسية",
+        "description": "منصة رقمية مزدوجة الغرض لأكاديمية هندسية، صُممت لخدمة العملاء من الشركات (استشارات B2B) والمهندسين الأفراد (دورات B2C) بفعالية. تطلب المشروع بناء حضور راسخ للعلامة التجارية لكسب ثقة الشركات الكبرى، مع تنفيذ قمع تحويل قوي. شملت المخرجات الرئيسية محتوى عضوية مغلقة لالتقاط العملاء المحتملين، ومدونة محسّنة لمحركات البحث، وتكامل تسويق بريدي آلي، ونظام مخصص للتحقق من الشهادات باستخدام رموز وصول فريدة للطلاب.",
+        "categoryLabel": "برمجيات",
+        "clientName": "شركة أركيد إنجينيرنغ",
+        "clientSector": "التعليم الهندسي",
+        "clientCountry": null,
+        "clientModel": "بين الشركات وبين الشركة والمستهلك (B2B & B2C)",
+        "problemHeadline": "موقع هاوٍ لم يدعم نمو B2B أو B2C",
+        "problemBody": "فشل الموقع الإلكتروني السابق للعميل، المُصمَّم ذاتيًا، في إيصال قيمته الراقية، ما أدى إلى ضعف تفاعل المستخدمين وحركة زيارات غير مؤهلة. حالت القيود التقنية دون تنفيذ الفريق الداخلي لرؤيته الاستراتيجية، ما خلق اختناقات خطيرة في توليد العملاء المحتملين، وتقسيم الجمهور، والصورة العامة للعلامة التجارية.",
+        "diagnosisHeadline": "رسائل مشتتة دون مسارات مستخدم واضحة",
+        "diagnosisBody": "افتقرت البنية الرقمية الحالية إلى معمارية قابلة للتوسع ومسارات مستخدم واضحة. وبدون مسارات تحويل مميزة لجمهور B2B وB2C، كانت الرسائل مُخفَّفة. كما أن غياب المسارات الآلية، والمحتوى المغلق الآمن، وممارسات السيو المتكاملة حدّ بشدة من النمو العضوي والقدرة على التقاط العملاء المحتملين.",
+        "systemHeadline": "منصة مزدوجة المسار مع محتوى مغلق وشهادات موثقة",
+        "systemCards": [
+          {
+            "icon": "layers",
+            "title": "مساران تحويليان لـB2B وB2C",
+            "description": "أنشأنا مسارات تحويل واضحة لكل من الشركاء من الشركات والمتعلمين الأفراد."
+          },
+          {
+            "icon": "shield",
+            "title": "بوابات عضوية ومحتوى مغلق",
+            "description": "دمجنا بوابات عضوية سلسة مع محتوى مغلق لالتقاط العملاء المحتملين."
+          },
+          {
+            "icon": "workflow",
+            "title": "التقاط عملاء محتملين آلي ومسارات بريدية",
+            "description": "بنينا نماذج التقاط عملاء محتملين آلية تغذي مسارًا آليًا للمحتوى المغلق لنمو مستمر في قائمة البريد الإلكتروني."
+          },
+          {
+            "icon": "bot",
+            "title": "أداة توثيق الشهادات",
+            "description": "بنينا أداة مخصصة للتحقق من الشهادات باستخدام رموز وصول فريدة للطلاب."
+          },
+          {
+            "icon": "search",
+            "title": "تحسين لمحركات البحث ومحركات الإجابة",
+            "description": "حسّنا البنية الكاملة لكل من تحسين محركات البحث (SEO) وتحسين محركات الإجابة (AEO)."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "التقاط أكثر من 250 تسجيلاً لمستخدمين مؤهلين بشدة خلال أول 30 يومًا من الإطلاق"
+          },
+          {
+            "value": null,
+            "label": "نشر ناجح لمسار محتوى مغلق آلي لدفع نمو مستمر في قائمة البريد الإلكتروني"
+          },
+          {
+            "value": null,
+            "label": "رفع مصداقية العلامة التجارية لعملاء الشركات عبر حضور رقمي موحد وعالي الأداء وبوابة شهادات آمنة"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "بين الشركات (B2B)",
+          "بين الشركة والمستهلك (B2C)",
+          "توليد العملاء المحتملين",
+          "تطوير مواقع الويب",
+          "سيو",
+          "التعليم التقني"
+        ],
+        "technologies": [
+          "Figma (UI/UX Architecture)",
+          "WordPress (Content Management System)",
+          "Elementor (Frontend Development)"
+        ]
+      }
+    }
+  },
+  {
+    "sourceIndex": 14,
+    "project": {
+      "slug": "dr-darine-khalifa-obgyn-clinic",
+      "category": "digital-marketing",
+      "isFeatured": true,
+      "isServiceShowcase": false,
+      "coverImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNDUwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBGMTcyQSIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxRTI5M0IiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iMTQwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMDciLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyMjUiIHI9IjcwIiBmaWxsPSIjRkY2QjFBIiBmaWxsLW9wYWNpdHk9IjAuMTQiLz48L3N2Zz4=",
+      "logo": null,
+      "mediaImage": null
+    },
+    "translations": {
+      "en": {
+        "title": "Dr. Darine Khalifa - Egypt - OB/GYN clinic",
+        "description": "Social media branding and medical content design for an OB/GYN clinic in Sheikh Zayed, Egypt.",
+        "categoryLabel": "Digital Marketing",
+        "clientName": "Dr. Darine Khalifa",
+        "clientSector": "OB/GYN Healthcare",
+        "clientCountry": "Egypt",
+        "clientModel": "B2C",
+        "problemHeadline": "Needed a trustworthy presence to reach patients",
+        "problemBody": "The clinic needed a professional, trustworthy online presence to reach patients and present its services (gynecology, obstetrics, fertility/ICSI, cosmetic gynecology, pregnancy follow-up).",
+        "diagnosisHeadline": null,
+        "diagnosisBody": null,
+        "systemHeadline": "A branded social media presence, maintained ongoing",
+        "systemCards": [
+          {
+            "icon": "layers",
+            "title": "Visual Identity Across Page Covers & Profile",
+            "description": "Applied the clinic's visual identity across page covers and profile on its social platforms."
+          },
+          {
+            "icon": "workflow",
+            "title": "Ongoing Medical Awareness & Service Posts",
+            "description": "Produced an ongoing series of designed medical awareness and service posts for Facebook/Instagram."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "Full Digital Marketing Strategy"
+          },
+          {
+            "value": null,
+            "label": "Strong Social Media Platforms"
+          },
+          {
+            "value": null,
+            "label": "Built a Huge Target Audience"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "Medical marketing",
+          "Social media design",
+          "Content Creation",
+          "Digital Marketing Strategy",
+          "Social media Management",
+          "Media Buying"
+        ],
+        "technologies": [
+          "Adobe Photoshop",
+          "Meta"
+        ]
+      },
+      "ar": {
+        "title": "الدكتورة دارين خليفة - مصر - عيادة نساء وتوليد",
+        "description": "هوية بصرية عبر السوشيال ميديا وتصميم محتوى طبي لعيادة نساء وتوليد في الشيخ زايد، مصر.",
+        "categoryLabel": "التسويق الرقمي",
+        "clientName": "الدكتورة دارين خليفة",
+        "clientSector": "الرعاية الصحية لأمراض النساء والتوليد",
+        "clientCountry": "مصر",
+        "clientModel": "بين الشركة والمستهلك (B2C)",
+        "problemHeadline": "الحاجة لحضور موثوق للوصول إلى المريضات",
+        "problemBody": "احتاجت العيادة إلى حضور إلكتروني احترافي وموثوق للوصول إلى المريضات وعرض خدماتها (أمراض النساء، التوليد، الخصوبة/الحقن المجهري، جراحات النساء التجميلية، متابعة الحمل).",
+        "diagnosisHeadline": null,
+        "diagnosisBody": null,
+        "systemHeadline": "حضور علامة تجارية على السوشيال ميديا يُدار باستمرار",
+        "systemCards": [
+          {
+            "icon": "layers",
+            "title": "هوية بصرية عبر أغلفة الصفحات والملف الشخصي",
+            "description": "طبّقنا الهوية البصرية للعيادة عبر أغلفة الصفحات والملف الشخصي على منصاتها الاجتماعية."
+          },
+          {
+            "icon": "workflow",
+            "title": "منشورات توعوية وخدمية طبية مستمرة",
+            "description": "أنتجنا سلسلة مستمرة من المنشورات المصممة للتوعية الطبية وعرض الخدمات على فيسبوك وإنستغرام."
+          }
+        ],
+        "results": [
+          {
+            "value": null,
+            "label": "استراتيجية تسويق رقمي متكاملة"
+          },
+          {
+            "value": null,
+            "label": "منصات سوشيال ميديا قوية"
+          },
+          {
+            "value": null,
+            "label": "بناء جمهور مستهدف كبير"
+          }
+        ],
+        "mediaCaption": null,
+        "ctaHeadline": null,
+        "ctaSubtext": null,
+        "tags": [
+          "التسويق الطبي",
+          "تصميم سوشيال ميديا",
+          "إنشاء محتوى",
+          "استراتيجية تسويق رقمي",
+          "إدارة سوشيال ميديا",
+          "شراء إعلاني"
+        ],
+        "technologies": [
+          "Adobe Photoshop",
+          "Meta"
+        ]
+      }
+    }
+  }
+]
