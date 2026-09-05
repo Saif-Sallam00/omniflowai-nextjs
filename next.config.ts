@@ -23,6 +23,14 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: "/conversion-engineering",
+        destination: "/conversion-engineering.html",
+      },
+    ];
+  },
   async headers() {
     if (process.env.INDEXING_ENABLED === "true") {
       return [
