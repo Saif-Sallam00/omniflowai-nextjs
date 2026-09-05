@@ -1,8 +1,22 @@
 import Link from "next/link";
 import { getLanguagePath, type Language } from "@/lib/language";
 import { SERVICE_SHARED_STRINGS } from "@/lib/services/shared-strings";
-import type { ServiceDetailContent } from "@/lib/services/types";
-import { ServiceDiagram } from "@/components/services/service-diagram";
+import type { ServiceDetailContent, ServiceSlug } from "@/lib/services/types";
+import { ServiceViz } from "@/components/services/service-viz";
+import { ServiceVizAiTraining } from "@/components/services/service-viz-ai-training";
+import { ServiceVizDigitalMarketing } from "@/components/services/service-viz-digital-marketing";
+import { ServiceVizSoftware } from "@/components/services/service-viz-software";
+
+function ServiceDiagram({ slug, language }: { slug: ServiceSlug; language: Language }) {
+  switch (slug) {
+    case "ai-training":
+      return <ServiceVizAiTraining language={language} />;
+    case "digital-marketing":
+      return <ServiceVizDigitalMarketing language={language} />;
+    case "software":
+      return <ServiceVizSoftware language={language} />;
+  }
+}
 
 export function ServiceHero({
   content,
@@ -45,7 +59,9 @@ export function ServiceHero({
           </div>
         </div>
 
-        <ServiceDiagram variant={content.slug} />
+        <ServiceViz language={language}>
+          <ServiceDiagram slug={content.slug} language={language} />
+        </ServiceViz>
       </div>
     </section>
   );
