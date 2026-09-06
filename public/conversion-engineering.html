@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Conversion Engineering for DTC Skincare Brands — OmniflowAI</title>
-<meta name="description" content="Turn existing paid traffic into more revenue by finding and fixing conversion leaks in your funnel. For Shopify skincare brands already investing in paid traffic.">
+<title>Find the conversion leaks between your paid click and purchase — OmniflowAI</title>
+<meta name="description" content="A fixed-scope diagnostic Conversion Sprint for Shopify skincare brands already running paid traffic. I trace the journey from ad to purchase and return a prioritized plan for what to change, why, and how to measure it. Engagements start at $1,250.">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="/icon.png" type="image/png">
 <link rel="apple-touch-icon" href="/apple-icon.png">
@@ -202,15 +202,21 @@ a{color:inherit;}
 }
 .g-yellow .btn--primary{background:var(--paper);}
 .g-yellow .btn--primary:hover{background:#fff;}
+/* inside a white card the primary button reclaims the accent */
+.g-yellow .formcard .btn--primary{background:var(--yellow);}
+.g-yellow .formcard .btn--primary:hover{background:var(--yellow-deep);}
 
 /* ============================================================
    HERO
    ============================================================ */
 .hero{
-  padding-top:clamp(56px,6.5vw,96px);
+  padding-top:clamp(20px,2vw,28px);
   padding-bottom:clamp(64px,7vw,104px);
   overflow:hidden;
 }
+/* sticky nav is 72px (64px on small screens): keep anchor targets clear of it */
+section[id],#main{scroll-margin-top:80px;}
+@media (max-width:520px){section[id],#main{scroll-margin-top:72px;}}
 .hero .hatch--a{
   top:-40px;right:-60px;width:280px;height:280px;transform:rotate(0deg);
   -webkit-mask-image:radial-gradient(circle at 70% 30%,#000 40%,transparent 72%);
@@ -239,10 +245,10 @@ a{color:inherit;}
 .hero h1{
   margin-top:26px;
   font-weight:900;
-  font-size:clamp(2.5rem,6.4vw,4.6rem);
-  line-height:.98;
-  letter-spacing:-0.043em;
-  max-width:13ch;
+  font-size:clamp(2.25rem,5.4vw,3.9rem);
+  line-height:1.0;
+  letter-spacing:-0.04em;
+  max-width:16ch;
 }
 .hero h1 .hl{position:relative;display:inline-block;z-index:0;}
 .hero h1 .hl::after{
@@ -259,8 +265,13 @@ a{color:inherit;}
   max-width:34ch;
   font-weight:500;
 }
+.hero-body{
+  margin-top:20px;
+  font-size:1.0625rem;line-height:1.6;
+  color:var(--ink-soft);max-width:48ch;
+}
 .hero-support{
-  margin-top:24px;
+  margin-top:26px;
   display:inline-flex;align-items:center;gap:10px;
   font-family:var(--mono);font-size:.8125rem;
   border-top:2px solid var(--ink);padding-top:16px;
@@ -268,84 +279,72 @@ a{color:inherit;}
 }
 .hero-cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;}
 
-/* ---- hero value chain: PAID TRAFFIC → FUNNEL → CONVERSION → REVENUE ---- */
-.chain{
-  position:relative;
-  border:2px solid var(--ink);
-  border-radius:var(--radius);
-  background:var(--paper-2);
-  box-shadow:var(--shadow-lg);
-  overflow:hidden;
+/* ---- hero proof-of-work: how a finding is written ---- */
+.finding{
+  border:2px solid var(--ink);border-radius:var(--radius);
+  background:var(--paper);box-shadow:var(--shadow-lg);
+  overflow:hidden;position:relative;width:100%;
 }
-.chain-head{
+@media (min-width:960px){.finding{margin-top:6px;}}
+.finding-cap{
   display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:13px 18px;border-bottom:2px solid var(--ink);
+  padding:12px 16px;border-bottom:2px solid var(--ink);
   background:var(--ink);color:var(--paper);
-  font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.13em;text-transform:uppercase;
 }
-.chain-head .dots{display:inline-flex;gap:6px;}
-.chain-head .dots i{width:9px;height:9px;border-radius:50%;background:var(--paper);opacity:.45;}
-.chain-head .dots i:first-child{background:var(--yellow);opacity:1;}
+.finding-cap .tag{
+  background:var(--yellow);color:var(--ink);
+  padding:3px 8px;border-radius:5px;font-weight:600;letter-spacing:.1em;
+}
+.finding-rows li{
+  display:grid;grid-template-columns:1fr;gap:4px;
+  padding:13px 16px;border-bottom:2px solid rgba(15,23,41,.12);
+}
+@media (min-width:420px){
+  .finding-rows li{grid-template-columns:9.5rem minmax(0,1fr);gap:14px;align-items:baseline;}
+}
+.finding-rows li:last-of-type{border-bottom:2px solid var(--ink);}
+.finding-rows .k{
+  font-family:var(--mono);font-size:.625rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--cobalt);
+}
+.finding-rows .v{font-size:.9375rem;line-height:1.45;}
+.finding-rows li:last-of-type .v{font-weight:700;}
+.finding-foot{
+  padding:12px 16px;background:var(--paper-2);
+  font-family:var(--mono);font-size:.625rem;line-height:1.6;
+  letter-spacing:.05em;color:var(--ink-soft);
+}
 
-.chain-body{position:relative;padding:8px 0 0;}
-/* the cobalt wedge: wide at the top (traffic in), narrow at the bottom (revenue out) */
-.chain-wedge{
-  position:absolute;inset:0;
-  background:var(--cobalt);
-  -webkit-clip-path:polygon(0 0,100% 0,76% 100%,24% 100%);
-          clip-path:polygon(0 0,100% 0,76% 100%,24% 100%);
-  opacity:.14;
+/* ---- founder byline chip: small trust anchor, not the main event ---- */
+.byline{
+  margin:18px 0 0;display:flex;align-items:center;gap:14px;
+  border:2px solid var(--ink);border-radius:999px;
+  background:var(--paper);box-shadow:var(--shadow-sm);
+  padding:8px 20px 8px 8px;
 }
-.chain-steps{position:relative;padding:12px 16px 18px;}
-.chain-step{
-  position:relative;
-  display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:start;
-  padding:15px 14px;
-  border:2px solid var(--ink);
-  border-radius:var(--radius-sm);
-  background:var(--paper);
-  margin-bottom:10px;
-  box-shadow:var(--shadow-sm);
+.byline-img{
+  width:52px;height:52px;flex:0 0 auto;border-radius:50%;
+  border:2px solid var(--ink);object-fit:cover;object-position:50% 40%;
+  background:var(--paper-2);display:block;
 }
-.chain-step:last-child{margin-bottom:0;}
-.chain-step .idx{
-  font-family:var(--mono);font-size:.8125rem;font-weight:600;
-  padding-top:2px;letter-spacing:.04em;
+.byline figcaption{min-width:0;}
+.byline .nm{display:block;font-weight:800;letter-spacing:-0.02em;line-height:1.2;}
+.byline .role{
+  display:block;font-family:var(--mono);font-size:.625rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:2px;
 }
-.chain-step .txt{display:block;min-width:0;}
-.chain-step .nm{
-  display:block;
-  font-weight:800;font-size:1.0625rem;letter-spacing:-0.02em;line-height:1.15;
-  text-transform:uppercase;
+.byline a{
+  margin-left:auto;flex:0 0 auto;
+  font-family:var(--mono);font-size:.6875rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;text-decoration:none;
+  border-bottom:2px solid var(--ink);padding-bottom:2px;
 }
-.chain-step .ds{display:block;font-size:.875rem;color:var(--ink-soft);margin-top:3px;line-height:1.4;}
-.chain-step--focus{background:var(--yellow);box-shadow:4px 4px 0 var(--ink);}
-.chain-step--focus .ds{color:var(--ink);}
-.chain-step--focus::after{
-  content:"WHERE WE WORK";
-  position:absolute;top:-11px;right:12px;
-  font-family:var(--mono);font-size:.625rem;letter-spacing:.12em;
-  background:var(--ink);color:var(--yellow);
-  padding:3px 8px;border-radius:4px;
+.byline a:hover{background:var(--ink);color:var(--yellow);}
+@media (max-width:420px){
+  .byline{border-radius:var(--radius);flex-wrap:wrap;padding:12px;}
+  .byline a{margin-left:0;width:100%;border-bottom:0;}
 }
-.chain-step--out{background:var(--cobalt);color:var(--paper);}
-.chain-step--out .ds{color:rgba(255,255,255,.92);}
-
-.chain-link{
-  display:flex;justify-content:center;margin:-4px 0 6px;
-  font-size:.8125rem;color:var(--ink);
-}
-.chain-link span{
-  display:inline-block;width:2px;height:14px;background:var(--ink);
-}
-.chain-foot{
-  border-top:2px solid var(--ink);
-  padding:12px 18px;
-  font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;
-  text-transform:uppercase;background:var(--paper);
-  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
-}
-.chain-foot b{font-weight:600;}
 
 /* ============================================================
    FUNNEL / JOURNEY
@@ -357,6 +356,7 @@ a{color:inherit;}
 .journey-note{
   font-family:var(--mono);font-size:.8125rem;line-height:1.6;
   max-width:40ch;border-left:2px solid var(--ink);padding-left:14px;
+  margin:clamp(34px,4vw,52px) 0 clamp(20px,2.4vw,28px);
 }
 .journey-note b{
   font-weight:600;background:var(--yellow);
@@ -445,38 +445,66 @@ a{color:inherit;}
 .lg .i-pre{background:var(--paper);}
 
 /* ============================================================
-   PROBLEM (cobalt)
+   SKINCARE-SPECIFIC INVESTIGATION (ink)
    ============================================================ */
-.problem-body{
-  display:grid;gap:20px;margin-top:34px;justify-items:start;
+.investigate{
+  margin-top:clamp(40px,5vw,60px);
+  display:grid;grid-template-columns:1fr;
+  border-top:2px solid rgba(255,255,255,.28);
 }
-.problem-body p{max-width:46ch;font-size:1.0625rem;color:rgba(255,255,255,.93);}
-.problem-body p.strong{color:var(--paper);font-weight:600;font-size:1.1875rem;}
+@media (min-width:820px){.investigate{grid-template-columns:1fr 1fr;}}
+.investigate li{
+  padding:28px 0;border-bottom:2px solid rgba(255,255,255,.28);
+}
+@media (min-width:820px){
+  .investigate li{padding:28px 34px 28px 0;}
+  .investigate li:nth-child(2n){padding-right:0;padding-left:34px;border-left:2px solid rgba(255,255,255,.28);}
+}
+.investigate .q{
+  font-family:var(--mono);font-size:.6875rem;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--yellow);
+  display:block;
+}
+.investigate h3{
+  margin-top:12px;font-weight:800;letter-spacing:-0.025em;
+  font-size:clamp(1.125rem,1.9vw,1.4375rem);line-height:1.15;
+}
+.investigate p{margin-top:10px;color:rgba(255,255,255,.82);max-width:44ch;}
+.investigate-foot{
+  margin-top:clamp(30px,4vw,44px);
+  font-family:var(--mono);font-size:.8125rem;line-height:1.65;
+  color:rgba(255,255,255,.72);max-width:60ch;
+  border-left:2px solid var(--yellow);padding-left:16px;
+}
 
-.disconnect-block{
-  width:100%;max-width:30rem;
-  border:2px solid var(--ink);border-radius:var(--radius);
-  background:var(--paper);color:var(--ink);
-  box-shadow:var(--shadow-lg);
-  overflow:hidden;
-  margin:6px 0;
+/* ============================================================
+   METHOD CHAIN — observation → evidence → … → KPI
+   ============================================================ */
+.mchain{
+  margin-top:clamp(38px,4.5vw,54px);
+  display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;
 }
-.disconnect-cap{
-  padding:12px 18px;border-bottom:2px solid var(--ink);
-  background:var(--ink);color:var(--paper);
-  font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;
+.mchain li{
+  flex:1 1 150px;min-width:0;
+  border:2px solid var(--ink);border-radius:var(--radius-sm);
+  background:var(--paper);box-shadow:var(--shadow-sm);
+  padding:16px 16px 18px;
+  position:relative;
 }
-.disconnect li{
-  padding:19px 20px;border-bottom:2px solid var(--ink);
-  font-weight:700;font-size:1.0625rem;letter-spacing:-0.015em;
-  display:flex;align-items:center;gap:14px;
+.mchain li:last-child{background:var(--yellow);}
+.mchain .n{
+  font-family:var(--mono);font-size:.625rem;font-weight:600;
+  letter-spacing:.13em;color:var(--cobalt);display:block;
 }
-.disconnect li:last-child{border-bottom:0;}
-.disconnect li::before{
-  content:"";flex:0 0 auto;width:14px;height:14px;
-  border:2px solid var(--ink);background:var(--coral);
-  border-radius:3px;transform:rotate(45deg);
+.mchain li:last-child .n{color:var(--ink);opacity:.7;}
+.mchain .t{
+  display:block;margin-top:9px;font-weight:800;
+  font-size:.9375rem;letter-spacing:-0.01em;text-transform:uppercase;line-height:1.2;
 }
+.mchain .d{
+  display:block;margin-top:7px;font-size:.8125rem;line-height:1.4;color:var(--ink-soft);
+}
+.mchain li:last-child .d{color:var(--ink);opacity:.78;}
 
 /* ============================================================
    SERVICE
@@ -504,8 +532,7 @@ a{color:inherit;}
 .includes li{
   padding:26px 22px;
   border-bottom:2px solid var(--ink);border-right:2px solid var(--ink);
-  font-weight:700;font-size:1.0625rem;letter-spacing:-0.02em;line-height:1.25;
-  display:flex;flex-direction:column;gap:14px;
+  display:flex;flex-direction:column;gap:11px;
   min-height:132px;
   background:var(--paper);
   transition:background-color .15s ease;
@@ -515,6 +542,37 @@ a{color:inherit;}
   font-family:var(--mono);font-size:.75rem;font-weight:600;letter-spacing:.08em;
   color:var(--cobalt);
 }
+.includes li .t{
+  font-weight:800;font-size:1.0625rem;letter-spacing:-0.02em;line-height:1.2;
+}
+.includes li .d{
+  font-size:.9375rem;line-height:1.45;color:var(--ink-soft);font-weight:400;
+}
+
+/* scope + price strip — states plainly what the Sprint is and is not */
+.scope{
+  margin-top:clamp(28px,3.4vw,40px);
+  display:grid;gap:0;grid-template-columns:1fr;
+  border:2px solid var(--ink);border-radius:var(--radius);
+  background:var(--paper);box-shadow:var(--shadow);overflow:hidden;
+}
+@media (min-width:760px){.scope{grid-template-columns:repeat(3,1fr);}}
+.scope > div{
+  padding:20px 22px;border-bottom:2px solid var(--ink);
+}
+@media (min-width:760px){
+  .scope > div{border-bottom:0;border-right:2px solid var(--ink);}
+  .scope > div:last-child{border-right:0;}
+}
+.scope > div:last-child{border-bottom:0;}
+.scope .k{
+  font-family:var(--mono);font-size:.625rem;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);display:block;
+}
+.scope .v{display:block;margin-top:9px;font-weight:800;font-size:1.0625rem;letter-spacing:-0.02em;line-height:1.3;}
+.scope .v small{display:block;font-weight:400;font-size:.875rem;color:var(--ink-soft);margin-top:5px;letter-spacing:0;}
+.scope > div.price{background:var(--yellow);}
+.scope > div.price .k,.scope > div.price .v small{color:var(--ink);opacity:.75;}
 /* clean the trailing borders per breakpoint */
 @media (min-width:720px) and (max-width:1039.98px){
   .includes li:nth-child(2n){border-right:0;}
@@ -530,49 +588,71 @@ a{color:inherit;}
 /* ============================================================
    METHOD (ink)
    ============================================================ */
-.steps{
-  margin-top:clamp(40px,5vw,60px);
-  display:grid;grid-template-columns:1fr;
-  border-top:2px solid rgba(255,255,255,.28);
-}
-@media (min-width:760px){.steps{grid-template-columns:repeat(5,1fr);border-top:0;}}
-.step{
-  position:relative;
-  padding:26px 18px 26px 0;
-  border-bottom:2px solid rgba(255,255,255,.28);
-  display:flex;align-items:baseline;gap:16px;
-}
-@media (min-width:760px){
-  .step{
-    display:block;padding:30px 20px 30px 0;
-    border-top:2px solid rgba(255,255,255,.28);border-bottom:0;
-  }
-}
-.step-num{
-  font-family:var(--mono);
-  font-weight:600;
-  font-size:clamp(1.75rem,3.4vw,2.75rem);
-  line-height:1;
-  color:var(--yellow);
-  letter-spacing:-0.02em;
-  display:block;
-}
-.step-name{
-  font-weight:800;font-size:clamp(1.0625rem,1.6vw,1.25rem);
-  letter-spacing:-0.02em;text-transform:uppercase;
-  display:block;
-}
-@media (min-width:760px){.step-name{margin-top:14px;}}
-
 .method-note{
-  margin-top:clamp(40px,5vw,60px);
-  border:2px solid var(--paper);border-radius:var(--radius);
-  padding:clamp(22px,3vw,34px);
-  max-width:58ch;
-  background:rgba(255,255,255,.05);
+  margin-top:clamp(34px,4vw,48px);
+  border:2px solid var(--ink);border-left-width:10px;border-radius:var(--radius);
+  border-left-color:var(--yellow);
+  padding:clamp(22px,3vw,32px);
+  max-width:62ch;
+  background:var(--paper);box-shadow:var(--shadow-sm);
 }
-.method-note p{font-size:clamp(1.0625rem,1.7vw,1.3125rem);line-height:1.4;font-weight:600;}
-.method-note p + p{margin-top:14px;color:rgba(255,255,255,.8);font-weight:400;}
+.method-note p{font-size:clamp(1.0625rem,1.7vw,1.25rem);line-height:1.4;font-weight:700;}
+.method-note p + p{margin-top:14px;color:var(--ink-soft);font-weight:400;font-size:1.0625rem;line-height:1.55;}
+
+/* ============================================================
+   AFTER THE SPRINT (cobalt) — implementation is a separate engagement
+   ============================================================ */
+.next{
+  margin-top:clamp(40px,5vw,56px);
+  display:grid;gap:26px;grid-template-columns:1fr;
+}
+@media (min-width:860px){.next{grid-template-columns:1fr 1fr;gap:30px;}}
+.next-card{
+  border:2px solid var(--ink);border-radius:var(--radius);
+  background:var(--paper);color:var(--ink);
+  box-shadow:var(--shadow-lg);overflow:hidden;
+}
+.next-card h3{
+  padding:14px 20px;border-bottom:2px solid var(--ink);
+  font-family:var(--mono);font-size:.6875rem;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.next-card--a h3{background:var(--paper-2);}
+.next-card--b h3{background:var(--yellow);}
+.next-card .body{padding:22px 20px;}
+.next-card .body > p:first-child{
+  font-weight:800;font-size:1.1875rem;letter-spacing:-0.025em;line-height:1.25;
+}
+.next-card .body > p + p{margin-top:12px;color:var(--ink-soft);font-size:1rem;line-height:1.55;}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{
+  margin-top:clamp(38px,4.5vw,54px);
+  border:2px solid var(--ink);border-radius:var(--radius);
+  background:var(--paper);box-shadow:var(--shadow-lg);overflow:hidden;
+}
+.faq details{border-bottom:2px solid var(--ink);}
+.faq details:last-child{border-bottom:0;}
+.faq summary{
+  list-style:none;cursor:pointer;
+  padding:19px 22px;
+  font-weight:700;font-size:1.0625rem;letter-spacing:-0.015em;line-height:1.35;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:18px;
+}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{
+  content:"+";flex:0 0 auto;
+  font-family:var(--mono);font-weight:600;font-size:1.375rem;line-height:1.1;
+}
+.faq details[open] summary::after{content:"–";}
+.faq details[open] summary{background:var(--yellow);}
+.faq summary:hover{background:var(--paper-2);}
+.faq details[open] summary:hover{background:var(--yellow);}
+.faq .a{padding:4px 22px 22px;color:var(--ink-soft);max-width:72ch;line-height:1.6;}
+.faq .a + .a{padding-top:0;margin-top:-8px;}
 
 /* ============================================================
    FIT
@@ -609,7 +689,7 @@ a{color:inherit;}
   font-size:.6875rem;font-weight:800;font-family:var(--mono);
 }
 .fit-col--yes li::before{content:"✓";background:var(--green);color:var(--paper);}
-.fit-col--no li::before{content:"—";background:var(--paper-2);color:var(--ink-soft);}
+.fit-col--no li::before{content:"–";background:var(--paper-2);color:var(--ink-soft);}
 
 /* ============================================================
    ABOUT
@@ -620,15 +700,15 @@ a{color:inherit;}
 @media (min-width:920px){
   .about-grid{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(48px,5vw,80px);}
 }
-/* founder card: real photo above a cobalt name plate — one object */
 .about-id{
   margin:0;
   border:2px solid var(--ink);border-radius:var(--radius);
   background:var(--paper);
   box-shadow:var(--shadow-lg);
   position:relative;overflow:hidden;
-  max-width:440px;
+  width:100%;max-width:440px;
 }
+@media (min-width:920px){ .about-id{max-width:none;} }
 .about-photo{
   display:block;width:100%;height:auto;
   aspect-ratio:1/1;
@@ -638,20 +718,21 @@ a{color:inherit;}
 }
 .about-plate{
   background:var(--cobalt);color:var(--paper);
-  padding:clamp(20px,2.6vw,30px);
+  padding:clamp(24px,3vw,34px);
   position:relative;overflow:hidden;
+  display:block;
 }
 .about-id .hatch--b{
-  right:-30px;bottom:-40px;width:150px;height:150px;opacity:.2;
+  right:-30px;bottom:-30px;width:150px;height:150px;opacity:.2;
 }
 .about-id h2{
-  font-weight:900;font-size:clamp(2rem,3.8vw,2.75rem);
+  font-weight:900;font-size:clamp(2.25rem,4.4vw,3.25rem);
   letter-spacing:-0.04em;line-height:1;position:relative;
 }
 .about-id .role{
-  margin-top:14px;font-family:var(--mono);font-size:.75rem;
+  margin-top:16px;font-family:var(--mono);font-size:.75rem;
   letter-spacing:.12em;text-transform:uppercase;
-  border-top:2px solid rgba(255,255,255,.4);padding-top:13px;
+  border-top:2px solid rgba(255,255,255,.4);padding-top:14px;
   position:relative;
 }
 .about-body p{color:var(--ink-soft);font-size:1.0625rem;}
@@ -685,17 +766,113 @@ a{color:inherit;}
 }
 .final-inner{position:relative;z-index:1;}
 .final h2{
-  font-weight:900;letter-spacing:-0.043em;line-height:.98;
-  font-size:clamp(2.375rem,6vw,4.25rem);max-width:13ch;
+  font-weight:900;letter-spacing:-0.04em;line-height:1.0;
+  font-size:clamp(2.125rem,5vw,3.5rem);max-width:16ch;
   margin-top:24px;
 }
-.final p{margin-top:26px;max-width:46ch;font-size:1.125rem;font-weight:500;}
-.final-actions{margin-top:38px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+.final fieldset{border:0;padding:0;margin:0;min-width:0;}
+.final legend{padding:0;}
+.final-intro{margin-top:26px;max-width:46ch;font-size:1.125rem;font-weight:500;}
+.final-grid{
+  margin-top:clamp(40px,5vw,56px);
+  display:grid;gap:clamp(32px,4vw,52px);grid-template-columns:1fr;align-items:start;
+}
+@media (min-width:920px){
+  .final-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,4.5vw,72px);}
+}
+.final-promise li{
+  padding:15px 0;border-bottom:2px solid rgba(15,23,41,.25);
+  display:flex;gap:14px;align-items:flex-start;font-weight:600;line-height:1.4;
+}
+.final-promise li:last-child{border-bottom:0;}
+.final-promise li::before{
+  content:"";flex:0 0 auto;margin-top:6px;
+  width:13px;height:13px;border:2px solid var(--ink);background:var(--paper);border-radius:3px;
+}
+.final-smallprint{
+  margin-top:22px;font-family:var(--mono);font-size:.75rem;line-height:1.7;
+  letter-spacing:.04em;max-width:40ch;
+}
 .final-mail{
-  font-family:var(--mono);font-size:.9375rem;text-decoration:none;
+  font-family:var(--mono);font-size:.875rem;text-decoration:none;
   border-bottom:2px solid var(--ink);padding-bottom:2px;font-weight:500;
 }
 .final-mail:hover{background:var(--ink);color:var(--yellow);border-bottom-color:var(--ink);}
+
+/* ---- qualification form: native fields, same component signature ---- */
+.formcard{
+  border:2px solid var(--ink);border-radius:var(--radius);
+  background:var(--paper);color:var(--ink);
+  box-shadow:var(--shadow-lg);overflow:hidden;
+}
+.formcard-cap{
+  padding:13px 20px;border-bottom:2px solid var(--ink);
+  background:var(--ink);color:var(--paper);
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.13em;text-transform:uppercase;
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.formcard-body{padding:clamp(22px,3vw,30px);}
+.field + .field{margin-top:22px;}
+/* the conditional note sits between two fields — keep the rhythm intact */
+.note-live + .field{margin-top:22px;}
+.field .lbl{
+  display:block;margin-bottom:9px;
+  font-family:var(--mono);font-size:.6875rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+}
+.field .lbl .opt{color:var(--ink-soft);font-weight:400;letter-spacing:.08em;}
+/* direct children only — keeps radio inputs inside the fieldset untouched */
+.field > input,.field > select{
+  width:100%;font-family:inherit;font-size:1rem;color:var(--ink);
+  padding:13px 15px;border:2px solid var(--ink);border-radius:var(--radius-sm);
+  background:var(--paper);
+}
+.field > select{
+  appearance:none;-webkit-appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),
+                   linear-gradient(135deg,var(--ink) 50%,transparent 50%);
+  background-position:calc(100% - 19px) 22px,calc(100% - 13px) 22px;
+  background-size:6px 6px,6px 6px;background-repeat:no-repeat;
+  padding-right:42px;
+}
+.field > input::placeholder{color:var(--ink-soft);opacity:.75;}
+.radio-row{display:flex;flex-wrap:wrap;gap:10px;}
+.radio{
+  display:inline-flex;align-items:center;gap:9px;cursor:pointer;
+  border:2px solid var(--ink);border-radius:999px;
+  padding:10px 18px;font-weight:700;font-size:.9375rem;
+  background:var(--paper);
+}
+.radio input{width:16px;height:16px;margin:0;accent-color:var(--cobalt);flex:0 0 auto;}
+.radio:has(input:checked){background:var(--yellow);}
+.radio:hover{background:var(--paper-2);}
+.radio:has(input:checked):hover{background:var(--yellow);}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+/* inline note shown when the visitor answers "No" to paid traffic */
+.field-note{
+  margin-top:14px;padding:12px 15px;
+  border:2px solid var(--ink);border-radius:var(--radius-sm);
+  background:var(--paper-2);
+  font-size:.875rem;line-height:1.55;
+}
+/* the conditional field is toggled with the hidden attribute */
+[hidden]{display:none !important;}
+.form-submit{margin-top:26px;}
+.form-submit .btn{width:100%;}
+.form-submit .btn:disabled{opacity:.7;cursor:not-allowed;}
+.form-status{margin-top:14px;font-size:.9375rem;line-height:1.5;font-weight:600;}
+.form-status:empty{display:none;}
+.form-status--success{color:var(--ink);}
+.form-status--error{color:var(--cobalt);}
+.form-expect{
+  margin-top:18px;padding-top:18px;border-top:2px solid rgba(15,23,41,.15);
+  font-size:.9375rem;line-height:1.55;color:var(--ink-soft);
+}
+.form-privacy{
+  margin-top:12px;
+  font-family:var(--mono);font-size:.75rem;line-height:1.6;
+  letter-spacing:.04em;color:var(--ink-soft);
+}
 
 /* ============================================================
    FOOTER
@@ -709,6 +886,7 @@ a{color:inherit;}
   display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;
   font-family:var(--mono);font-size:.8125rem;letter-spacing:.04em;
 }
+.footer-links{display:inline-flex;flex-wrap:wrap;gap:12px 24px;align-items:center;}
 .footer a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px;}
 .footer a:hover{color:var(--yellow);border-bottom-color:var(--yellow);}
 
@@ -719,6 +897,11 @@ a{color:inherit;}
   :root{--shadow:4px 4px 0 var(--ink);--shadow-lg:5px 5px 0 var(--ink);}
   .hatch{display:none;}
 }
+
+/* method chain: 6 across → 3 across → 2 across → stacked, by flex-basis */
+@media (max-width:1080px){.mchain li{flex-basis:calc(33.333% - 7px);}}
+@media (max-width:720px){.mchain li{flex-basis:calc(50% - 5px);}}
+@media (max-width:440px){.mchain li{flex-basis:100%;}}
 
 @media (max-width:820px){
   /* funnel becomes a vertical rail — same concept, native mobile reading order */
@@ -748,12 +931,13 @@ a{color:inherit;}
   .wordmark{font-size:1.0625rem;}
   .btn--lg{width:100%;padding:16px 22px;}
   .hero-cta{gap:12px;}
-  .chain-step{grid-template-columns:38px 1fr;gap:10px;padding:13px 12px;}
-  .chain-step--focus::after{right:8px;font-size:.5625rem;}
+  .about-id{max-width:none;}
   .includes li{padding:22px 18px;}
-  .final-actions{gap:18px;}
-  .final-actions .btn{width:100%;}
   .journey-head{gap:18px;}
+  .faq summary{font-size:1rem;padding:17px 18px;}
+  .faq .a{padding:4px 18px 20px;}
+  .formcard-body{padding:20px 18px;}
+  .radio{width:100%;}
 }
 </style>
 </head>
@@ -766,7 +950,7 @@ a{color:inherit;}
     <a class="wordmark" href="#top">
       <span class="mark" aria-hidden="true"></span>Omniflow<span>AI</span>
     </a>
-    <a class="btn btn--primary btn--sm" href="#request">Request a Conversion Review</a>
+    <a class="btn btn--primary btn--sm" href="#request">Get a 3-Point Review</a>
   </div>
 </header>
 
@@ -778,73 +962,82 @@ a{color:inherit;}
     <div class="wrap hero-grid">
 
       <div>
-        <p class="hero-tag"><i aria-hidden="true"></i>Conversion Engineering</p>
+        <p class="hero-tag"><i aria-hidden="true"></i>Conversion engineering for US DTC skincare</p>
 
-        <h1>Conversion Engineering for <span class="hl">DTC Skincare</span> Brands</h1>
+        <h1>Find the conversion leaks between your <span class="hl">paid click</span> and purchase.</h1>
 
         <p class="hero-sub">
-          Turn existing paid traffic into more revenue by finding and fixing
-          conversion leaks in your funnel.
+          A focused Conversion Sprint for Shopify skincare brands already running paid traffic.
         </p>
 
-        <p class="hero-support">
-          For Shopify skincare brands already investing in paid traffic.
+        <p class="hero-body">
+          I trace the journey from ad to purchase, combine funnel evidence with customer
+          language and UX research, then turn the findings into a prioritized plan for what
+          to change, why it matters, and how to measure it.
         </p>
 
         <div class="hero-cta">
           <a class="btn btn--primary btn--lg" href="#request">
-            Request a Conversion Review <span class="arw" aria-hidden="true">→</span>
+            Get a 3-Point Conversion Review <span class="arw" aria-hidden="true">↗</span>
           </a>
-          <a class="btn btn--quiet btn--lg" href="#service">See what's included</a>
+          <a class="btn btn--quiet btn--lg" href="#sprint">See what the Sprint includes</a>
         </div>
+
+        <p class="hero-support">
+          For Shopify skincare brands with existing demand and active paid traffic.
+        </p>
       </div>
 
-      <!-- paid traffic → funnel → conversion → revenue -->
-      <div class="chain">
-        <div class="chain-head">
-          <span>The path your paid traffic takes</span>
-          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        </div>
-        <div class="chain-body">
-          <span class="chain-wedge" aria-hidden="true"></span>
-          <ol class="chain-steps">
-            <li class="chain-step">
-              <span class="idx">01</span>
-              <span class="txt">
-                <span class="nm">Paid traffic</span>
-                <span class="ds">You buy the attention.</span>
-              </span>
+      <!-- proof of work: how a finding is written, before any case study exists -->
+      <div>
+        <aside class="finding" aria-labelledby="finding-h">
+          <p class="finding-cap">
+            <span id="finding-h">How a finding is written</span>
+            <span class="tag">Illustrative</span>
+          </p>
+          <ol class="finding-rows">
+            <li>
+              <span class="k">Observation</span>
+              <span class="v">The ad sells a specific result. The page it lands on opens with brand story.</span>
             </li>
-            <li class="chain-link" aria-hidden="true"><span></span></li>
-            <li class="chain-step chain-step--focus">
-              <span class="idx">02</span>
-              <span class="txt">
-                <span class="nm">The funnel</span>
-                <span class="ds">Where that attention is kept or lost.</span>
-              </span>
+            <li>
+              <span class="k">Evidence</span>
+              <span class="v">Ad creative and post-click page reviewed side by side, against how customers describe the problem in their own words.</span>
             </li>
-            <li class="chain-link" aria-hidden="true"><span></span></li>
-            <li class="chain-step">
-              <span class="idx">03</span>
-              <span class="txt">
-                <span class="nm">Conversion</span>
-                <span class="ds">The decision to buy.</span>
-              </span>
+            <li>
+              <span class="k">Problem</span>
+              <span class="v">The promise that earned the click isn't confirmed in the first screen.</span>
             </li>
-            <li class="chain-link" aria-hidden="true"><span></span></li>
-            <li class="chain-step chain-step--out">
-              <span class="idx">04</span>
-              <span class="txt">
-                <span class="nm">Revenue</span>
-                <span class="ds">What the spend actually returns.</span>
-              </span>
+            <li>
+              <span class="k">Hypothesis</span>
+              <span class="v">Opening with the same promise the ad made should hold more of that traffic past the first scroll.</span>
+            </li>
+            <li>
+              <span class="k">Change</span>
+              <span class="v">Rebuild the first screen around the ad's claim; move brand story below it.</span>
+            </li>
+            <li>
+              <span class="k">KPI</span>
+              <span class="v">Landing page → product page rate.</span>
             </li>
           </ol>
-        </div>
-        <div class="chain-foot">
-          <span><b>Input</b> — traffic you already pay for</span>
-          <span><b>Output</b> — revenue</span>
-        </div>
+          <p class="finding-foot">
+            Illustrative example. It shows the format every recommendation follows —
+            not a client result. Your findings come from your own funnel and your own customers.
+          </p>
+        </aside>
+
+        <figure class="byline">
+          <img class="byline-img" src="conversion-engineer.png"
+               width="600" height="600" fetchpriority="high" decoding="async"
+               alt="Saif Hisham, the conversion engineer behind OmniflowAI.">
+          <figcaption>
+            <span class="nm">Saif Hisham</span>
+            <span class="role">Conversion Engineer — OmniflowAI</span>
+          </figcaption>
+          <a href="https://www.linkedin.com/in/saif-hisham/"
+             target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </figure>
       </div>
 
     </div>
@@ -855,17 +1048,20 @@ a{color:inherit;}
     <div class="wrap">
       <div class="journey-head">
         <div>
-          <p class="eyebrow">The paid traffic journey</p>
-          <h2 class="h2" style="margin-top:18px;max-width:20ch;">Six stages. Most of the opportunity happens after the click.</h2>
+          <p class="eyebrow">The post-click journey</p>
+          <h2 class="h2" style="margin-top:18px;max-width:19ch;">You already paid for the click. The next question is what happens after it.</h2>
+          <p class="lead" style="margin-top:24px;max-width:52ch;">
+            If the ad earns attention but the landing page, product page, cart or checkout
+            introduces confusion or hesitation, the same paid traffic can produce less than
+            it should. Once the click is paid for, every step after it affects what that
+            spend returns.
+          </p>
         </div>
-        <p class="journey-note">
-          <b>Marked in yellow:</b> everything that happens after the click — the part you already paid for.
-        </p>
       </div>
 
       <div class="funnel">
         <div class="funnel-bar">
-          <span>Ad → Checkout</span>
+          <span>Ad → Purchase</span>
           <span class="paid">Post-click = already paid for</span>
         </div>
 
@@ -881,35 +1077,35 @@ a{color:inherit;}
             <span class="rail" aria-hidden="true"></span>
             <span class="dot" aria-hidden="true"></span>
             <div class="stage-idx">02</div>
-            <div class="stage-name">Click</div>
-            <div class="stage-meta">Spend committed</div>
+            <div class="stage-name">Landing page</div>
+            <div class="stage-meta">Does the promise continue?</div>
           </li>
           <li class="stage post">
             <span class="rail" aria-hidden="true"></span>
             <span class="dot" aria-hidden="true"></span>
             <div class="stage-idx">03</div>
-            <div class="stage-name">Landing page</div>
-            <div class="stage-meta">First impression</div>
-          </li>
-          <li class="stage post">
-            <span class="rail" aria-hidden="true"></span>
-            <span class="dot" aria-hidden="true"></span>
-            <div class="stage-idx">04</div>
             <div class="stage-name">Product page</div>
             <div class="stage-meta">Evaluation</div>
           </li>
           <li class="stage post">
             <span class="rail" aria-hidden="true"></span>
             <span class="dot" aria-hidden="true"></span>
-            <div class="stage-idx">05</div>
+            <div class="stage-idx">04</div>
             <div class="stage-name">Cart</div>
             <div class="stage-meta">Intent</div>
           </li>
           <li class="stage post">
             <span class="rail" aria-hidden="true"></span>
             <span class="dot" aria-hidden="true"></span>
-            <div class="stage-idx">06</div>
+            <div class="stage-idx">05</div>
             <div class="stage-name">Checkout</div>
+            <div class="stage-meta">Cost clarity &amp; friction</div>
+          </li>
+          <li class="stage post">
+            <span class="rail" aria-hidden="true"></span>
+            <span class="dot" aria-hidden="true"></span>
+            <div class="stage-idx">06</div>
+            <div class="stage-name">Purchase</div>
             <div class="stage-meta">Revenue</div>
           </li>
         </ul>
@@ -917,90 +1113,186 @@ a{color:inherit;}
         <div class="funnel-legend">
           <span class="lg"><i class="i-pre" aria-hidden="true"></i>Before the click</span>
           <span class="lg"><i class="i-paid" aria-hidden="true"></i>Already paid for</span>
-          <span class="lg"><i class="i-focus" aria-hidden="true"></i>Where we look for conversion friction</span>
+          <span class="lg"><i class="i-focus" aria-hidden="true"></i>Where the Sprint investigates</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ PROBLEM ============ -->
-  <section class="section g-cobalt" id="problem">
-    <div class="wrap">
-      <p class="eyebrow">The problem</p>
-      <h2 class="h2 measure-tight" style="margin-top:20px;">Your ads may not be the problem.</h2>
-
-      <div class="problem-body">
-        <p class="strong">Most brands focus on getting more traffic.</p>
-        <p>But conversion losses often happen after the click.</p>
-        <p>A disconnect between:</p>
-
-        <div class="disconnect-block">
-          <p class="disconnect-cap">The disconnect</p>
-          <ul class="disconnect">
-            <li>Ad message</li>
-            <li>Landing page experience</li>
-            <li>Customer expectations</li>
-          </ul>
-        </div>
-
-        <p>can quietly reduce revenue from traffic you already paid for.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SERVICE ============ -->
-  <section class="section g-paper" id="service">
+  <!-- ============ THE SPRINT ============ -->
+  <section class="section g-paper" id="sprint">
     <div class="wrap">
       <div class="service-head">
-        <p class="eyebrow">The offer</p>
+        <p class="eyebrow">The engagement</p>
         <h2 class="h2">Paid Traffic Conversion Sprint</h2>
         <p class="lead">
-          A focused conversion analysis designed for DTC skincare brands
-          running paid traffic.
+          A fixed-scope diagnostic engagement for Shopify skincare brands running paid
+          traffic. It tells you what to change, why it matters, and how to measure it.
+          Implementation is scoped separately.
         </p>
       </div>
 
       <div class="sprint-card">
         <div class="sprint-cap">
-          <span>What's included</span>
+          <span>What you receive</span>
           <span>07 deliverables</span>
         </div>
         <ul class="includes">
-          <li><span class="n">01</span>Ad to landing page analysis</li>
-          <li><span class="n">02</span>Conversion audit</li>
-          <li><span class="n">03</span>Customer language research</li>
-          <li><span class="n">04</span>Conversion opportunities</li>
-          <li><span class="n">05</span>Prioritized hypotheses</li>
-          <li><span class="n">06</span>Landing page structure and copy direction</li>
-          <li><span class="n">07</span>Measurement plan</li>
+          <li>
+            <span class="n">01</span>
+            <span class="t">Ad-to-page message analysis</span>
+            <span class="d">Where the promise that earned the click is carried through — or lost.</span>
+          </li>
+          <li>
+            <span class="n">02</span>
+            <span class="t">Funnel &amp; UX audit</span>
+            <span class="d">Where shoppers meet uncertainty, friction, or unnecessary decisions between ad and purchase.</span>
+          </li>
+          <li>
+            <span class="n">03</span>
+            <span class="t">Customer language &amp; objection map</span>
+            <span class="d">The words your buyers use, the questions they ask, and the hesitation your pages need to resolve.</span>
+          </li>
+          <li>
+            <span class="n">04</span>
+            <span class="t">Conversion opportunity map</span>
+            <span class="d">A structured view of what's worth investigating across the post-click journey.</span>
+          </li>
+          <li>
+            <span class="n">05</span>
+            <span class="t">Prioritized hypothesis backlog</span>
+            <span class="d">What to tackle first, ranked by evidence, expected impact and effort.</span>
+          </li>
+          <li>
+            <span class="n">06</span>
+            <span class="t">Landing page structure &amp; copy direction</span>
+            <span class="d">A clear messaging hierarchy, page structure and copy direction your team can take into design and build.</span>
+          </li>
+          <li>
+            <span class="n">07</span>
+            <span class="t">Measurement plan</span>
+            <span class="d">Each recommendation tied to the KPI it should move: add-to-cart, checkout progression, CVR, AOV, or revenue per visitor.</span>
+          </li>
         </ul>
+      </div>
+
+      <div class="scope">
+        <div>
+          <span class="k">What it is</span>
+          <span class="v">Diagnostic &amp; strategic
+            <small>Research, prioritization and a plan you can act on.</small></span>
+        </div>
+        <div>
+          <span class="k">What it is not</span>
+          <span class="v">Implementation
+            <small>No build, no deploy. That's a separate Conversion Build engagement.</small></span>
+        </div>
+        <div class="price">
+          <span class="k">Investment</span>
+          <span class="v">Starts at $1,250
+            <small>Fixed scope, agreed before we begin.</small></span>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ============ SKINCARE-SPECIFIC INVESTIGATION ============ -->
+  <section class="section g-ink" id="investigate">
+    <div class="wrap">
+      <p class="eyebrow">Category depth</p>
+      <h2 class="h2" style="margin-top:20px;max-width:20ch;">What I investigate in skincare funnels.</h2>
+
+      <ol class="investigate">
+        <li>
+          <span class="q">01 — Ad → landing page</span>
+          <h3>Does the post-click page continue the promise that earned the click?</h3>
+          <p>Angle, claim, product and audience all have to survive the transition. When they
+             don't, the visitor has to re-orient before they can evaluate anything.</p>
+        </li>
+        <li>
+          <span class="q">02 — Product education</span>
+          <h3>Can a shopper actually evaluate the product?</h3>
+          <p>Ingredients, concentration, skin type, routine placement, expected timeline, and
+             how this SKU differs from the three next to it.</p>
+        </li>
+        <li>
+          <span class="q">03 — Trust &amp; proof</span>
+          <h3>Is the evidence where the doubt is?</h3>
+          <p>Reviews, before/after presentation, approved product evidence, and the questions
+             customers ask before they're willing to commit.</p>
+        </li>
+        <li>
+          <span class="q">04 — Mobile product page</span>
+          <h3>Can someone understand, compare and act without fighting the page?</h3>
+          <p>Paid-social journeys are often mobile-first, where long product pages can bury the
+             information that helps someone understand the product, compare the offer and decide
+             what to do next.</p>
+        </li>
+        <li>
+          <span class="q">05 — Cart &amp; checkout</span>
+          <h3>Does anything unexpected appear at the last step?</h3>
+          <p>Shipping thresholds, surprise cost, payment options, returns policy, subscription
+             framing, and avoidable checkout friction.</p>
+        </li>
+        <li>
+          <span class="q">06 — Offer &amp; routine architecture</span>
+          <h3>Does the offer make the first purchase easier to understand and justify?</h3>
+          <p>Bundles, routine-building, subscription options, quantity choices and cross-sells
+             can change how a shopper evaluates the first order — and what that order is worth.</p>
+        </li>
+      </ol>
+
+      <p class="investigate-foot">
+        These are the areas I examine — not a list of problems your store has. What's actually
+        happening in your funnel is what the Sprint is for.
+      </p>
+    </div>
+  </section>
+
   <!-- ============ METHOD ============ -->
-  <section class="section g-ink" id="method">
+  <section class="section g-paper-2" id="method">
     <div class="wrap">
       <p class="eyebrow">The method</p>
-      <h2 class="h2 measure-tight" style="margin-top:20px;">An evidence-based conversion process.</h2>
+      <h2 class="h2" style="margin-top:20px;max-width:22ch;">No random CRO checklist. Every recommendation has a reason.</h2>
 
-      <ol class="steps">
-        <li class="step"><span class="step-num">01</span><span class="step-name">Research</span></li>
-        <li class="step"><span class="step-num">02</span><span class="step-name">Strategy</span></li>
-        <li class="step"><span class="step-num">03</span><span class="step-name">Build</span></li>
-        <li class="step"><span class="step-num">04</span><span class="step-name">Deploy</span></li>
-        <li class="step"><span class="step-num">05</span><span class="step-name">Measure</span></li>
+      <ol class="mchain">
+        <li>
+          <span class="n">01</span><span class="t">Observation</span>
+          <span class="d">Something in the journey doesn't hold up.</span>
+        </li>
+        <li>
+          <span class="n">02</span><span class="t">Evidence</span>
+          <span class="d">What in the funnel, the UX research or the customer's own words supports it.</span>
+        </li>
+        <li>
+          <span class="n">03</span><span class="t">Problem</span>
+          <span class="d">The friction, uncertainty, or missing information the evidence points to.</span>
+        </li>
+        <li>
+          <span class="n">04</span><span class="t">Hypothesis</span>
+          <span class="d">What should change and the effect it's expected to have.</span>
+        </li>
+        <li>
+          <span class="n">05</span><span class="t">Change</span>
+          <span class="d">A specific, actionable recommendation.</span>
+        </li>
+        <li>
+          <span class="n">06</span><span class="t">KPI</span>
+          <span class="d">The primary metric used to evaluate the change, with guardrails where needed.</span>
+        </li>
       </ol>
 
       <div class="method-note">
-        <p>We do not make random design changes.</p>
-        <p>Every recommendation starts with observation, evidence, and a clear hypothesis.</p>
+        <p>You don't leave with a pile of screenshots and opinions.</p>
+        <p>You leave knowing what deserves attention first, what evidence sits behind it, and
+           which metrics should be used to evaluate the change. If I can't support a
+           recommendation with evidence, it doesn't go in the report.</p>
       </div>
     </div>
   </section>
 
   <!-- ============ IDEAL CLIENT ============ -->
-  <section class="section g-paper-2" id="fit">
+  <section class="section g-paper" id="fit">
     <div class="wrap">
       <p class="eyebrow">Who this is for</p>
       <h2 class="h2 measure-tight" style="margin-top:20px;">Built for brands with existing demand.</h2>
@@ -1009,19 +1301,55 @@ a{color:inherit;}
         <div class="fit-col fit-col--yes">
           <h3>Good fit</h3>
           <ul>
-            <li>US skincare brands</li>
-            <li>Shopify stores</li>
-            <li>Brands running paid traffic</li>
-            <li>Brands with existing customer data</li>
+            <li>US DTC skincare brands on Shopify</li>
+            <li>Already running paid traffic on Meta, Google or TikTok</li>
+            <li>Existing demand and existing customer data to learn from</li>
+            <li>Ready to act on a prioritized plan</li>
           </ul>
         </div>
         <div class="fit-col fit-col--no">
-          <h3>Not for</h3>
+          <h3>Not a fit</h3>
           <ul>
             <li>Brand new stores without traction</li>
-            <li>Businesses without paid traffic</li>
-            <li>Complex regulated products</li>
+            <li>No paid traffic running yet</li>
+            <li>Looking for a full brand or site redesign</li>
+            <li>Looking for media buying or ad account management</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AFTER THE SPRINT ============ -->
+  <section class="section g-cobalt" id="after">
+    <div class="wrap">
+      <p class="eyebrow">After the Sprint</p>
+      <h2 class="h2" style="margin-top:20px;max-width:20ch;">You own the plan. Implementation is your call.</h2>
+      <p class="lead" style="margin-top:24px;max-width:52ch;">
+        The Sprint ends with a prioritized implementation plan, backed by the evidence and
+        reasoning behind each recommendation. From there you have two routes, and neither of
+        them is assumed.
+      </p>
+
+      <div class="next">
+        <div class="next-card next-card--a">
+          <h3><span>Route A</span><span>Included</span></h3>
+          <div class="body">
+            <p>Implement it with your own team.</p>
+            <p>Every recommendation includes the change, the evidence behind it, the reasoning,
+               and the KPI it should affect — giving your team enough context to scope and
+               execute the work. Nothing in the deliverable depends on hiring me again.</p>
+          </div>
+        </div>
+        <div class="next-card next-card--b">
+          <h3><span>Route B</span><span>Separate engagement</span></h3>
+          <div class="body">
+            <p>Conversion Build.</p>
+            <p>If you'd rather I execute, the Build is scoped after the Sprint — once we both
+               know what's actually worth building. I implement the prioritized changes on
+               your Shopify theme and set up the measurement to read them. Scoped and priced
+               on its own.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1031,11 +1359,8 @@ a{color:inherit;}
   <section class="section g-paper about" id="about">
     <div class="wrap about-grid">
       <figure class="about-id">
-        <img class="about-photo"
-             src="conversion-engineer.png"
-             width="600" height="600"
-             loading="lazy" decoding="async"
-             alt="Saif, the conversion engineer behind OmniflowAI.">
+        <img class="about-photo" src="conversion-engineer.png"
+             width="600" height="600" loading="lazy" decoding="async" alt="">
         <figcaption class="about-plate">
           <span class="hatch hatch--b" aria-hidden="true"></span>
           <h2>Hi, I'm Saif.</h2>
@@ -1045,41 +1370,240 @@ a{color:inherit;}
 
       <div class="about-body">
         <p class="opening">
-          I help DTC skincare brands improve the efficiency of the traffic
-          they already pay for.
+          I help DTC skincare brands get more out of the traffic they already pay for.
         </p>
-        <p>My approach combines:</p>
+        <p>
+          I work on one narrow problem: the distance between a paid click and a purchase on
+          a Shopify skincare store. That means I spend my time in funnel data, session
+          behaviour, customer reviews and support conversations — not in brand mood boards.
+        </p>
+        <p>What I work with:</p>
         <ul class="capabilities">
           <li>Conversion research</li>
           <li>Customer behavior analysis</li>
-          <li>Landing page optimization</li>
+          <li>Ad-to-page message analysis</li>
+          <li>Landing page &amp; PDP optimization</li>
           <li>Shopify implementation</li>
-          <li>Measurement</li>
+          <li>Measurement &amp; tracking</li>
         </ul>
         <p class="goal">
-          The goal: find where customers drop off, identify opportunities,
-          and build improvements based on evidence.
+          Find where customers drop off, work out why, and turn that into changes you can
+          justify to whoever signs off on them.
+        </p>
+        <p style="margin-top:24px;">
+          <a class="final-mail" href="https://www.linkedin.com/in/saif-hisham/"
+             target="_blank" rel="noopener noreferrer">Saif Hisham on LinkedIn ↗</a>
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ============ FINAL CTA ============ -->
+  <!-- ============ FAQ ============ -->
+  <section class="section g-paper-2" id="faq">
+    <div class="wrap">
+      <p class="eyebrow">Before you ask</p>
+      <h2 class="h2 measure-tight" style="margin-top:20px;">Questions worth answering upfront.</h2>
+
+      <div class="faq">
+        <details>
+          <summary>Do you implement the recommendations?</summary>
+          <p class="a">Not in the Sprint. The Sprint is diagnostic and strategic — it produces the
+            plan. Implementation is a separate Conversion Build engagement, scoped after the
+            Sprint once we know what's worth building. The deliverable is written so your own
+            team can implement it without me.</p>
+        </details>
+        <details>
+          <summary>How is this different from a redesign?</summary>
+          <p class="a">A redesign changes the site broadly. The Conversion Sprint starts with
+            evidence and narrows the work to specific problems in the paid-click-to-purchase
+            journey. That may lead to changes in messaging, structure, information, UX or
+            visual presentation — but the recommendation comes after the diagnosis, not
+            before it.</p>
+        </details>
+        <details>
+          <summary>What exactly do I receive?</summary>
+          <p class="a">Seven deliverables: an ad-to-page message analysis, a funnel and UX audit,
+            a customer language and objection map, a conversion opportunity map, a prioritized
+            hypothesis backlog, landing page structure and copy direction, and a measurement
+            plan. Every item follows the same format — observation, evidence, problem,
+            hypothesis, change, KPI.</p>
+        </details>
+        <details>
+          <summary>What data or access do you need?</summary>
+          <p class="a">Read access to your analytics and Shopify reports, your live ad creative
+            and the pages they point to, and whatever customer input you already have —
+            reviews, support tickets, post-purchase survey answers. If session recordings or
+            heatmaps exist, those help. If they don't, I'll tell you whether it's worth adding
+            them before we start.</p>
+        </details>
+        <details>
+          <summary>Do I need enough traffic to A/B test?</summary>
+          <p class="a">No. The Sprint does not depend on having enough traffic for controlled
+            experiments. Some issues can be corrected without a formal A/B test — for example
+            broken functionality, inconsistent information, or clear usability problems. Other
+            recommendations remain hypotheses and should be evaluated through testing when
+            traffic allows, or through the most appropriate behavioral and funnel metrics when
+            it does not.</p>
+        </details>
+        <details>
+          <summary>Is this useful for a brand with lower traffic?</summary>
+          <p class="a">Often yes, as long as paid traffic is actually running. Lower volume means
+            less to test statistically, which makes qualitative evidence and message-match work
+            more valuable, not less. Where volume is too low for the engagement to be worth it,
+            I'll say so before you pay.</p>
+        </details>
+        <details>
+          <summary>Can you work with our existing Shopify theme?</summary>
+          <p class="a">Yes. The Sprint's recommendations are written against your current theme
+            and stack, not a hypothetical rebuild. If something genuinely can't be done without
+            theme work, the recommendation says that explicitly so you can weigh the cost.</p>
+        </details>
+        <details>
+          <summary>How long does the Sprint take?</summary>
+          <p class="a">It's fixed-scope, and I confirm the delivery window with you before we
+            start — it depends on catalogue size and how many paid entry points you're running.
+            You'll have that date in writing before any payment.</p>
+        </details>
+        <details>
+          <summary>What about regulated skincare claims?</summary>
+          <p class="a">I don't write or strengthen efficacy claims. Recommendations focus on
+            clarity, structure, and how existing evidence is presented. Anything claim-related
+            stays inside what your team and your regulatory guidance already allow.</p>
+        </details>
+        <details>
+          <summary>What does it cost?</summary>
+          <p class="a">The Paid Traffic Conversion Sprint starts at $1,250, fixed scope, agreed
+            before we begin. Conversion Build is scoped and priced separately after the Sprint.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA + QUALIFICATION FORM ============ -->
   <section class="section g-yellow final" id="request">
     <span class="hatch hatch--c" aria-hidden="true"></span>
     <div class="wrap final-inner">
       <p class="eyebrow">Next step</p>
-      <h2>Find where your funnel is leaking.</h2>
-      <p>
-        Get a focused review of your paid traffic journey and discover
-        opportunities to improve conversion efficiency.
+      <h2>Get a 3-Point Conversion Review.</h2>
+      <p class="final-intro">
+        Send your store URL and, if you're currently running paid traffic, your main channel.
+        I'll look at your paid-traffic
+        journey and come back with three areas worth investigating — and an honest read on
+        whether the full Sprint is a fit.
       </p>
-      <div class="final-actions">
-        <a class="btn btn--primary btn--lg"
-           href="mailto:saif@omniflowai.net?subject=Conversion%20Review%20Request&amp;body=Hi%20Saif%2C%0AI%27d%20like%20to%20request%20a%20Conversion%20Review.%0AStore%20URL%3A%0ABest%2C%0A">
-          Request a Conversion Review <span class="arw" aria-hidden="true">→</span>
-        </a>
-        <a class="final-mail" href="mailto:saif@omniflowai.net">saif@omniflowai.net</a>
+
+      <div class="final-grid">
+        <div>
+          <ul class="final-promise">
+            <li>Three specific areas worth investigating across your post-click journey</li>
+            <li>Why each one caught my attention, in the same format the Sprint uses</li>
+            <li>A straight answer on whether the Sprint is worth it for you</li>
+          </ul>
+          <p class="final-smallprint">
+            Asynchronous — no call required.<br>
+            These are observations worth investigating, not confirmed leaks. Without your
+            analytics and customer data, nobody can tell you what's actually costing you money.<br>
+            Not a full audit. That's the Sprint.
+          </p>
+          <p style="margin-top:22px;">
+            <a class="final-mail" href="mailto:saif@omniflowai.net">saif@omniflowai.net</a>
+          </p>
+        </div>
+
+        <div class="formcard">
+          <p class="formcard-cap">
+            <span>3-Point Conversion Review</span>
+            <span>Free · No call</span>
+          </p>
+          <div class="formcard-body">
+            <form id="review-form" action="/api/conversion-review" method="POST">
+              <p class="hp" aria-hidden="true">
+                <label>Leave this field empty
+                  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+                </label>
+              </p>
+
+              <p class="field">
+                <label class="lbl" for="f-url">Shopify store URL</label>
+                <input id="f-url" name="store_url" type="url" required
+                       placeholder="https://yourbrand.com" autocomplete="url">
+              </p>
+
+              <fieldset class="field">
+                <legend class="lbl">Are you currently running paid traffic?</legend>
+                <span class="radio-row">
+                  <label class="radio">
+                    <input type="radio" name="running_paid_traffic" value="Yes" required> Yes
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="running_paid_traffic" value="No"> No
+                  </label>
+                </span>
+              </fieldset>
+
+              <!--
+                Shown only when the answer is "No". The live region exists at parse
+                time so screen readers announce the note when it appears; the note
+                itself is hidden by default and toggled by the script below. Without
+                JavaScript it simply never appears and the channel field stays visible
+                and optional, so the form still submits.
+              -->
+              <div class="note-live" aria-live="polite">
+                <p class="field-note" id="paid-note" hidden>
+                  The Conversion Sprint is designed for brands already running paid traffic.
+                  You can still submit your store, but it may not be a fit yet.
+                </p>
+              </div>
+
+              <p class="field" id="channel-field">
+                <label class="lbl" for="f-channel">Main paid channel</label>
+                <select id="f-channel" name="main_channel">
+                  <option value="" disabled selected>Select a channel</option>
+                  <option>Meta</option>
+                  <option>Google</option>
+                  <option>TikTok</option>
+                  <option>Other</option>
+                </select>
+              </p>
+
+              <p class="field" id="spend-field">
+                <label class="lbl" for="f-spend">Monthly paid media spend <span class="opt">— optional</span></label>
+                <select id="f-spend" name="monthly_spend">
+                  <option value="" selected>Prefer not to say</option>
+                  <option>Under $10k</option>
+                  <option>$10k – $25k</option>
+                  <option>$25k – $50k</option>
+                  <option>$50k+</option>
+                </select>
+              </p>
+
+              <p class="field">
+                <label class="lbl" for="f-email">Work email</label>
+                <input id="f-email" name="email" type="email" required
+                       placeholder="you@yourbrand.com" autocomplete="email">
+              </p>
+
+              <p class="form-submit">
+                <button class="btn btn--primary btn--lg" type="submit">
+                  Send my store for review <span class="arw" aria-hidden="true">↗</span>
+                </button>
+              </p>
+
+              <p class="form-status" id="form-status" aria-live="polite"></p>
+
+              <p class="form-expect">
+                I'll review the store and reply by email with the areas I think are worth
+                investigating. If the Sprint isn't a fit, I'll tell you that instead of
+                pitching you.
+              </p>
+
+              <p class="form-privacy">
+                I'll only use these details to review your request and reply to you.
+                No marketing list.
+              </p>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1089,9 +1613,134 @@ a{color:inherit;}
 <footer class="footer">
   <div class="wrap footer-inner">
     <span>OmniflowAI — Conversion Engineering</span>
-    <a href="mailto:saif@omniflowai.net">saif@omniflowai.net</a>
+    <span class="footer-links">
+      <a href="https://www.linkedin.com/in/saif-hisham/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:saif@omniflowai.net">saif@omniflowai.net</a>
+    </span>
   </div>
 </footer>
+
+<!--
+  Conditional fields: "Main paid channel" and "Monthly paid media spend" only
+  apply to brands already running paid traffic. Progressive enhancement — if this
+  script never runs, both fields stay visible and optional and the form remains
+  fully submittable. Toggling with the hidden attribute also removes them from the
+  tab order, so keyboard navigation matches what's on screen.
+-->
+<script>
+(function () {
+  var form = document.getElementById('review-form');
+  if (!form) return;
+
+  var field      = document.getElementById('channel-field');
+  var select     = document.getElementById('f-channel');
+  var spendField = document.getElementById('spend-field');
+  var spend      = document.getElementById('f-spend');
+  var note       = document.getElementById('paid-note');
+  var radios     = form.querySelectorAll('input[name="running_paid_traffic"]');
+  if (!field || !select || !spendField || !spend || !note || !radios.length) return;
+
+  function sync() {
+    var checked = form.querySelector('input[name="running_paid_traffic"]:checked');
+    var answer  = checked ? checked.value : '';
+
+    if (answer === 'No') {
+      // Neither question applies to a brand that isn't running paid traffic.
+      select.required = false;
+      select.value = '';
+      spend.value = '';
+      field.hidden = true;
+      spendField.hidden = true;
+      note.hidden = false;
+    } else {
+      field.hidden = false;
+      spendField.hidden = false;
+      note.hidden = true;
+      select.required = (answer === 'Yes');
+    }
+  }
+
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('change', sync);
+  }
+  sync();
+
+  // Firefox restores form state from bfcache after this script runs — re-sync.
+  window.addEventListener('pageshow', sync);
+
+  // Submission: same-origin JSON POST, no page navigation either way.
+  var submitBtn = form.querySelector('.form-submit button[type="submit"]');
+  var status    = document.getElementById('form-status');
+  var emailEl   = document.getElementById('f-email');
+  var urlEl     = document.getElementById('f-url');
+  var gotchaEl  = form.querySelector('input[name="_gotcha"]');
+  if (!submitBtn || !status || !emailEl || !urlEl) return;
+
+  var submitBtnDefaultHTML = submitBtn.innerHTML;
+  var isSubmitting = false;
+
+  function setStatus(message, variant) {
+    status.textContent = message;
+    status.className = 'form-status' + (variant ? ' form-status--' + variant : '');
+  }
+
+  function showError() {
+    setStatus(
+      'Something went wrong while sending your request. Please try again, or email saif@omniflowai.net.',
+      'error'
+    );
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (isSubmitting) return;
+    isSubmitting = true;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    setStatus('');
+
+    var checkedTraffic = form.querySelector('input[name="running_paid_traffic"]:checked');
+    var payload = {
+      store_url: urlEl.value,
+      running_paid_traffic: checkedTraffic ? checkedTraffic.value : '',
+      main_channel: select.value,
+      monthly_spend: spend.value,
+      email: emailEl.value,
+      _gotcha: gotchaEl ? gotchaEl.value : ''
+    };
+
+    fetch('/api/conversion-review', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) {
+        return res.json()
+          .catch(function () { return {}; })
+          .then(function (data) { return res.ok && data && data.ok === true; });
+      })
+      .then(function (ok) {
+        if (ok) {
+          setStatus(
+            "Thanks — your store is in. I'll review it and reply by email if there are useful areas worth investigating.",
+            'success'
+          );
+          form.reset();
+          sync();
+        } else {
+          showError();
+        }
+      })
+      .catch(showError)
+      .then(function () {
+        isSubmitting = false;
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = submitBtnDefaultHTML;
+      });
+  });
+})();
+</script>
 
 </body>
 </html>
