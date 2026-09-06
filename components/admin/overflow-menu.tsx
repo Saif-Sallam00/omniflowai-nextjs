@@ -4,12 +4,15 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { MoreHorizontal } from "lucide-react";
 
-// Portals the open menu to <body> and positions it from the trigger's own
-// bounding rect. Table action cells sit inside the Table component's
-// `overflow-x-auto` wrapper — an absolutely-positioned menu anchored inside
-// that wrapper gets clipped by it (setting overflow-x forces overflow-y to
-// compute to "auto" too, per the CSS overflow spec), so a plain
-// `absolute`-inside-`relative` dropdown would be cut off there.
+// Portals the open menu into #admin-portal-root (inside .admin-root, so the
+// --admin-* CSS custom properties the menu's colors resolve from stay in
+// scope — a plain `document.body` portal escapes that scope and renders
+// transparent) and positions it from the trigger's own bounding rect. Table
+// action cells sit inside the Table component's `overflow-x-auto` wrapper —
+// an absolutely-positioned menu anchored inside that wrapper gets clipped by
+// it (setting overflow-x forces overflow-y to compute to "auto" too, per the
+// CSS overflow spec), so a plain `absolute`-inside-`relative` dropdown would
+// be cut off there.
 export function OverflowMenu({ children, label = "More actions" }: { children: React.ReactNode; label?: string }) {
   const [open, setOpen] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
@@ -20,8 +23,11 @@ export function OverflowMenu({ children, label = "More actions" }: { children: R
     if (!open || !triggerRef.current) return;
     const rect = triggerRef.current.getBoundingClientRect();
     const menuWidth = 208; // w-52
+    const menuHeight = menuRef.current?.offsetHeight ?? 0;
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const flipUp = menuHeight > 0 && spaceBelow < menuHeight + 8 && rect.top > menuHeight + 8;
     setPosition({
-      top: rect.bottom + window.scrollY + 4,
+      top: flipUp ? rect.top + window.scrollY - menuHeight - 4 : rect.bottom + window.scrollY + 4,
       left: Math.min(rect.right, window.innerWidth - 8) + window.scrollX - menuWidth,
     });
   }, [open]);
@@ -70,13 +76,16 @@ export function OverflowMenu({ children, label = "More actions" }: { children: R
           <div
             ref={menuRef}
             role="menu"
-            onClick={() => setOpen(false)}
+            // Deferred (not called inline) so a click on the Delete form's
+            // submit button doesn't unmount the form — and cancel its
+            // pending submission — before the browser/React can act on it.
+            onClick={() => setTimeout(() => setOpen(false), 0)}
             style={{ position: "absolute", top: position.top, left: position.left, width: 208 }}
             className="z-50 overflow-hidden rounded-md border border-admin-border bg-admin-surface-elevated py-1 shadow-admin-md"
           >
             {children}
           </div>,
-          document.body,
+          document.getElementById("admin-portal-root") ?? document.body,
         )}
     </>
   );

@@ -8,5 +8,12 @@ export default function AdminRootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="admin-root min-h-screen bg-admin-background text-admin-text-primary">{children}</div>;
+  return (
+    <div className="admin-root min-h-screen bg-admin-background text-admin-text-primary">
+      {children}
+      {/* Portal target for OverflowMenu — must stay inside .admin-root so
+          portaled content still resolves the --admin-* CSS custom properties. */}
+      <div id="admin-portal-root" />
+    </div>
+  );
 }
