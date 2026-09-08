@@ -6,8 +6,8 @@ import { Reveal } from "@/components/reveal";
 import { ValuePropReveal } from "@/components/value-prop-reveal";
 import { HowWeWorkTimeline } from "@/components/how-we-work-timeline";
 import { LogoMarquee } from "@/components/logo-marquee";
-import { InteractiveSystemMap, type InteractiveNode } from "@/components/interactive-system-map";
-import { HexGridSubstrate } from "@/components/systems/hex-grid-substrate";
+import { HomeHero } from "@/components/home-hero";
+import { type InteractiveNode } from "@/components/interactive-system-map";
 import { CLIENTS } from "@/lib/clients";
 
 const LANGUAGE = "en" as const;
@@ -102,49 +102,22 @@ export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col overflow-x-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       {/* 1. Hero */}
-      <section className="relative mt-16 flex min-h-[80vh] items-center overflow-hidden py-20 md:mt-20 md:py-28">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-orange-950/10 via-transparent to-transparent" />
-        <HexGridSubstrate className="absolute inset-0" opacity={0.035} fade="radial" />
-
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-10">
-            <div className="text-center lg:text-start">
-              <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-                Most teams buy the tool first.{" "}
-                <span className="text-brand-400">We diagnose first.</span>
-              </h1>
-              <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-slate-400 md:text-xl lg:mx-0">
-                AI, marketing, software, automation — we only build what the
-                diagnosis supports. We look before we touch, so what we build
-                fits how your business actually runs.
-              </p>
-              <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
-                <Link href={getLanguagePath("/contact", LANGUAGE)}>
-                  <span className="inline-flex h-12 w-full items-center justify-center rounded-full bg-primary px-8 text-sm font-bold text-primary-foreground shadow-sm transition hover:brightness-110 sm:w-auto md:h-14">
-                    Book a strategy call <ArrowRight className="ms-2 h-5 w-5" />
-                  </span>
-                </Link>
-                <Link href={getLanguagePath("/portfolio", LANGUAGE)}>
-                  <span className="inline-flex h-12 w-full items-center justify-center rounded-full border border-slate-700 px-8 text-sm font-medium text-slate-300 transition hover:bg-white/10 hover:text-white sm:w-auto md:h-14">
-                    See our work
-                  </span>
-                </Link>
-              </div>
-            </div>
-
-            <div className="mx-auto w-full max-w-sm lg:max-w-none">
-              <InteractiveSystemMap
-                centerLabel={SYSTEM_MAP_CENTER}
-                nodes={heroSystemNodes}
-                ariaLabel={SYSTEM_MAP_ARIA}
-                isRTL={false}
-                width={480}
-                height={460}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <HomeHero
+        language={LANGUAGE}
+        headline={
+          <>
+            Most teams buy the tool first.{" "}
+            <span className="text-brand-400">We diagnose first.</span>
+          </>
+        }
+        subhead="AI, marketing, software, automation — we only build what the diagnosis supports. We look before we touch, so what we build fits how your business actually runs."
+        primaryCtaLabel="Book a strategy call"
+        secondaryCtaLabel="See our work"
+        systemMapCenterLabel={SYSTEM_MAP_CENTER}
+        systemMapAriaLabel={SYSTEM_MAP_ARIA}
+        systemMapNodes={heroSystemNodes}
+        isRTL={false}
+      />
 
       {/* 2. Trust strip + client-logo marquee */}
       <section className="overflow-hidden border-y border-black/[0.06] bg-surface py-20 md:py-24">
