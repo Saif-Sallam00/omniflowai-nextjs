@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Image as ImageIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getLanguagePath } from "@/lib/language";
 import { getPortfolioDetailBySlug, getPortfolioSlugs } from "@/lib/db/portfolio";
@@ -180,12 +180,12 @@ export default async function PortfolioDetailPage({
       </section>
 
       {/* وسائط دراسة الحالة */}
-      <section className="border-y border-slate-800/30 bg-slate-900/30 py-14 md:py-16">
-        <div className="mx-auto max-w-6xl px-6 md:px-8">
-          <span className="text-xs font-medium uppercase tracking-widest text-slate-400">
-            وسائط دراسة الحالة
-          </span>
-          {project.mediaImage ? (
+      {project.mediaImage && (
+        <section className="border-y border-slate-800/30 bg-slate-900/30 py-14 md:py-16">
+          <div className="mx-auto max-w-6xl px-6 md:px-8">
+            <span className="text-xs font-medium uppercase tracking-widest text-slate-400">
+              وسائط دراسة الحالة
+            </span>
             <div className="mt-6 overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
               <img
                 src={project.mediaImage}
@@ -193,19 +193,12 @@ export default async function PortfolioDetailPage({
                 className="w-full object-contain"
               />
             </div>
-          ) : (
-            <div className="mt-6 flex min-h-[200px] flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-slate-700 bg-slate-900/60">
-              <ImageIcon className="h-6 w-6 text-slate-600" />
-              <span className="text-xs text-slate-500">
-                ستظهر مواد دراسة الحالة هنا بعد إضافتها.
-              </span>
-            </div>
-          )}
-          {project.mediaCaption && (
-            <p className="mt-3 text-center text-xs text-slate-500">{project.mediaCaption}</p>
-          )}
-        </div>
-      </section>
+            {project.mediaCaption && (
+              <p className="mt-3 text-center text-xs text-slate-500">{project.mediaCaption}</p>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* النتائج */}
       {project.results.length > 0 && (
