@@ -28,12 +28,12 @@ const SYSTEM_MAP_ARIA =
 // Icons resolved inside InteractiveSystemMap (id → icon fallback map) — a
 // server component can't pass icon components as client-component props.
 const heroSystemNodes: InteractiveNode[] = [
-  { id: "ai-training", label: "AI Enablement" },
-  { id: "marketing", label: "Marketing Systems" },
-  { id: "software", label: "Business Technology" },
-  { id: "automation", label: "Automation" },
-  { id: "crm", label: "CRM" },
-  { id: "strategy", label: "Strategy" },
+  { id: "ai-training", label: "AI Adoption & Training" },
+  { id: "marketing", label: "Growth Marketing" },
+  { id: "software", label: "Software & Business Systems" },
+  { id: "automation", label: "Workflow Automation" },
+  { id: "crm", label: "CRM & Sales Systems" },
+  { id: "strategy", label: "Business & AI Strategy" },
 ];
 
 const PILLARS = [
@@ -192,14 +192,23 @@ export default function HomePage() {
       {/* 4. Pillars / Services grid */}
       <section className="border-t border-black/[0.06] bg-surface py-20 md:py-24">
         <div className="mx-auto max-w-6xl px-6 md:px-8">
-          <h2 className="mb-12 max-w-2xl text-3xl font-bold text-slate-900 md:mb-16 md:text-4xl">
-            Three capabilities. One transformation partner.
-          </h2>
+          <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
+            <h2 className="mb-4 text-4xl font-extrabold uppercase tracking-tight text-brand-600 md:text-6xl">
+              Our Services
+            </h2>
+            <p className="mb-4 text-xl font-bold text-slate-900 md:text-2xl">
+              Three capabilities. One transformation partner.
+            </p>
+            <p className="text-sm leading-relaxed text-slate-600 md:text-base">
+              We help businesses improve how they operate, acquire customers, and use
+              technology — through three core service areas.
+            </p>
+          </div>
 
           <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
             {PILLARS.map((pillar) => (
               <Link key={pillar.id} href={getLanguagePath(pillar.href, LANGUAGE)}>
-                <div className="card-lift group flex h-full cursor-pointer flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-card hover:border-slate-300 md:p-8">
+                <div className="card-lift group flex h-full cursor-pointer flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-card hover:border-brand-500 md:p-8">
                   <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10">
                     <pillar.icon className="h-6 w-6 text-brand-600" />
                   </div>
@@ -214,6 +223,10 @@ export default function HomePage() {
                       {pillar.subcaps}
                     </p>
                   )}
+                  <p className="mt-auto flex items-center pt-6 text-sm font-semibold text-brand-600">
+                    Explore {pillar.title}
+                    <ArrowRight className="ms-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </p>
                 </div>
               </Link>
             ))}

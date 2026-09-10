@@ -34,7 +34,7 @@ export async function HomeHero({
   const eyebrow = resolveHeroEyebrow(requestHeaders.get("cf-ipcountry"), language);
 
   return (
-    <section className="relative mt-16 flex min-h-[80vh] items-center overflow-hidden py-20 md:mt-20 md:py-28">
+    <section className="relative mt-16 flex min-h-[calc(100vh-4rem)] items-center overflow-hidden py-20 md:mt-20 md:min-h-[calc(100vh-5rem)] md:py-28">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-orange-950/10 via-transparent to-transparent" />
       <HexGridSubstrate className="absolute inset-0" opacity={0.035} fade="radial" />
 

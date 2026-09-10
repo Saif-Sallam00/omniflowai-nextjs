@@ -28,12 +28,12 @@ const SYSTEM_MAP_ARIA =
 // Icons resolved inside InteractiveSystemMap (id → icon fallback map) — a
 // server component can't pass icon components as client-component props.
 const heroSystemNodes: InteractiveNode[] = [
-  { id: "ai-training", label: "تمكين الذكاء الاصطناعي" },
-  { id: "marketing", label: "أنظمة التسويق" },
-  { id: "software", label: "تقنية الأعمال" },
-  { id: "automation", label: "الأتمتة" },
-  { id: "crm", label: "إدارة العملاء" },
-  { id: "strategy", label: "الاستراتيجية" },
+  { id: "ai-training", label: "تبنّي وتدريب الذكاء الاصطناعي" },
+  { id: "marketing", label: "تسويق النمو" },
+  { id: "software", label: "البرمجيات وأنظمة الأعمال" },
+  { id: "automation", label: "أتمتة سير العمل" },
+  { id: "crm", label: "إدارة علاقات العملاء وأنظمة المبيعات" },
+  { id: "strategy", label: "استراتيجية الأعمال والذكاء الاصطناعي" },
 ];
 
 const PILLARS = [
@@ -205,14 +205,23 @@ export default function HomePage() {
       {/* 4. Pillars / Services grid */}
       <section className="border-t border-black/[0.06] bg-surface py-20 md:py-24">
         <div className="mx-auto max-w-6xl px-6 md:px-8">
-          <h2 className="mb-12 max-w-2xl text-3xl font-bold text-slate-900 md:mb-16 md:text-4xl">
-            ثلاث قدرات. شريك تحوّل رقمي واحد.
-          </h2>
+          <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
+            <h2 className="mb-4 text-4xl font-extrabold uppercase tracking-tight text-brand-600 md:text-6xl">
+              خدماتنا
+            </h2>
+            <p className="mb-4 text-xl font-bold text-slate-900 md:text-2xl">
+              ثلاث قدرات. شريك تحوّل رقمي واحد.
+            </p>
+            <p className="text-sm leading-relaxed text-slate-600 md:text-base">
+              نساعد الشركات على تحسين طريقة عملها، واستقطاب العملاء، واستخدام
+              التقنية — من خلال ثلاثة مجالات خدمية أساسية.
+            </p>
+          </div>
 
           <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
             {PILLARS.map((pillar) => (
               <Link key={pillar.id} href={getLanguagePath(pillar.href, LANGUAGE)}>
-                <div className="card-lift group flex h-full cursor-pointer flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-card hover:border-slate-300 md:p-8">
+                <div className="card-lift group flex h-full cursor-pointer flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-card hover:border-brand-500 md:p-8">
                   <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10">
                     <pillar.icon className="h-6 w-6 text-brand-600" />
                   </div>
@@ -227,6 +236,10 @@ export default function HomePage() {
                       {pillar.subcaps}
                     </p>
                   )}
+                  <p className="mt-auto flex items-center pt-6 text-sm font-semibold text-brand-600">
+                    استكشف {pillar.title}
+                    <ArrowRight className="ms-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </p>
                 </div>
               </Link>
             ))}

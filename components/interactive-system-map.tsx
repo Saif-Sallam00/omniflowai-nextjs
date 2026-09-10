@@ -59,16 +59,19 @@ function wrapLabel(label: string, maxChars: number): string[] {
   if (label.length <= maxChars) return [label];
   const words = label.split(" ");
   if (words.length < 2) return [label];
-  let best = 1;
-  let bestDiff = Infinity;
-  for (let i = 1; i < words.length; i++) {
-    const diff = Math.abs(words.slice(0, i).join(" ").length - words.slice(i).join(" ").length);
-    if (diff < bestDiff) {
-      bestDiff = diff;
-      best = i;
+  const lines: string[] = [];
+  let current = "";
+  for (const word of words) {
+    const next = current ? `${current} ${word}` : word;
+    if (next.length > maxChars && current) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = next;
     }
   }
-  return [words.slice(0, best).join(" "), words.slice(best).join(" ")];
+  if (current) lines.push(current);
+  return lines;
 }
 
 export function InteractiveSystemMap({
@@ -218,7 +221,10 @@ export function InteractiveSystemMap({
           : outwardLeft
           ? (isRTL ? "start" : "end")
           : "middle";
-        const lines = wrapLabel(n.label, 12);
+        // Nodes anchored start/end grow the label horizontally away from the
+        // hexagon, toward the diagram's edge — a tighter wrap keeps their
+        // longest line short enough to stay inside the canvas.
+        const lines = wrapLabel(n.label, anchor === "middle" ? 16 : 10);
         const lineH = 14;
         const firstDy = -((lines.length - 1) / 2) * lineH + 4;
 
